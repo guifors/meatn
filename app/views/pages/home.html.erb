@@ -1,2 +1,41 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="container">
+    <h1 class="banner-headline"></strong> Meet great people over your favourite dish<strong></h1>
+    <br>
+    <div class="inline-form">
+      <%= render 'shared/form_inline' %>
+    </div>
+  </div>
+</div>
+<div class="hiw-headline">
+  <h3><strong>How it all works</strong></h3>
+  <p>Connect with people with shared interests over lunch or dinner</p>
+</div>
+<div class="container">
+  <div class="row three-steps">
+    <div class="col-md-3">
+      <div class="hiw-item">
+        <i class="far fa-check-circle"></i>
+        <h5>Book a spot on a table</h5>
+        <p>Join an existing booking or start your own</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="hiw-item">
+        <i class="far fa-check-circle"></i>
+        <h5>Let other users join</h5>
+        <p>Users with shared interests join the booking</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="hiw-item">
+        <i class="far fa-check-circle"></i>
+        <h5>Enjoy your meal!</h5>
+        <p>Booking is confirmed with the restaurant when 4 users join the table</p>
+      </div>
+    </div>
+  </div>
+  <h5>Explore ongoing events</h5>
+  <%= render 'shared/carousel' %>
+</div>
+
