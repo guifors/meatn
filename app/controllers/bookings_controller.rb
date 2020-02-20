@@ -1,10 +1,13 @@
 class BookingsController < ApplicationController
-
- def index
+  def index
     @bookings = Booking.all
+    authorize @bookings
   end
 
   def show
+    set_booking
+    set_restaurant
+    authorize @booking
   end
 
   def new
@@ -23,7 +26,6 @@ class BookingsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -41,7 +43,6 @@ class BookingsController < ApplicationController
   end
 
   def set_restaurant
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = @booking.restaurant
   end
-
 end
