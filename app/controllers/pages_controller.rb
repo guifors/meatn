@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @bookings = Booking.all
+    authorize @bookings
   end
 end
