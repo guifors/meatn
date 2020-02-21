@@ -13,29 +13,46 @@
 </div>
 <div class="container">
   <div class="row three-steps">
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="hiw-item">
-        <i class="far fa-check-circle"></i>
-        <h5>Book a spot on a table</h5>
+        <%= image_tag "booking.svg", alt: "booking", width: 200 %>
+        <h5 class="mt-3">Book a spot on a table</h5>
         <p>Join an existing booking or start your own</p>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="hiw-item">
-        <i class="far fa-check-circle"></i>
-        <h5>Let other users join</h5>
+        <%= image_tag "add_friends.svg", alt: "add_friends", width: 200, class: "image-add-friends" %>
+        <h5 class="mt-4">Let other users join</h5>
         <p>Users with shared interests join the booking</p>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <div class="hiw-item">
-        <i class="far fa-check-circle"></i>
-        <h5>Enjoy your meal!</h5>
+        <%= image_tag "fun.svg", alt: "fun", width: 200, class: "image-fun"  %>
+        <h5 class="mt-4">Enjoy your meal!</h5>
         <p>Booking is confirmed with the restaurant when 4 users join the table</p>
       </div>
     </div>
   </div>
-  <h5>Explore ongoing events</h5>
+  <div class="explore-events-text"></div>
+    <h5>Explore ongoing events</h5>
+  </div>
   <%= render 'shared/carousel' %>
+  <br>
+  <br>
+  <%= link_to """", class: "host-link" do %>
+    <div class=" container banner host-banner">
+      <div class="text-host-banner">
+        <h1>Meat, eat, socialise</h1>
+        <p>Join a table and enjoy the company</p>
+        <p><%= link_to "Create your booking", "#", class: "btn-flat btn-booking mb-2"%></p>
+      </div>
+    </div>
+  <% end %>
 </div>
+<br>
+<br>
+<br>
+<%= render 'shared/footer' %>
 
