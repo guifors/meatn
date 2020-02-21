@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+
 
 Restaurant.destroy_all
 
@@ -15,3 +18,17 @@ Restaurant.create(name:"SIMYA Korean Restaurant",address:"Broadway Shopping Cent
 Restaurant.create(name:"Toro Gordo Hammersmith",address:"121 King Street",postcode:"W6 9JG",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",phone_number:"020-7333-8888",price:"3")
 
 Restaurant.create(name:"BOMBAY CHOW",address:"220 King Street",postcode:"W6 0RA",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",phone_number:"020-7333-8888",price:"3")
+
+Booking.destroy_all
+
+
+puts "creating some bookings"
+
+
+
+Booking.create(title:"Cool Coders of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today))
+
+Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today))
+
+
+Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: 5.days.ago, to: Date.today))
