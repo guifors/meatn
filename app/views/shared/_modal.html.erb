@@ -1,13 +1,26 @@
-<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel"><strong>Start a new booking</strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action='/restaurants' method="get" class="mt-2">
+        <div class="form-group fg">
+          <input type="input" name="city" placeholder="Choose a location"class="form-control" id="location">
+        </div>
+        <div class="form-group fg">
+          <input type="input" name="city" placeholder="Choose a date"class="form-control" id="date">
+        </div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      </form>
+        <button type="submit" class="btn btn-primary">Search for restaurants</button>
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+      </div>
+    </div>
   </div>
-
 </div>
