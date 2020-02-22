@@ -3,11 +3,19 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgb(235,235,235);
+  border-top: 1px solid rgb(235,235,235);
+  padding: 1% 5%;
 }
-
-
-
 
 .bookings-details-box {
   display: flex;
+}
+
+.half-width {
+  width: 48%;
+  margin: 1%;
+}
+
+.cards-holder {
+ list-style: none;
 }

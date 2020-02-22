@@ -1,19 +1,25 @@
 <div class="head-bar">
 <div>
-  <%= @restaurant.name %>
-  <p>
+   <h1><%= @restaurant.name %></h1> <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+  <h3>
     <%= @booking.title %>
-  </p>
+  </h3>
 </div>
 <div>
-  picture
-</div>
-<div>
-  <div>****</div>
   <div class="btn-flat">Join Booking</div>
 </div>
 </div>
 <div class="bookings-details-box">
-  <div>user cards</div>
-  <div>restaurant details</div>
+  <div class="half-width">
+    <ul class="cards-holder">
+    <% @booking.users.each do |user| %>
+      <li class="">
+
+      place holder
+
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  <div class="half-width">restaurant details</div>
 </div>
