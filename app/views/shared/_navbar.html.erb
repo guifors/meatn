@@ -20,7 +20,20 @@
       </li>
 
       <li class="nav-item">
-          <%= link_to "Notifications", new_user_session_path, class: "nav-link" %>
+        <div class="dropdown">
+          <%= link_to "Notifications", "#", class: "nav-link", data: {toggle: "dropdown"}, aria: {haspopup: true, expanded: false}%>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <%= link_to "#", class: "dropdown-item" do %>
+              <%= render 'shared/notification' %>
+            <% end %>
+            <%= link_to "#", class: "dropdown-item" do %>
+              <%= render 'shared/notification' %>
+            <% end %>
+            <%= link_to "#", class: "dropdown-item" do %>
+              <%= render 'shared/notification' %>
+            <% end %>
+          </div>
+        </div>
       </li>
       <li class="nav-item">
           <%= link_to "My events", new_user_session_path, class: "nav-link" %>
