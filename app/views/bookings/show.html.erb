@@ -12,14 +12,28 @@
 <div class="bookings-details-box">
   <div class="half-width">
     <ul class="cards-holder">
-    <% @booking.users.each do |user| %>
-      <li class="">
-
-      place holder
-
+      <li>
+        <%= @booking.user.name %>
       </li>
-    <% end %>
+      <% if @booking.group.exist? %>
+        <% @booking.groups.each do |user| %>
+          <li>
+
+          place holder
+
+          </li>
+        <% end %>
+      <% end %>
     </ul>
   </div>
   <div class="half-width">restaurant details</div>
+</div>
+
+<div class="attendee">
+  <div>
+    avatar
+  </div>
+  <div>
+    details
+  </div>
 </div>
