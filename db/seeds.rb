@@ -24,9 +24,9 @@ User.destroy_all
 
 puts "creating some Users"
 
-User1 = User.create(email:"test@test.com", encrypted_password:"123456")
-User2 = User.create(email:"demo@demo.com", encrypted_password:"123456")
-User3 = User.create(email:"chchch@test.com", encrypted_password:"123456")
+user1 = User.create(email:"test@test.com", encrypted_password:"123456")
+user2 = User.create(email:"demo@demo.com", encrypted_password:"123456")
+user3 = User.create(email:"chchch@test.com", encrypted_password:"123456")
 
 
 
@@ -38,8 +38,8 @@ Booking.destroy_all
 
 puts "creating some bookings"
 
-Booking.create(title:"Cool Coders of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant:rest1, user_id:User1)
+Booking.create(title:"Cool Coders of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant:rest1, user_id:user1)
 
-Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant:rest2, user_id:User2)
+Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant:rest2, user_id:user2)
 
-Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant:rest3, user_id:User3)
+Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant:rest3, user_id:user3)
