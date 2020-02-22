@@ -1,4 +1,4 @@
 class Booking < ApplicationRecord
   belongs_to :restaurant
-  has_many :users
+  belongs_to :user
 end
