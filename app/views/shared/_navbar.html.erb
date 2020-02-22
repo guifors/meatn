@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
@@ -13,7 +13,7 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <!-- Button trigger modal -->
-        <%= link_to "New booking", new_user_session_path, class: "nav-link", data: {toggle: "modal", target: "#exampleModal"} %>
+        <%= link_to "New booking", restaurants_path, class: "nav-link", data: {toggle: "modal", target: "#exampleModal"} %>
 
         <!-- Modal -->
         <%= render 'shared/modal' %>
