@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.restaurant = Restaurant.find(params[:restaurant_id])
     if @booking.save!
-      redirect_to edit_booking_path(@booking)
+      redirect_to booking_path(@booking)
     else
       render :new
     end
