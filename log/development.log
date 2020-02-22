@@ -1794,3 +1794,22 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 135ms (Views: 130.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2020-02-22 11:28:16 +0000
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/guillermoforteza/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.6ms)
+  Rendered shared/_resto_card.html.erb (0.6ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (4.2ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+  Rendered pages/home.html.erb within layouts/application (4324.3ms)
+  Rendered shared/_modal.html.erb (0.6ms)
+  Rendered shared/_navbar.html.erb (3.6ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 4393ms (Views: 4365.1ms | ActiveRecord: 0.0ms)
+
+
