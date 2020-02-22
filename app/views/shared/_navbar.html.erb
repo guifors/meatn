@@ -8,11 +8,17 @@
   </button>
 
 
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-          <%= link_to "New booking", new_user_session_path, class: "nav-link" %>
+        <!-- Button trigger modal -->
+        <%= link_to "New booking", new_user_session_path, class: "nav-link", data: {toggle: "modal", target: "#exampleModal"} %>
+
+        <!-- Modal -->
+        <%= render 'shared/modal' %>
       </li>
+
       <li class="nav-item">
           <%= link_to "Notifications", new_user_session_path, class: "nav-link" %>
       </li>
