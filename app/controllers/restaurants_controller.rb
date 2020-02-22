@@ -1,11 +1,12 @@
 class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update]
   skip_before_action :authenticate_user!, only: :index
+
   def index
     if params[:city].present?
-      @restaurants = Restaurant.search_by_address(params[:city])
+      @restaurants = policy_scope(Restaurant).search_by_city(params[:city])
     else
-      @restaurants = Restaurant.geocoded
+      @restaurants = policy_scope(Restaurant).geocoded
     end
     set_markers
   end
@@ -38,7 +39,7 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:user, :address, :guests, :beds, :bedrooms, :description, :price_per_night, :title, photos: [])
+    params.require(:restaurant).permit(:name, :address, :postcode, :city, :state, :area, :country, :phone_number, :price, :latitude, :longitude, :image_url)
   end
 
   def find_restaurant
