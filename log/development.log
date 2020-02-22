@@ -1003,3 +1003,195 @@ Processing by BookingsController#show as HTML
 Completed 200 OK in 24ms (Views: 17.3ms | ActiveRecord: 1.5ms)
 
 
+Started GET "/" for ::1 at 2020-02-22 08:54:46 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/guillermoforteza/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4.1/lib/active_record/log_subscriber.rb:98
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.7ms)
+  Rendered shared/_resto_card.html.erb (1.3ms)
+  Rendered shared/_resto_card.html.erb (0.1ms)
+  Rendered shared/_resto_card.html.erb (0.1ms)
+  Rendered shared/_carousel.html.erb (10.1ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+  Rendered pages/home.html.erb within layouts/application (19947.4ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+  Rendered shared/_flashes.html.erb (0.8ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20082ms (Views: 20021.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:01:32 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.6ms)
+  Rendered shared/_resto_card.html.erb (0.4ms)
+  Rendered shared/_resto_card.html.erb (0.1ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (3.8ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+  Rendered pages/home.html.erb within layouts/application (17.3ms)
+  Rendered shared/_navbar.html.erb (2.1ms)
+  Rendered shared/_flashes.html.erb (0.5ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 62ms (Views: 57.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:01:43 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.7ms)
+  Rendered shared/_resto_card.html.erb (0.4ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.1ms)
+  Rendered shared/_carousel.html.erb (3.6ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+  Rendered pages/home.html.erb within layouts/application (12.5ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 49.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:02:01 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.7ms)
+  Rendered shared/_resto_card.html.erb (0.3ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (3.1ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+  Rendered pages/home.html.erb within layouts/application (11.5ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 46ms (Views: 43.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:07:20 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (1.3ms)
+  Rendered shared/_resto_card.html.erb (3.5ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (10.5ms)
+  Rendered shared/_footer.html.erb (0.7ms)
+  Rendered pages/home.html.erb within layouts/application (49.4ms)
+  Rendered shared/_navbar.html.erb (4.9ms)
+  Rendered shared/_flashes.html.erb (1.3ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 230ms (Views: 221.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:07:48 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.4ms)
+  Rendered shared/_resto_card.html.erb (0.3ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (3.1ms)
+  Rendered shared/_footer.html.erb (0.3ms)
+  Rendered pages/home.html.erb within layouts/application (13.0ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 51ms (Views: 48.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:09:34 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.6ms)
+  Rendered shared/_resto_card.html.erb (0.5ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (4.7ms)
+  Rendered shared/_footer.html.erb (0.7ms)
+  Rendered pages/home.html.erb within layouts/application (15.8ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 53.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:09:58 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.8ms)
+  Rendered shared/_resto_card.html.erb (0.3ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (3.0ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+  Rendered pages/home.html.erb within layouts/application (11.2ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 48ms (Views: 45.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:36:55 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.9ms)
+  Rendered shared/_resto_card.html.erb (0.5ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (4.4ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+  Rendered pages/home.html.erb within layouts/application (19.4ms)
+  Rendered shared/_navbar.html.erb (1.8ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/guillermoforteza/code/meatn/public/packs
+[Webpacker] Hash: ed66d3ec2365f97b2925
+Version: webpack 4.41.6
+Time: 1606ms
+Built at: 02/22/2020 9:37:07 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-71301ec4cff18637db9c.js    500 KiB  application  [emitted] [immutable]  application
+js/application-71301ec4cff18637db9c.js.map    627 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-71301ec4cff18637db9c.js js/application-71301ec4cff18637db9c.js.map
+[./app/javascript/custom/modal.js] 578 bytes {application} [built]
+[./app/javascript/packs/application.js] 79 bytes {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 11473ms (Views: 11464.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-02-22 09:38:46 +0000
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_form_inline.html.erb (0.9ms)
+  Rendered shared/_resto_card.html.erb (0.5ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_resto_card.html.erb (0.0ms)
+  Rendered shared/_carousel.html.erb (4.7ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+  Rendered pages/home.html.erb within layouts/application (19.3ms)
+  Rendered shared/_navbar.html.erb (1.4ms)
+  Rendered shared/_flashes.html.erb (0.6ms)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/guillermoforteza/code/meatn/public/packs
+[Webpacker] Hash: d630858dec3c582b2f41
+Version: webpack 4.41.6
+Time: 1551ms
+Built at: 02/22/2020 9:38:50 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-8da15379d7f04248a802.js    500 KiB  application  [emitted] [immutable]  application
+js/application-8da15379d7f04248a802.js.map    627 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-8da15379d7f04248a802.js js/application-8da15379d7f04248a802.js.map
+[./app/javascript/custom/modal.js] 578 bytes {application} [built]
+[./app/javascript/packs/application.js] 106 bytes {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 4713ms (Views: 4709.6ms | ActiveRecord: 0.0ms)
+
+
