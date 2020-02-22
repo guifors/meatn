@@ -1,1 +1,0 @@
-{"ast":null,"code":"import \"bootstrap\";\n\nrequire(\"custom/carousel\");","map":{"version":3,"sources":["/Users/guillermoforteza/code/meatn/app/javascript/packs/application.js"],"names":["require"],"mappings":"AAAA,OAAO,WAAP;;AACAA,OAAO,CAAC,iBAAD,CAAP","sourcesContent":["import \"bootstrap\";\nrequire(\"custom/carousel\")\n"]},"metadata":{},"sourceType":"module"}

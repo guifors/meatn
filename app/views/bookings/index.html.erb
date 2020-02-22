@@ -1,2 +1,29 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="main-container">
+  <div class="cards">
+    <% @flats.each do |flat| %>
+      <%= link_to(flat_path(flat)) do %>
+        <div class="card-trip">
+          <%= cl_image_tag flat.photos.first.key %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= flat.title %></h2>
+              <p><%= flat.address.truncate(30) %></p>
+            </div>
+            <h2 class="card-trip-pricing">£<%= flat.price_per_night %></h2>
+            <%= cl_image_tag flat.user.photo.key, class:"card-trip-user avatar-bordered" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="map-card">
+    <div
+    id="map"
+    style="width: 400px;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
+
+</div>
