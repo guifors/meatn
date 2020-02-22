@@ -7,8 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
-
-
 Restaurant.destroy_all
 
 rest1 = Restaurant.create(name:"The Melody Restaurant at St Paul's Hotel",address:"153 Hammersmith Road",postcode:"W14 0Ql",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",price:1,phone_number:"020-7333-8888")
@@ -24,14 +22,9 @@ User.destroy_all
 
 puts "creating some Users"
 
-user1 = User.create(email:"test@test.com", encrypted_password:"123456")
-user2 = User.create(email:"demo@demo.com", encrypted_password:"123456")
-user3 = User.create(email:"chchch@test.com", encrypted_password:"123456")
-
-
-
-
-
+user1 = User.create(email:"test@test.com", password:"123456")
+user2 = User.create(email:"demo@demo.com", password:"123456")
+user3 = User.create(email:"chchch@test.com", password:"123456")
 
 
 Booking.destroy_all
