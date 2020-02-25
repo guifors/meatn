@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   def index
-    @bookings = Booking.all
+    @bookings = policy_scope(Booking)
     authorize @bookings
   end
 
@@ -19,7 +20,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.restaurant = Restaurant.find(params[:restaurant_id])
     if @booking.save!
-      redirect_to edit_booking_path(@booking)
+      redirect_to booking_path(@booking)
     else
       render :new
     end

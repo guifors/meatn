@@ -1,0 +1,46 @@
+<div class="search-bar">
+  <form class="form-inline">
+  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date">
+  <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time">
+
+  <div class="input-group mb-2 mr-sm-2">
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Location">
+  </div>
+  <%= link_to "Search", restaurants_path, class: "btn-flat mb-2" %>
+</form>
+</div>
+<div class="filter-bar">
+</div>
+<div class="main-container">
+  <div class="cards">
+    <% @restaurants.each do |restaurant| %>
+        <div class="restaurant-info">
+          <div class="restaurant-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= restaurant.image_url %>')">
+          </div>
+          <div class="restaurant-details">
+            <div>
+              <h5> <%= restaurant.name %> </h5>
+              <p  class="mb-0"> <%= restaurant.address %> </p>
+              <p class="mt-0"> <%= restaurant.city %> </p>
+              <p>Food_type · $$$ </p>
+              <div class="rating">
+                <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p> <span>567 reviews</span>
+              <%= link_to "Select", restaurant_path(restaurant), class: "btn btn-resto" %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <div class="map-card">
+    <div
+    id="map"
+    style="width: 400px;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
+</div>
+
+

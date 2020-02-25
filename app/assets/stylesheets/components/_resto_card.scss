@@ -1,3 +1,8 @@
+.cards {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .card-trip {
   overflow: hidden;
   background: white;
@@ -19,8 +24,9 @@
 .card-trip p {
   font-size: 12px;
   opacity: .7;
-  margin: 0;
+  margin-bottom: 10px;
 }
+
 
 
 .card-trip .card-trip-infos {
@@ -36,4 +42,17 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+
+.map-card {
+  flex: 0 0 33%;
+  position: sticky;
+  top: 0px;
+  align-self: flex-start;
+}
+
+.main-container {
+  display: flex;
+  align-items: flex-start;
 }
