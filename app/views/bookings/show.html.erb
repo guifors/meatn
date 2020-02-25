@@ -12,15 +12,23 @@
 <div class="bookings-details-box">
   <div class="half-width">
     <ul class="cards-holder">
-      <li>
-        <%= @booking.user.name %>
+      <li class="attendee">
+        <div class="avatar">
+          <%= cl_image_tag @booking.user.photo %>
+        </div>
+        <div><%= @booking.user.name %> <%= @booking.user.surname %> <br>
+          <strong>BIO:</strong> <%= @booking.user.bio %></div>
       </li>
-      <% if @booking.group.exist? %>
-        <% @booking.groups.each do |user| %>
-          <li>
-
-          place holder
-
+      <% if @booking.groups.exists? %>
+        <% @booking.groups.each do |group| %>
+          <li class="attendee">
+            <div>
+              <%= cl_image_tag @booking.user.photo %>
+            </div>
+            <div>
+              <%= group.user.name %> <%= group.user.surname %> <br>
+              <strong>BIO:</strong> <%= group.user.bio %>
+            </div>
           </li>
         <% end %>
       <% end %>
