@@ -1,0 +1,61 @@
+.restaurant-info {
+  display: flex;
+  margin-top: 10px;
+  width: 700px;
+  height: 200px;
+  padding-bottom: 30px;
+  border-bottom: 0.1px solid #EBEBEB;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+}
+
+.filter-bar {
+  margin-bottom: 30px;
+}
+
+.restaurant-picture {
+  width: 500px;
+  height: 100%;
+  margin: 10px 0px;
+  background-size: cover;
+  background-position: center;
+}
+
+.restaurant-details {
+  padding-left: 15px;
+  margin: 20px 0px;
+  text-decoration: none;
+  width: 800px;
+  height: 300px;
+
+  p {
+    color: $light-gray;
+  }
+}
+
+.attendee-list {
+  display: flex;
+}
+
+.available-booking-hours {
+  display: flex;
+}
+
+.btn-resto {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #FE5A5F;
+  transition: background 0.3s ease;
+  text-decoration: none !important;
+  position: relative;
+  bottom: 15px;
+}
+
+.rating {
+  display: flex;
+  justify-content: space-between;
+}
