@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :find_restaurant, only: [:show, :edit, :update]
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     if params[:city].present?
@@ -29,6 +29,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    authorize @restaurant
     @booking = Booking.new
   end
 

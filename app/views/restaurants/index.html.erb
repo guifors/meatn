@@ -1,23 +1,36 @@
+
+<div class="search-bar">
+  <form class="form-inline">
+  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date">
+  <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time">
+
+  <div class="input-group mb-2 mr-sm-2">
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Location">
+  </div>
+  <%= link_to "Search", restaurants_path, class: "btn-flat mb-2" %>
+</form>
+</div>
+<div class="filter-bar">
+</div>
 <div class="main-container">
   <div class="cards">
     <% @restaurants.each do |restaurant| %>
-      <%= link_to(restaurant_path(restaurant)) do %>
-        <div class="card-trip">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <div class="card-trip-infos">
+        <div class="restaurant-info">
+          <div class="restaurant-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= restaurant.image_url %>')">
+          </div>
+          <div class="restaurant-details">
             <div>
-              <h2><%= restaurant.name %></h2>
-              <p>Food_type · $$$ · Area</p>
+              <h5> <%= restaurant.name %> </h5>
+              <p  class="mb-0"> <%= restaurant.address %> </p>
+              <p class="mt-0"> <%= restaurant.city %> </p>
+              <p>Food_type · $$$ </p>
               <div class="rating">
-                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p> <span>567 reviews</span>
+              <%= link_to "Select", restaurant_path(restaurant), class: "btn btn-resto" %>
               </div>
             </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
   <div class="map-card">
@@ -29,10 +42,4 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
   </div>
-
 </div>
-
-
-
-
-
