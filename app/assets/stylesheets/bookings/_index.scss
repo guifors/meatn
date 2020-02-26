@@ -1,29 +1,44 @@
 
-.card-trip {
+
+.cards2 {
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;  grid-gap: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.card-trip2 {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card-trip > img {
+.card-trip2 > img {
   height: 200px;
   width: 100%;
   object-fit: cover;
 }
 
-.card-trip h2 {
+.card-trip2 h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-trip p {
+.card-trip2 p {
+  width: 70%;
   font-size: 12px;
   opacity: .7;
-  margin-bottom: 10px;
+  margin: 0;
+  color: #343a40;
+  text-align: left;
 }
 
-.card-trip .card-trip-infos {
+
+.card-trip2 .card-trip-infos2 {
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -31,24 +46,9 @@
   position: relative;
 }
 
-.card-trip-infos .card-one{
+.card-trip-infos2 .card-trip-user2 {
   position: absolute;
   right: 16px;
   top: -20px;
   width: 40px;
 }
-
-
-.map-card {
-  flex: 0 0 33%;
-  position: sticky;
-  top: 0px;
-  align-self: flex-start;
-  margin-left: auto;
-}
-
-.main-container {
-  display: flex;
-  align-items: flex-start;
-}
-
