@@ -1,24 +1,10 @@
-<div class="search-bar">
-  <form class="form-inline">
-  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date">
-  <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time">
-
-  <div class="input-group mb-2 mr-sm-2">
-    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Location">
-  </div>
-  <%= link_to "Search", restaurants_path, class: "btn-flat mb-2" %>
-</form>
-</div>
-<div class="filter-bar">
-</div>
-
 <div class="main-container">
-  <div class="cards2">
+  <div class="cards">
     <% @bookings.each do |booking| %>
       <%= link_to(booking_path(booking)) do %>
-        <div class="card-trip2">
+        <div class="card-trip">
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <div class="card-trip-infos2">
+          <div class="card-trip-infos">
             <div>
               <h2><%= booking.title %></h2>
               <p><%= booking.restaurant.name %></p>
@@ -38,8 +24,8 @@
   <div class="map-card">
     <div
     id="map"
-    style="width: 600px;
-    height: 800px;"
+    style="width: 400px;
+    height: 600px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
