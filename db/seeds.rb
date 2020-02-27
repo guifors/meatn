@@ -38,7 +38,6 @@ end
 puts "100 restaurants created"
 
 
-
 # rest1 = Restaurant.create(name:"The Melody Restaurant at St Paul's Hotel",address:"153 Hammersmith Road",postcode:"W14 0Ql",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",price:1,phone_number:"020-7333-8888",image_url: "https://source.unsplash.com/collection/1353633/")
 
 # rest2 = Restaurant.create(name:"SIMYA Korean Restaurant",address:"Broadway Shopping Centre",postcode:"W6 9YE",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",phone_number:"020-7333-8888",price:"2",image_url: "https://source.unsplash.com/collection/1353633/")
@@ -52,14 +51,16 @@ User.destroy_all
 
 puts "creating some Users"
 
-user1 = User.create(email:"test@test.com", password:"123456")
-user2 = User.create(email:"demo@demo.com", password:"123456")
-user3 = User.create(email:"chchch@test.com", password:"123456")
+User.create!(email:"test@test.com", password:"123456")
+User.create(email:"demo@demo.com", password:"123456")
+User.create(email:"chchch@test.com", password:"123456")
 
 
 Booking.destroy_all
 
 puts "creating some bookings"
+
+
 
 Booking.create(
   title:"Cool Coders of London",
@@ -71,9 +72,6 @@ Booking.create(
 Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 2, user_id: 2)
 
 Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 3, user_id: 3)
-
-
-
 
 
 # name = restaurant["restaurant"]["name"]
