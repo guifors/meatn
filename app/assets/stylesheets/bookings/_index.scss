@@ -3,52 +3,87 @@
 .cards2 {
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 2fr;
   grid-gap: 16px;  grid-gap: 16px;
   margin-left: 10px;
   margin-right: 10px;
 }
 
 
-.card-trip2 {
+.card-product {
   overflow: hidden;
+  height: auto;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+
 }
 
-.card-trip2 > img {
-  height: 200px;
-  width: 100%;
+.card-product img {
+  height: 100%;
+  width: 120px;
   object-fit: cover;
 }
 
-.card-trip2 h2 {
-  font-size: 16px;
+.card-product h2 {
+  font-size: 24px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-trip2 p {
-  width: 70%;
+.card-product p {
   font-size: 12px;
+  line-height: 1.4;
   opacity: .7;
-  margin: 0;
-  color: #343a40;
-  text-align: left;
+  margin-bottom: 0;
+  margin-top: 8px;
 }
 
-
-.card-trip2 .card-trip-infos2 {
+.card-product .card-product-infos {
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
 }
 
-.card-trip-infos2 .card-trip-user2 {
+.card-product .card-trip-user2 {
   position: absolute;
   right: 16px;
   top: -20px;
   width: 40px;
 }
+
+
+
+.restaurant-info {
+  display: flex;
+  width: 700px;
+  height: 200px;
+  border-bottom: 0.1px solid #EBEBEB;
+}
+
+
+.restaurant-picture {
+  width: 500px;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.restaurant-details {
+  padding-left: 15px;
+  text-decoration: none;
+  width: 800px;
+  height: auto;
+
+  p {
+    color: $light-gray;
+  }
+}
+
+.rating {
+  display: flex;
+  justify-content: space-between;
+}
+
+

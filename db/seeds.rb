@@ -73,6 +73,10 @@ Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.a
 
 Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 3, user_id: 3)
 
+Booking.create(title:"Cat lovers",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 4, user_id: 3)
+
+Booking.create(title:"Cheese Aficionados",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 5, user_id: 1)
+
 
 # name = restaurant["restaurant"]["name"]
 # address = restaurant["restaurant"]["location"]["address"]
