@@ -7,7 +7,9 @@ class BookingsController < ApplicationController
     @markers = @bookings.map do |booking|
       {
         lat: booking.restaurant.latitude,
-        lng: booking.restaurant.longitude
+        lng: booking.restaurant.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
+
       }
     end
   end
