@@ -23,4 +23,7 @@
 .attendee {
   display: flex;
   justify-content: space-around;
+  border: 1px solid $very-light-gray;
+  border-radius: 4px;
+  padding: 8px;
 }
