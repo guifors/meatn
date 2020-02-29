@@ -71,6 +71,8 @@ Booking.create(
 
 Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 2, user_id: 2)
 
+Booking.create(title:"Tall Trees Society",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 7, user_id: 2)
+
 Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 3, user_id: 3)
 
 Booking.create(title:"Cat lovers",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 4, user_id: 3)
