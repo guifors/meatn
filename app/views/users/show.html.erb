@@ -1,0 +1,72 @@
+  <div class="container">
+    <h2>My Bookings</h2>
+
+  <nav>
+    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+      href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">current</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+      href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">past</a>
+    </div>
+  </nav>
+
+
+  <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+
+      <% current_user.bookings.each do |booking| %>
+        <% if !booking.date.past? %>
+          <div class = card-product>
+          <%= link_to(booking_path(booking)) do %>
+            <div class="restaurant-info">
+              <div class="restaurant-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')">
+              </div>
+                <div class="restaurant-details">
+                  <div>
+                    <h2><%= booking.title %></h2>
+                    <h5> <%= booking.restaurant.name %> </h5>
+                    <p  class="mb-0"> <%= booking.restaurant.address %> </p>
+                    <p><%= booking.restaurant.food_type %> · <%= booking.restaurant.price %>£ </p>
+                    <div class="rating">
+                      <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p>
+                    </div>
+                    <p><%= booking.date %> </p>
+                  </div>
+                </div>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <% current_user.bookings.each do |booking| %>
+        <% if booking.date.past? %>
+          <div class = card-product>
+            <%= link_to(booking_path(booking)) do %>
+              <div class="restaurant-info">
+                <div class="restaurant-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')">
+                </div>
+                  <div class="restaurant-details">
+                    <div>
+                      <h2><%= booking.title %></h2>
+                      <h5> <%= booking.restaurant.name %> </h5>
+                      <p  class="mb-0"> <%= booking.restaurant.address %> </p>
+                      <p><%= booking.restaurant.food_type %> · <%= booking.restaurant.price %>£ </p>
+                      <div class="rating">
+                        <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p>
+                      </div>
+                      <p><%= booking.date %> </p>
+                    </div>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
