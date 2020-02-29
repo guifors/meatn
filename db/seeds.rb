@@ -9,8 +9,11 @@ require 'faker'
 require 'json'
 require 'open-uri'
 
+Booking.destroy_all
+User.destroy_all
 Restaurant.destroy_all
-url = 'https://developers.zomato.com/api/v2.1/search?apikey=667b536c92ccb5102b2fbffaecf1cc1f&city_id=61'
+
+url = "https://developers.zomato.com/api/v2.1/search?apikey=#{ENV['ZOMATO_API_KEY']}&city_id=61"
 
 restaurants_serialized = open(url).read
 fetched_restaurants = JSON.parse(restaurants_serialized)
@@ -47,16 +50,31 @@ puts "100 restaurants created"
 # rest4 = Restaurant.create(name:"BOMBAY CHOW",address:"220 King Street",postcode:"W6 0RA",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",phone_number:"020-7333-8888",price:"3",image_url: "https://source.unsplash.com/collection/1353633/")
 
 
-User.destroy_all
+user_photos = ['https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176970/nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg',
+  'https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176969/ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg',
+'https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176969/ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg',
+'https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176968/luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg',
+'https://res.cloudinary.com/ddhmqwylk/image/upload/v1581177724/sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg']
+user_filenames = ['nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg', 'ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg', 'ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg', 'luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg', 'sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg']
+
 
 puts "creating some Users"
 
-User.create!(email:"test@test.com", password:"123456")
-User.create(email:"demo@demo.com", password:"123456")
-User.create(email:"chchch@test.com", password:"123456")
+
+counter = 0
+
+5.times do
+  user_file = URI.open("#{user_photos[counter]}")
+  user = User.create!(email: Faker::Internet.email, password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name)
+  user.photo.attach(io: user_file, filename: "#{user_filenames[counter]}", content_type: 'image/jpg')
+  counter += 1
+end
+
+# User.create!(email:"test@test.com", password:"123456", name: Faker::Name.first_name, surname: Faker::Name.last_name )
+# User.create(email:"demo@demo.com", password:"123456", name: Faker::Name.first_name, surname: Faker::Name.last_name )
+# User.create(email:"chchch@test.com", password:"123456", name: Faker::Name.first_name, surname: Faker::Name.last_name )
 
 
-Booking.destroy_all
 
 puts "creating some bookings"
 

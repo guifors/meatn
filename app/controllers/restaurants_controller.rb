@@ -52,7 +52,7 @@ class RestaurantsController < ApplicationController
   private
 
   def fetch_pictures(restaurant)
-    @url = 'https://developers.zomato.com/api/v2.1/search?apikey=667b536c92ccb5102b2fbffaecf1cc1f&city_id=61'
+    @url = "https://developers.zomato.com/api/v2.1/search?apikey=#{ENV['ZOMATO_API_KEY']}&city_id=61"
     @restaurants_serialized = open(@url).read
     @fetched_restaurants = JSON.parse(@restaurants_serialized)
     @fetched_restaurant = @fetched_restaurants["restaurants"].select { |rest| rest["restaurant"]["name"] == restaurant.name }

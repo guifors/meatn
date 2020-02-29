@@ -23,7 +23,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'cloudinary', '~> 1.12.0'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'json', '~> 1.8', '>= 1.8.3'
-gem 'rubysl-open-uri', '~> 2.0'
 
 
 group :development do
