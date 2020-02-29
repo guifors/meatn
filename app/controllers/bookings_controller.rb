@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
     @booking.restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @booking
     if @booking.save!
       redirect_to booking_path(@booking)
     else

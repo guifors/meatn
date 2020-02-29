@@ -1,46 +1,80 @@
-<div class="search-bar">
+
+
+
+<!--
   <form class="form-inline">
-  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date">
-  <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time">
+  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date" value="<%= params[:date] %>">
+  <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time" value="<%= params[:time] %>">
 
   <div class="input-group mb-2 mr-sm-2">
-    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Location">
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Location" value="<%= params[:city] %>">
   </div>
-  <%= link_to "Search", restaurants_path, class: "btn-flat mb-2" %>
-</form>
+  <%#= link_to "Search", restaurants_path, class: "btn-flat mb-2" %>
+</form> -->
+
+
+<div class="banner restaurant-banner">
+  <div class="container">
+    <h1 class="banner-headline"></strong> Choose a restaurant you want to go to<strong></h1>
+    <br>
+    <div class="inline-form">
+      <% if params[:search]%>
+        <% search_value_address = params[:search][:address] %>
+        <% search_value_food_type = params[:search][:food_type] %>
+      <% end %>
+      <%= simple_form_for :search, url: restaurants_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+        <%= f.input :address, input_html: {value: search_value_address} %>
+        <%= f.input :food_type, input_html: {value: search_value_food_type}  %>
+        <%= f.submit "Search", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 </div>
 <div class="filter-bar">
 </div>
-<div class="main-container">
-  <div class="cards">
-    <% @restaurants.each do |restaurant| %>
-        <div class="restaurant-info">
-          <div class="restaurant-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= restaurant.image_url %>')">
-          </div>
-          <div class="restaurant-details">
-            <div>
-              <h5> <%= restaurant.name %> </h5>
-              <p  class="mb-0"> <%= restaurant.address %> </p>
-              <p class="mt-0"> <%= restaurant.city %> </p>
-              <p>Food_type · $$$ </p>
-              <div class="rating">
-                <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p> <span>567 reviews</span>
-              <%= link_to "Select", restaurant_path(restaurant), class: "btn btn-resto" %>
-              </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <% @restaurants.each do |restaurant| %>
+        <%= link_to restaurant_path(restaurant), class: "link-card" do %>
+          <div class="card-product restaurant-info">
+            <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= restaurant.image_url %>')" />
+            <div class="card-product-infos">
+                  <h5> <%= restaurant.name %> </h5>
+                  <p  class="mb-0"> <%= restaurant.short_address %> </p>
+                  <p class="mt-0"> <%= restaurant.city %> </p>
+                  <% if restaurant.price == 1 %>
+                    <p><%= restaurant.food_type %> · $</p>
+                  <% elsif restaurant.price == 2 %>
+                    <p><%= restaurant.food_type %> · $$</p>
+                  <% else %>
+                    <p><%= restaurant.food_type %> · $$$</p>
+                  <% end %>
+                  <div class="rating">
+                    <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span> <span> <%= restaurant.user_rating %></span></p>
+                  </div>
             </div>
           </div>
-        </div>
-    <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <div class="map-card">
+        <div
+        id="map"
+        style="width: 400px;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+      </div>
+    </div>
+
+
   </div>
-  <div class="map-card">
-    <div
-    id="map"
-    style="width: 400px;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
-  </div>
+
 </div>
 
 
