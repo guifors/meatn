@@ -7,7 +7,9 @@ class BookingsController < ApplicationController
     @markers = @bookings.map do |booking|
       {
         lat: booking.restaurant.latitude,
-        lng: booking.restaurant.longitude
+        lng: booking.restaurant.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
+
       }
     end
   end
@@ -27,6 +29,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.user = current_user
     @booking.restaurant = Restaurant.find(params[:restaurant_id])
+    authorize @booking
     if @booking.save!
       redirect_to booking_path(@booking)
     else

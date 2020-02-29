@@ -27,9 +27,9 @@ fetched_restaurants["restaurants"].first(100).each do |restaurant|
             longitude: restaurant["restaurant"]["location"]["longitude"].to_f,
             url: restaurant["restaurant"]["url"],
             food_type: restaurant["restaurant"]["cuisines"],
-            price: restaurant["restaurant"]["price_range"].to_i,
-            user_rating: restaurant["restaurant"]["user_rating"]["aggregate_rating"].to_i,
-            user_reviews: restaurant["restaurant"]["all_reviews_count"].to_i,
+            price: restaurant["restaurant"]["price_range"].to_f,
+            user_rating: restaurant["restaurant"]["user_rating"]["aggregate_rating"].to_f,
+            user_reviews: restaurant["restaurant"]["all_reviews_count"].to_f,
             image_url: restaurant["restaurant"]["featured_image"],
             highlights: restaurant["restaurant"]["highlights"]
           )
@@ -71,7 +71,13 @@ Booking.create(
 
 Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 2, user_id: 2)
 
+Booking.create(title:"Tall Trees Society",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 7, user_id: 2)
+
 Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 3, user_id: 3)
+
+Booking.create(title:"Cat lovers",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 4, user_id: 3)
+
+Booking.create(title:"Cheese Aficionados",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 5, user_id: 1)
 
 
 # name = restaurant["restaurant"]["name"]

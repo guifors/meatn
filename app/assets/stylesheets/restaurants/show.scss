@@ -66,9 +66,15 @@
   margin: 0 5px;
   border: 1px solid #D8D9DB;
   border-radius: 10px;
+  font-size: 13px;
 }
 
 .highlights-text {
   position: relative;
+  font-size: 13px;
   top: 3px;
+}
+
+.input-message {
+  height: 250px !important;
 }

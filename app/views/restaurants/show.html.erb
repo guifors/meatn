@@ -3,20 +3,37 @@
 </div>
 <div class="main-container">
   <div class="info">
-    <h3 class="pb-4 border-bottom"><%= @restaurant.name %></h3>
+    <h3 class="pb-4 border-bottom"><strong><%= @restaurant.name %></strong></h3>
+      <p> <%= @restaurant.food_type %></p>
     <div class="d-flex">
-      <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p>
-      <p> · food_type</p>
-      <p> · $$$</p>
+      <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span> <%= @restaurant.user_rating %> (<%= @restaurant.user_reviews %>)</p>
+      <% if @restaurant.price == 1 %>
+        <p> · $</p>
+      <% elsif @restaurant.price == 2 %>
+        <p> · $$</p>
+      <% else %>
+        <p> · $$$</p>
+      <% end %>
     </div>
-    <br>
     <div class="d-flex mb-4">
       <p class="mb-0 highlights-text">Highlights:</p>
-      <div class="highlight-tag">test</div>
-      <div class="highlight-tag">test</div>
-      <div class="highlight-tag">test</div>
-      <div class="highlight-tag">test</div>
+      <% @restaurant.highlights.gsub(/["]/, '').remove("[").remove("]").split(",").first(4).each do |highlight| %>
+        <div class="highlight-tag"> <%= highlight.strip %></div>
+      <% end %>
     </div>
+    <div class="restaurant-photos container">
+      <div class="row">
+        <% @pictures.first(6).each do |picture| %>
+          <div class="col-md-4 pr-1 pl-1 mb-3">
+            <div class="card-product">
+              <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= picture["photo"]["thumb_url"] %>')" />
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <p><i class="fas fa-map-marker-alt"></i> <%= @restaurant.short_address %></p>
     <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l(#{@restaurant.longitude},#{@restaurant.latitude})/#{@restaurant.longitude},#{@restaurant.latitude},15/500x300?access_token=pk.eyJ1IjoidG9taHVkc29uODkiLCJhIjoiY2s0MGN4NDJvMDBmZTNlc2Y3YzdheG02ciJ9.CbThae_pau01vd-Br--z3w" %>
   </div>
     <div class="booker">
@@ -24,27 +41,18 @@
       <p class="location-text"><strong>Location</strong></p>
       <p class="location-text"><%= @restaurant.address %></p>
       <div class="booking-details border-bottom pmb-4">
-        <div class="location-text">
-          <p><strong>Date</strong></p>
-          <p>Wed, 2/26</p>
-        </div>
-        <div class="location-text">
-          <p class="time-text"><strong>Time</strong></p>
-          <p>9:30pm</p>
-        </div>
+        <%= simple_form_for [@restaurant, Booking.new] do |b| %>
+          <%= b.input :date, label: "Select date and time", class: "location-text" %>
+          <%= b.input :title, as: :text, input_html: { :style=> 'width: 100%;', :rows => 4, :placeholder=> "Add a message to the other attendees!"}, label: false, class: "input-message location-text" %>
+          <%= b.submit "Create new booking", class: "btn btn-flat d-flex search-button" %>
+        <% end %>
       </div>
-        <div>
-      <p class="location-text mb-2 mt-4">Message to other attendees:</p>
-      <form>
-        <div class="form-group">
-          <textarea class="form-control location-text" id="messagetoguests" rows="3" placeholder="Tell the others a bit more about yourself"></textarea>
-        </div>
-      </form>
-    </div>
-      <%= render 'bookings/form', booking: Booking.new, restaurant: @restaurant %>
-    </div>
+    <div>
   </div>
 
-
-
-
+</div>
+</div>
+<br>
+<br>
+<%= render 'shared/footer' %>
+  
