@@ -1,4 +1,15 @@
 {
+<<<<<<< HEAD
+  "application.js": "/packs/js/application-55dde2393f39026b51bf.js",
+  "application.js.map": "/packs/js/application-55dde2393f39026b51bf.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-55dde2393f39026b51bf.js"
+      ],
+      "js.map": [
+        "/packs/js/application-55dde2393f39026b51bf.js.map"
+=======
   "application.js": "/packs/js/application-42421ad4ef610adfab77.js",
   "application.js.map": "/packs/js/application-42421ad4ef610adfab77.js.map",
   "entrypoints": {
@@ -8,6 +19,7 @@
       ],
       "js.map": [
         "/packs/js/application-42421ad4ef610adfab77.js.map"
+>>>>>>> master
       ]
     }
   }

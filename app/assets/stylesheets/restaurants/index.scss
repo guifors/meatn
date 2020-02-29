@@ -1,10 +1,5 @@
 .restaurant-info {
-  display: flex;
-  margin-top: 10px;
-  width: 700px;
-  height: 200px;
-  padding-bottom: 30px;
-  border-bottom: 0.1px solid #EBEBEB;
+  margin-bottom: 10px;
 }
 
 .search-bar {
@@ -22,6 +17,7 @@
   margin: 10px 0px;
   background-size: cover;
   background-position: center;
+  border-radius: 2px;
 }
 
 .restaurant-details {
@@ -33,6 +29,10 @@
 
   p {
     color: $light-gray;
+  }
+
+  h5 {
+    color: $gray;
   }
 }
 
@@ -55,7 +55,16 @@
   bottom: 15px;
 }
 
+.btn-resto:hover {
+  background: #FE5A5F;
+  color: white;
+}
+
 .rating {
   display: flex;
   justify-content: space-between;
+}
+
+.link-card {
+  text-decoration: none !important;
 }

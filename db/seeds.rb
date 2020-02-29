@@ -27,9 +27,9 @@ fetched_restaurants["restaurants"].first(100).each do |restaurant|
             longitude: restaurant["restaurant"]["location"]["longitude"].to_f,
             url: restaurant["restaurant"]["url"],
             food_type: restaurant["restaurant"]["cuisines"],
-            price: restaurant["restaurant"]["price_range"].to_i,
-            user_rating: restaurant["restaurant"]["user_rating"]["aggregate_rating"].to_i,
-            user_reviews: restaurant["restaurant"]["all_reviews_count"].to_i,
+            price: restaurant["restaurant"]["price_range"].to_f,
+            user_rating: restaurant["restaurant"]["user_rating"]["aggregate_rating"].to_f,
+            user_reviews: restaurant["restaurant"]["all_reviews_count"].to_f,
             image_url: restaurant["restaurant"]["featured_image"],
             highlights: restaurant["restaurant"]["highlights"]
           )
