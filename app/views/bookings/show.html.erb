@@ -1,13 +1,22 @@
 <div class="head-bar">
-<div>
-   <h1><%= @restaurant.name %></h1>
-  <h3>
-    <%= @booking.title %>
-  </h3>
-</div>
-<div>
-  <div class="btn-flat">Join Booking</div>
-</div>
+  <div>
+    <h3>
+      <%= @booking.title %>
+    </h3>
+  </div>
+  <div>
+     <h1><%= @restaurant.name %></h1>
+     <% blank_stars = 5 - @restaurant.user_rating %>
+            <% @restaurant.user_rating.times do  %>
+            <i class="fas fa-star filledstars"></i>
+            <% end %>
+            <% blank_stars.times do %>
+            <i class="far fa-star blankstars"></i>
+            <% end %>
+  </div>
+  <div>
+    <div class="btn-flat">Join Booking</div>
+  </div>
 </div>
 <div class="bookings-details-box">
   <div class="half-width">
@@ -47,13 +56,7 @@
         placeholder for image
       </div>
       <div class="details">
-          <% blank_stars = 5 - @restaurant.user_rating %>
-          <% @restaurant.user_rating.times do  %>
-          <i class="fas fa-star filledstars"></i>
-          <% end %>
-          <% blank_stars.times do %>
-          <i class="far fa-star blankstars"></i>
-          <% end %>
+
       </div>
       <div class="details">
         <%= @restaurant.address %>
