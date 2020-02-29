@@ -5,3 +5,7 @@ import { initMapbox } from 'plugins/init_mapbox';
 import { openModal, closeModal } from '../custom/modal.js';
 
 initMapbox();
+
+import { initStarRating } from '../plugins/init_star_rating';
+
+initStarRating();
