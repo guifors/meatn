@@ -3,6 +3,15 @@ class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
     authorize @bookings
+
+    @markers = @bookings.map do |booking|
+      {
+        lat: booking.restaurant.latitude,
+        lng: booking.restaurant.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
+
+      }
+    end
   end
 
   def show

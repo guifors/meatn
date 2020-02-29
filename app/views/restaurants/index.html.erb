@@ -1,7 +1,11 @@
 
+<<<<<<< HEAD
 
 
 <!--
+=======
+<div class="search-bar">
+>>>>>>> master
   <form class="form-inline">
   <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date" value="<%= params[:date] %>">
   <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time" value="<%= params[:time] %>">
@@ -56,6 +60,7 @@
                   </div>
             </div>
           </div>
+<<<<<<< HEAD
         <% end %>
       <% end %>
     </div>
@@ -73,8 +78,19 @@
     </div>
 
 
+=======
+        </div>
+    <% end %>
+  </div>
+  <div class="map-card">
+    <div
+    id="map"
+    style="width: 600px;
+    height: 800px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+>>>>>>> master
   </div>
 
 </div>
-
-

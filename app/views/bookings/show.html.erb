@@ -14,7 +14,8 @@
     <ul class="cards-holder">
       <li class="attendee">
         <div class="avatar">
-          <%= cl_image_tag @booking.user.photo %>
+          <%= @booking.user.name %>
+          <%= cl_image_tag @booking.user.photo, class: "avatar" %>
         </div>
         <div><%= @booking.user.name %> <%= @booking.user.surname %> <br>
           <strong>BIO:</strong> <%= @booking.user.bio %></div>
@@ -23,7 +24,7 @@
         <% @booking.groups.each do |group| %>
           <li class="attendee">
             <div>
-              <%= cl_image_tag @booking.user.photo %>
+              <%= cl_image_tag group.user.photo %>
             </div>
             <div>
               <%= group.user.name %> <%= group.user.surname %> <br>
@@ -37,11 +38,4 @@
   <div class="half-width">restaurant details</div>
 </div>
 
-<div class="attendee">
-  <div>
-    avatar
-  </div>
-  <div>
-    details
-  </div>
-</div>
+

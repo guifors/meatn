@@ -1,39 +1,56 @@
-<div class="main-container">
-  <div class="cards">
-    <% @bookings.each do |booking| %>
-      <%= link_to(booking_path(booking)) do %>
-        <div class="card-trip">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= booking.title %></h2>
-              <p><%= booking.restaurant.name %></p>
-              <p>Food_type · $$$ · Area</p>
-              <div class="rating">
-                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-              </div>
-            </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="map-card">
-    <div
-    id="map"
-    style="width: 400px;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
-  </div>
+<div class="search-bar">
+  <form class="form-inline">
+  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date">
+  <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time">
 
+  <div class="input-group mb-2 mr-sm-2">
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Location">
+  </div>
+  <%= link_to "Search", restaurants_path, class: "btn-flat mb-2" %>
+</form>
+</div>
+<div class="filter-bar">
 </div>
 
+<div class="main-container">
+  <div class="cards">
+      <% @bookings.each do |booking| %>
+        <div class = card-product>
+        <%= link_to(booking_path(booking)) do %>
+          <div class="restaurant-info">
+            <div class="restaurant-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')">
+            </div>
+            <div class="restaurant-details">
+              <div>
+                <h2><%= booking.title %></h2>
+                <h5> <%= booking.restaurant.name %> </h5>
+                <p  class="mb-0"> <%= booking.restaurant.address %> </p>
+                <p><%= booking.restaurant.food_type %> · <%= booking.restaurant.price %>£ </p>
+                <div class="rating">
+                  <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
 
+
+
+
+    <div class="map-card">
+      <div
+      id="map"
+      style="width: 600px;
+      height: 800px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
+
+</div>
 
 
 
