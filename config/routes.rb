@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :bookings do
     resources :reviews, only: [:new, :create]
+    resources :groups, only: [:new, :create]
   end
 
   resources :users, only: [:show]
