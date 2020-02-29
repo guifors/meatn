@@ -1,6 +1,6 @@
 <div class="head-bar">
 <div>
-   <h1><%= @restaurant.name %></h1> <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+   <h1><%= @restaurant.name %></h1>
   <h3>
     <%= @booking.title %>
   </h3>
@@ -35,7 +35,31 @@
       <% end %>
     </ul>
   </div>
-  <div class="half-width">restaurant details</div>
+  <div class="half-width">
+    <div class="restaurant-details">
+      <div class="details">
+        <strong>Restaurant Details</strong>
+      </div>
+      <div class="details">
+        placeholder for image
+      </div>
+      <div class="details">
+          <% blank_stars = 5 - @restaurant.user_rating %>
+          <% @restaurant.user_rating.times do  %>
+          <i class="fas fa-star filledstars"></i>
+          <% end %>
+          <% blank_stars.times do %>
+          <i class="far fa-star blankstars"></i>
+          <% end %>
+      </div>
+      <div class="details">
+        <%= @restaurant.address %>
+      </div>
+      <div class="details">
+        <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l(#{@restaurant.longitude},#{@restaurant.latitude})/#{@restaurant.longitude},#{@restaurant.latitude},15/500x300?access_token=pk.eyJ1IjoidG9taHVkc29uODkiLCJhIjoiY2s0MGN4NDJvMDBmZTNlc2Y3YzdheG02ciJ9.CbThae_pau01vd-Br--z3w" %></div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
