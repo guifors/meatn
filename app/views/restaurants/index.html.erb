@@ -1,17 +1,22 @@
-<div class="banner restaurant-banner">
+<div class="restaurant-banner">
   <div class="container">
-    <h1 class="banner-headline"></strong> Choose a restaurant you want to go to<strong></h1>
+    <h2 class="banner-headline"></strong> Choose a restaurant you love<strong></h2>
     <br>
-    <div class="inline-form">
-      <% if params[:search]%>
-        <% search_value_address = params[:search][:address] %>
-        <% search_value_food_type = params[:search][:food_type] %>
-      <% end %>
-      <%= simple_form_for :search, url: restaurants_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-        <%= f.input :address, input_html: {value: search_value_address} %>
-        <%= f.input :food_type, input_html: {value: search_value_food_type}  %>
-        <%= f.submit "Search", class: "btn btn-primary" %>
-      <% end %>
+      <div class="inline-form">
+        <% if params[:search]%>
+          <% search_value_city = params[:search][:city] %>
+          <% search_value_address = params[:search][:address] %>
+          <% search_value_food_type = params[:search][:food_type] %>
+        <% end %>
+        <%= simple_form_for :search, url: restaurants_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+            <%= f.input :city, input_html: {value: search_value_city, placeholder: "London"}, label: false %>
+          <div class="search-elements">
+            <%= f.input :address, input_html: {value: search_value_address, placeholder: "Select area"}, label: false %>
+          </div>
+          <%= f.input :food_type, input_html: {value: search_value_food_type, placeholder: "Select cuisine"}, label: false, class: "search-elements" %>
+          <%= f.submit "Search", class: "btn-flat search-elements" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -19,32 +24,38 @@
 <div class="filter-bar">
 </div>
 <div class="container">
+  <p class="get-current-location border-bottom pb-2">It looks like you are in London. Not correct? <i class="fas fa-map-marker-alt"></i> <%= link_to "Get current location" %></p>
+  <h5 class="border-bottom pt-3 pb-1"><strong>Popular restaurants in this area</strong></h5>
+
   <div class="row">
     <div class="col-md-8">
       <% @restaurants.each do |restaurant| %>
         <%= link_to restaurant_path(restaurant), class: "link-card" do %>
-          <div class="card-product restaurant-info">
+          <div class="card-restaurant-index restaurant-info">
             <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= restaurant.image_url %>')" />
-            <div class="card-product-infos">
-                  <h5> <%= restaurant.name %> </h5>
-                  <p  class="mb-0"> <%= restaurant.short_address %> </p>
-                  <p class="mt-0"> <%= restaurant.city %> </p>
+            <div class="card-restaurant-index-infos">
+                  <h2 class="pt-4"> <%= restaurant.name %> </h2>
+                  <p class="pt-2"> <%= restaurant.short_address %>,  <%= restaurant.city %>  </p>
                   <% if restaurant.price == 1 %>
-                    <p><%= restaurant.food_type %> · $</p>
+                    <p class="pt-2 pb-2"><%= restaurant.food_type %> · $</p>
                   <% elsif restaurant.price == 2 %>
-                    <p><%= restaurant.food_type %> · $$</p>
+                    <p class="pt-2 pb-2"><%= restaurant.food_type %> · $$</p>
                   <% else %>
-                    <p><%= restaurant.food_type %> · $$$</p>
+                    <p class="pt-2 pb-2"><%= restaurant.food_type %> · $$$</p>
                   <% end %>
-                  <div class="rating">
-                    <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span> <span> <%= restaurant.user_rating %></span></p>
-                  </div>
+                    <% blank_stars = 5 - restaurant.user_rating %>
+                        <% restaurant.user_rating.times do  %>
+                        <i class="fas fa-star filledstars"></i>
+                        <% end %>
+                        <% blank_stars.times do %>
+                        <i class="far fa-star blankstars"></i>
+                        <% end %>
+                    (<%= restaurant.user_reviews %>)
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
-
     <div class="col-md-4">
       <div class="map-card">
         <div
@@ -56,8 +67,6 @@
         ></div>
       </div>
     </div>
-
-
   </div>
-
 </div>
+<%= render 'shared/footer' %>

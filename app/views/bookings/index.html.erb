@@ -15,7 +15,7 @@
 <div class="main-container">
   <div class="cards">
       <% @bookings.each do |booking| %>
-        <div class = card-product>
+        <div class="card-product">
         <%= link_to(booking_path(booking)) do %>
           <div class="restaurant-info">
             <div class="restaurant-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')">

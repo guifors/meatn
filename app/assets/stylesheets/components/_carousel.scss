@@ -5,8 +5,8 @@
 .carousel-control {
   left: -12px;
     height: 40px;
-  width: 40px;
-    background: none repeat scroll 0 0 #222222;
+    width: 40px;
+    background: none repeat scroll 0 0 white;
     border: 4px solid #FFFFFF;
     border-radius: 23px 23px 23px 23px;
     margin-top: 90px;
@@ -23,10 +23,10 @@
 }
 /* The colour of the indicators */
 .carousel-indicators li {
-  background: #cecece;
+  background: white;
 }
 .carousel-indicators .active {
-background: #428bca;
+background: white;
 }
 
 .carousel-image {
@@ -35,3 +35,4 @@ background: #428bca;
   background-size: cover;
   background-position: center;
 }
+

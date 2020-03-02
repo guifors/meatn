@@ -52,43 +52,46 @@
   align-items: flex-start;
 }
 
-.card-product {
+.card-restaurant-index {
   overflow: hidden;
   height: 150px;
   width: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
+  .search-elements {
+  margin-right: 0px !important;
+}
 }
 
-.card-product img {
+.card-restaurant-index img {
   height: 100%;
-  width: 200px;
+  width: 250px;
   object-fit: cover;
   background-size: cover;
   background-position: center;
+  text-decoration: none !important;
 }
 
-.card-product h2 {
-  font-size: 16px;
+.card-restaurant-index h2 {
+  font-size: 22px;
   font-weight: bold;
   margin: 0;
 }
 
-.card-product p {
-  font-size: 12px;
+.card-restaurant-index p {
+  font-size: 17px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.card-restaurant-index .card-restaurant-index-infos {
+  padding: 0px 16px;
+}
+
+.card-restaurant-index-infos {
   text-decoration: none !important;
 }
 
-.card-product-infos {
-  text-decoration: none !important;
-}
