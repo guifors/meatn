@@ -8,6 +8,14 @@
   justify-content: center;
 }
 
+.get-current-location {
+  text-align: left;
+  color: $gray;
+  font-size: 14px;
+  padding-right: 25px;
+}
+
+
 .hiw-headline {
   h3 {
     color: $gray;
@@ -46,7 +54,6 @@
 // Specific CSS for your home-page
 
 .explore-events-text {
-  padding-left: 15px;
   padding-bottom: 10px;
 }
 

@@ -35,10 +35,7 @@
       </div>
     </div>
   </div>
-  <div class="explore-events-text"></div>
-    <h5>Explore ongoing events</h5>
-  </div>
-  <%= render 'shared/carousel' %>
+  <%= render 'shared/carousel', bookings: @bookings %>
   <br>
   <br>
   <%= link_to """", class: "host-link" do %>

@@ -38,5 +38,15 @@
 }
 
 .restaurant-banner {
-  height: 150px !important;
+  background-size: cover;
+  background-position: center;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), asset-url('resto-banner.jpg');
+  padding-bottom: 100px;
+
+  h2 {
+    color: white;
+    padding-top: 50px;
+    font-size: 34px;
+    font-weight: bold;
+  }
 }
