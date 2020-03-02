@@ -9,4 +9,8 @@ class Booking < ApplicationRecord
   def full?
     self.groups.count >= 3
   end
+
+  def attendees?
+    self.groups.count + 1
+  end
 end
