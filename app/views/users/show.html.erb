@@ -14,8 +14,7 @@
   <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-
-      <% current_user.bookings.each do |booking| %>
+      <% if current_user.bookings.exists? current_user.bookings.each do |booking| %>
         <% if !booking.date.past? %>
           <div class = card-product>
           <%= link_to(booking_path(booking)) do %>
@@ -66,6 +65,7 @@
           </div>
         <% end %>
       <% end %>
+    <% end %>
     </div>
   </div>
 </div>
