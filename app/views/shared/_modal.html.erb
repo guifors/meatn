@@ -13,14 +13,32 @@
           <label for="location">Choose a location</label>
           <input type="input" name="city" placeholder="Choose a location"class="form-control" id="location">
         </div>
-        <div class="form-group fg">
-          <label for="location">Date</label>
-          <input type="date" name="date" class="form-control" id="date">
-        </div>
-        <div class="form-group fg">
-          <label for="location">Time</label>
-          <input type="time" name="time" class="form-control" id="time">
-        </div>
+
+      <div class="container">
+          <div class="container">
+              <div class="form-group">
+                  <div class="input-group date" id="datetimepicker9" data-target-input="nearest">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker9"/>
+                      <div class="input-group-append" data-target="#datetimepicker9" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                  </div>
+              </div>
+          <script type="text/javascript">
+              $(function () {
+                  $('#datetimepicker9').datetimepicker({
+                      icons: {
+                          time: "far fa-calendar",
+                          date: "far fa-calendar",
+                          up: "far fa-arrow-up",
+                          down: "far fa-arrow-down",
+                      }
+                  });
+              });
+          </script>
+      </div>
+
+
 
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <button type="submit" class="btn btn-primary">Search for restaurants</button>
