@@ -1,9 +1,31 @@
-<form class="form-inline">
+<!-- <form class="form-inline">
   <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date">
   <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time">
 
   <div class="input-group mb-2 mr-sm-2">
     <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Location">
   </div>
-  <%= link_to "Search", bookings_path, class: "btn-flat mb-2" %>
+  <%#= link_to "Search", bookings_path, class: "btn-flat mb-2" %>
 </form>
+ -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"/>
+                    <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker({
+                    locale: 'ru'
+                });
+            });
+        </script>
+    </div>
+</div>
