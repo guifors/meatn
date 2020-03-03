@@ -9,6 +9,11 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.4.1'
 gem 'redis'
+# Gemfile
+gem 'jquery-rails'
+gem 'bootstrap'
+gem 'momentjs-rails'
+gem 'bootstrap4-datetime-picker-rails'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
@@ -23,7 +28,6 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'cloudinary', '~> 1.12.0'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'json', '~> 1.8', '>= 1.8.3'
-
 
 group :development do
   gem 'web-console', '>= 3.3.0'
