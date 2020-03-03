@@ -33,11 +33,14 @@
                     </div>
                     <% if booking.user.photo.attached? %>
                       <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% else %>
+                      <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                     <% end %>
                     <% booking.users.each do |user| %>
                       <% if user.photo.attached? %>
-
                         <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% else %>
+                        <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                       <% end %>
                     <% end %>
                   </div>
@@ -74,11 +77,14 @@
                     </div>
                     <% if booking.user.photo.attached? %>
                       <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% else %>
+                      <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                     <% end %>
                     <% booking.users.each do |user| %>
                       <% if user.photo.attached? %>
-
                         <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% else %>
+                      <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                       <% end %>
                     <% end %>
                   </div>
@@ -141,8 +147,9 @@
                       <% end %>
                       <% booking.users.each do |user| %>
                         <% if user.photo.attached? %>
-
                           <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% else %>
+                          <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                         <% end %>
                       <% end %>
                     </div>
@@ -182,8 +189,9 @@
                       <% end %>
                       <% booking.users.each do |user| %>
                         <% if user.photo.attached? %>
-
                           <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                         <% else %>
+                          <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                         <% end %>
                       <% end %>
                     </div>

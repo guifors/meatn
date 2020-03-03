@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :bookings
+  has_many :groups
   has_many :restaurants, through: :bookings
   has_one_attached :photo
   has_many :reviews, through: :bookings
