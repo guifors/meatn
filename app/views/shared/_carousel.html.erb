@@ -31,9 +31,14 @@
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
                     </div>
-                    <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% if booking.user.photo.attached? %>
+                      <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% end %>
                     <% booking.users.each do |user| %>
-                    <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% if user.photo.attached? %>
+
+                        <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% end %>
                     <% end %>
                   </div>
                 </div>
@@ -67,9 +72,14 @@
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
                     </div>
-                    <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% if booking.user.photo.attached? %>
+                      <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                    <% end %>
                     <% booking.users.each do |user| %>
-                    <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% if user.photo.attached? %>
+
+                        <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% end %>
                     <% end %>
                   </div>
                 </div>
@@ -126,9 +136,14 @@
                         <% end %>
                           <p><%= booking.restaurant.short_address %></p>
                       </div>
-                      <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% if booking.user.photo.attached? %>
+                        <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% end %>
                       <% booking.users.each do |user| %>
-                      <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% if user.photo.attached? %>
+
+                          <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% end %>
                       <% end %>
                     </div>
                   </div>
@@ -162,9 +177,14 @@
                         <% end %>
                           <p><%= booking.restaurant.short_address %></p>
                       </div>
-                      <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% if booking.user.photo.attached? %>
+                        <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <% end %>
                       <% booking.users.each do |user| %>
-                      <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% if user.photo.attached? %>
+
+                          <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% end %>
                       <% end %>
                     </div>
                   </div>
