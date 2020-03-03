@@ -1,17 +1,20 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-    @bookings = policy_scope(Booking)
+    if params[:query].present?
+      @bookings = policy_scope(Booking).search_by_date(params[:query])
+    else
+      @bookings = policy_scope(Booking)
+    end
     authorize @bookings
-
     @markers = @bookings.map do |booking|
       {
         lat: booking.restaurant.latitude,
         lng: booking.restaurant.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
-
       }
     end
+
   end
 
   def show

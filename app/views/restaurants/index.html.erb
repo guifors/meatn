@@ -1,6 +1,6 @@
 <div class="restaurant-banner">
   <div class="container">
-    <h2 class="banner-headline"></strong> Choose a restaurant you love<strong></h2>
+    <h2 class="banner-headline"><strong> Choose a restaurant you love</strong></h2>
     <br>
       <div class="inline-form">
         <% if params[:search]%>
@@ -19,54 +19,58 @@
       </div>
     </div>
   </div>
-</div>
-</div>
-<div class="filter-bar">
-</div>
+
+
 <div class="container">
   <p class="get-current-location border-bottom pb-2">It looks like you are in London. Not correct? <i class="fas fa-map-marker-alt"></i> <%= link_to "Get current location" %></p>
   <h5 class="border-bottom pt-3 pb-1"><strong>Popular restaurants in this area</strong></h5>
 
   <div class="row">
-    <div class="col-md-8">
-      <% @restaurants.each do |restaurant| %>
-        <%= link_to restaurant_path(restaurant), class: "link-card" do %>
-          <div class="card-restaurant-index restaurant-info">
-            <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= restaurant.image_url %>')" />
-            <div class="card-restaurant-index-infos">
-                  <h2 class="pt-4"> <%= restaurant.name %> </h2>
-                  <p class="pt-2"> <%= restaurant.short_address %>,  <%= restaurant.city %>  </p>
-                  <% if restaurant.price == 1 %>
-                    <p class="pt-2 pb-2"><%= restaurant.food_type %> · $</p>
-                  <% elsif restaurant.price == 2 %>
-                    <p class="pt-2 pb-2"><%= restaurant.food_type %> · $$</p>
-                  <% else %>
-                    <p class="pt-2 pb-2"><%= restaurant.food_type %> · $$$</p>
-                  <% end %>
-                    <% blank_stars = 5 - restaurant.user_rating %>
-                        <% restaurant.user_rating.times do  %>
-                        <i class="fas fa-star filledstars"></i>
-                        <% end %>
-                        <% blank_stars.times do %>
-                        <i class="far fa-star blankstars"></i>
-                        <% end %>
-                    (<%= restaurant.user_reviews %>)
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
     <div class="col-md-4">
+      <div class="card-resto-home pr-2">
+        <% @restaurants.each do |restaurant| %>
+          <%= link_to restaurant_path(restaurant) do %>
+            <div class="card-restaurant-index restaurant-info link-card">
+              <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= restaurant.image_url %>')" />
+              <div class="card-restaurant-index-infos">
+                    <h2 class="pt-4"> <%= restaurant.name %> </h2>
+                    <p class="pt-2"> <%= restaurant.short_address %>,  <%= restaurant.city %>  </p>
+                    <% if restaurant.price == 1 %>
+                      <p class="pt-2 pb-2"><%= restaurant.food_type %> · $</p>
+                    <% elsif restaurant.price == 2 %>
+                      <p class="pt-2 pb-2"><%= restaurant.food_type %> · $$</p>
+                    <% else %>
+                      <p class="pt-2 pb-2"><%= restaurant.food_type %> · $$$</p>
+                    <% end %>
+                      <% blank_stars = 5 - restaurant.user_rating %>
+                          <% restaurant.user_rating.times do  %>
+                          <i class="fas fa-star filledstars"></i>
+                          <% end %>
+                          <% blank_stars.times do %>
+                          <i class="far fa-star blankstars"></i>
+                          <% end %>
+                      (<%= restaurant.user_reviews %>)
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+
+
+    <div class="col-md-5 offset-md-3">
       <div class="map-card">
         <div
         id="map"
-        style="width: 400px;
+        style="width: 445px;
         height: 600px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         ></div>
       </div>
     </div>
+
   </div>
 </div>
 <%= render 'shared/footer' %>

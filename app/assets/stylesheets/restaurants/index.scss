@@ -26,7 +26,7 @@
   padding-left: 15px;
   margin: 20px 0px;
   text-decoration: none;
-  width: 800px;
+  width: 600px;
   height: 300px;
 
   p {
@@ -67,8 +67,19 @@
   justify-content: space-between;
 }
 
-.link-card {
+.card-resto-home a {
   text-decoration: none !important;
+}
+
+.link-card {
+  // text-decoration: none !important;
+  transition: 0.3s ease;
+}
+
+.link-card:hover {
+  // text-decoration: none !important;
+  color: red;
+  transform: scale(1.02) !important;
 }
 
 .search-elements {
