@@ -6,6 +6,13 @@ class Booking < ApplicationRecord
 
   has_many :reviews
 
+  include PgSearch::Model
+  pg_search_scope :search_by_date,
+    against: [ :date ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   def full?
     self.groups.count >= 3
   end
