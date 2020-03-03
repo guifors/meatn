@@ -49,14 +49,42 @@
       <p class="border-bottom booking-details-text pb-3"><strong>Booking details</strong></p>
       <p class="location-text"><strong>Location</strong></p>
       <p class="location-text"><%= @restaurant.address %></p>
+
+
+
+
       <div class="booking-details border-bottom pmb-4">
+
+      <div class="container">
+          <div class="container">
+              <div class="form-group">
+                  <div class="input-group date" id="datetimepicker9" data-target-input="nearest">
+                      <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker9"/>
+                      <div class="input-group-append" data-target="#datetimepicker9" data-toggle="datetimepicker">
+                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                      </div>
+                  </div>
+              </div>
+          <script type="text/javascript">
+              $(function () {
+                  $('#datetimepicker9').datetimepicker({
+                      icons: {
+                          time: "far fa-calendar",
+                          date: "far fa-calendar",
+                          up: "far fa-arrow-up",
+                          down: "far fa-arrow-down",
+                      }
+                  });
+              });
+          </script>
+      </div>
+
         <%= simple_form_for [@restaurant, Booking.new] do |b| %>
           <%= b.input :date, label: "Select date and time", class: "location-text" %>
           <%= b.input :title, as: :text, input_html: { :style=> 'width: 100%;', :rows => 4, :placeholder=> "Add a message to the other attendees!"}, label: false, class: "input-message location-text" %>
           <%= b.submit "Create new booking", class: "btn btn-flat d-flex search-button" %>
         <% end %>
       </div>
-    <div>
   </div>
 
 </div>

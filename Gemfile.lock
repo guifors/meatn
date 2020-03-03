@@ -60,6 +60,10 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
+    bootstrap (4.4.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     bootstrap4-datetime-picker-rails (0.3.1)
       jquery-rails (~> 4.2, >= 4.2.0)
       moment-timezone-rails (~> 1.0)
@@ -136,6 +140,7 @@ GEM
     pg_search (2.3.2)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
+    popper_js (1.16.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -244,6 +249,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 6.0)
   autoprefixer-rails
   bootsnap
+  bootstrap
   bootstrap4-datetime-picker-rails
   cloudinary (~> 1.12.0)
   devise
@@ -252,8 +258,10 @@ DEPENDENCIES
   font-awesome-sass (~> 5.6.1)
   geocoder
   jbuilder (~> 2.0)
+  jquery-rails
   json (~> 1.8, >= 1.8.3)
   listen (~> 3.0.5)
+  momentjs-rails
   pg (~> 0.21)
   pg_search (~> 2.3.0)
   pry-byebug
