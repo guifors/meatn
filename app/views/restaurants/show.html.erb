@@ -45,29 +45,29 @@
     <p><i class="fas fa-map-marker-alt"></i> <%= @restaurant.short_address %></p>
     <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l(#{@restaurant.longitude},#{@restaurant.latitude})/#{@restaurant.longitude},#{@restaurant.latitude},15/500x300?access_token=pk.eyJ1IjoidG9taHVkc29uODkiLCJhIjoiY2s0MGN4NDJvMDBmZTNlc2Y3YzdheG02ciJ9.CbThae_pau01vd-Br--z3w" %>
   </div>
-    <div class="booker">
-      <p class="border-bottom booking-details-text pb-3"><strong>Booking details</strong></p>
-      <p class="location-text"><strong>Location</strong></p>
-      <p class="location-text"><%= @restaurant.address %></p>
-
-
-
-
-      <div class="booking-details border-bottom pmb-4">
-
-      <div class="container">
-          <div class="container">
-              <div class="form-group">
-                  <div class="input-group date" id="datetimepicker9" data-target-input="nearest">
-                      <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker9"/>
-                      <div class="input-group-append" data-target="#datetimepicker9" data-toggle="datetimepicker">
-                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                      </div>
-                  </div>
-              </div>
+  <div class="booker">
+    <p class="border-bottom booking-details-text pb-3"><strong>Booking details</strong></p>
+    <p class="location-text"><strong>Location</strong></p>
+    <p class="location-text"><%= @restaurant.address %></p>
+    <p class="location-text"><strong>Select date and time:</strong></p>
+    <div class="booking-details border-bottom pb-4">
+        <%= simple_form_for [@restaurant, Booking.new] do |b| %>
+          <div class="form-group">
+            <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+              <%= b.input :date, format: "%-m/%d/%Y" , data: {target: "#datetimepicker4" }, label: false, class: "form-control datetimepicker-input" %>
+              <div id="booking-success"></div>
+              <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+                <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i>
+                    </div>
+                </div>
+            </div>
+            <%= b.input :title, as: :text, input_html: { :style=> 'width: 100%;', :rows => 4, :placeholder=> "Add a message to the other attendees!"}, label: false, class: "input-message location-text" %>
+            <%= b.submit "Create new booking", class: "btn btn-flat d-flex search-button" %>
+          </div>
           <script type="text/javascript">
               $(function () {
-                  $('#datetimepicker9').datetimepicker({
+                  $('#datetimepicker4').datetimepicker({
                       icons: {
                           time: "far fa-calendar",
                           date: "far fa-calendar",
@@ -77,17 +77,9 @@
                   });
               });
           </script>
-      </div>
-
-        <%= simple_form_for [@restaurant, Booking.new] do |b| %>
-          <%= b.input :date, label: "Select date and time", class: "location-text" %>
-          <%= b.input :title, as: :text, input_html: { :style=> 'width: 100%;', :rows => 4, :placeholder=> "Add a message to the other attendees!"}, label: false, class: "input-message location-text" %>
-          <%= b.submit "Create new booking", class: "btn btn-flat d-flex search-button" %>
         <% end %>
-      </div>
+    </div>
   </div>
-
-</div>
 </div>
 <br>
 <br>

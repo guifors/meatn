@@ -54,7 +54,7 @@
 
 .location-text {
   text-align: left;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .time-text {
@@ -83,3 +83,21 @@
   width: 150px;
   height: 150px;
 }
+
+.info i {
+  color: $green;
+}
+
+
+.booking-success-text {
+    font-size: 13px;
+    color: $green;
+    font-weight: bold;
+}
+
+.checking-booking {
+  font-size: 13px;
+  color: $gray;
+  font-weight: bold;
+}
+
