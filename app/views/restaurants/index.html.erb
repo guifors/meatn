@@ -22,7 +22,7 @@
 
 
 <div class="container">
-  <p class="get-current-location border-bottom pb-2">It looks like you are in London. Not correct? <i class="fas fa-map-marker-alt"></i> <%= link_to "Get current location" %></p>
+  <p class="get-current-location border-bottom pt-2 pb-2"><strong>It looks like you are in London. Not correct? </strong><i class="fas fa-map-marker-alt"> <span class="get-current-location-link"><%= link_to "Get current location" %></span></i></p>
   <h5 class="border-bottom pt-3 pb-1"><strong>Popular restaurants in this area</strong></h5>
 
   <div class="row">
@@ -42,6 +42,7 @@
                     <% else %>
                       <p class="pt-2 pb-2"><%= restaurant.food_type %> · $$$</p>
                     <% end %>
+                    <p>
                       <% blank_stars = 5 - restaurant.user_rating %>
                           <% restaurant.user_rating.times do  %>
                           <i class="fas fa-star filledstars"></i>
@@ -50,6 +51,7 @@
                           <i class="far fa-star blankstars"></i>
                           <% end %>
                       (<%= restaurant.user_reviews %>)
+                    </p>
               </div>
             </div>
           <% end %>

@@ -71,18 +71,20 @@
   text-decoration: none !important;
 }
 
-.link-card {
-  // text-decoration: none !important;
-  transition: 0.3s ease;
-}
-
-.link-card:hover {
-  // text-decoration: none !important;
-  color: red;
-  transform: scale(1.02) !important;
-}
 
 .search-elements {
   margin: 0 10px;
+}
+
+.get-current-location {
+  text-align: left;
+  font-size: 14px;
+  padding-right: 25px;
+}
+
+.get-current-location-link a {
+ color: $green;
+ font-size: 14px;
+ text-decoration: none;
 }
 
