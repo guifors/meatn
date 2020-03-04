@@ -58,9 +58,20 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
+  transition: 0.3s ease;
   .search-elements {
   margin-right: 0px !important;
 }
+}
+
+.link-card {
+  // text-decoration: none !important;
+  transition: 0.3s ease;
+}
+
+.card-restaurant-index:hover {
+  // text-decoration: none !important;
+  transform: scale(1.02) !important;
 }
 
 .card-restaurant-index img {
@@ -73,24 +84,28 @@
 }
 
 .card-restaurant-index h2 {
-  font-size: 22px;
+  font-size: 20px;
+  color: $gray;
   font-weight: bold;
   margin: 0;
 }
 
 .card-restaurant-index p {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  color: $gray;
 }
 
 .card-restaurant-index .card-restaurant-index-infos {
   padding: 0px 16px;
 }
 
-.card-restaurant-index-infos {
-  text-decoration: none !important;
+.card-restaurant-index-infos i {
+ color: $green;
+ text-decoration: none;
 }
+
 
