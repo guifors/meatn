@@ -2,31 +2,29 @@
   <div class="container">
     <h2 class="banner-headline"><strong> Choose a restaurant you love</strong></h2>
     <br>
-      <div class="inline-form">
-        <% if params[:search]%>
-          <% search_value_city = params[:search][:city] %>
-          <% search_value_address = params[:search][:address] %>
-          <% search_value_food_type = params[:search][:food_type] %>
-        <% end %>
-        <%= simple_form_for :search, url: restaurants_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-            <%= f.input :city, input_html: {value: search_value_city, placeholder: "London"}, label: false %>
-          <div class="search-elements">
-            <%= f.input :address, input_html: {value: search_value_address, placeholder: "Select area"}, label: false %>
-          </div>
-          <%= f.input :food_type, input_html: {value: search_value_food_type, placeholder: "Select cuisine"}, label: false, class: "search-elements" %>
-          <%= f.submit "Search", class: "btn-flat search-elements" %>
-        <% end %>
-      </div>
+    <div class="inline-form">
+      <% if params[:search]%>
+        <% search_value_city = params[:search][:city] %>
+        <% search_value_address = params[:search][:address] %>
+        <% search_value_food_type = params[:search][:food_type] %>
+      <% end %>
+      <%= simple_form_for :search, url: restaurants_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+          <%= f.input :city, input_html: {value: search_value_city, placeholder: "London"}, label: false %>
+        <div class="search-elements">
+          <%= f.input :address, input_html: {value: search_value_address, placeholder: "Select area"}, label: false %>
+        </div>
+        <%= f.input :food_type, input_html: {value: search_value_food_type, placeholder: "Select cuisine"}, label: false, class: "search-elements" %>
+        <%= f.submit "Search", class: "btn-flat search-elements" %>
+      <% end %>
     </div>
   </div>
-
-
+</div>
 <div class="container">
   <p class="get-current-location border-bottom pt-2 pb-2"><strong>It looks like you are in London. Not correct? </strong><i class="fas fa-map-marker-alt"> <span class="get-current-location-link"><%= link_to "Get current location" %></span></i></p>
   <h5 class="border-bottom pt-3 pb-1"><strong>Popular restaurants in this area</strong></h5>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-7">
       <div class="card-resto-home pr-2">
         <% @restaurants.each do |restaurant| %>
           <%= link_to restaurant_path(restaurant) do %>
@@ -61,11 +59,11 @@
     </div>
 
 
-    <div class="col-md-5 offset-md-3">
+    <div class="col-5">
       <div class="map-card">
         <div
         id="map"
-        style="width: 445px;
+        style="
         height: 600px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"

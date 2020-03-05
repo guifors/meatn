@@ -1,57 +1,89 @@
-<div class="search-bar">
-  <form class="form-inline">
-  <input type="date" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter date">
-  <input type="time" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Enter time">
-
-  <div class="input-group mb-2 mr-sm-2">
-    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Location">
-  </div>
-  <%= link_to "Search", restaurants_path, class: "btn-flat mb-2" %>
-</form>
-</div>
-<div class="filter-bar">
-</div>
-
-<div class="main-container">
-  <div class="cards">
-      <% @bookings.each do |booking| %>
-        <div class="card-product">
-        <%= link_to(booking_path(booking)) do %>
-          <div class="restaurant-info">
-            <div class="restaurant-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')">
-            </div>
-            <div class="restaurant-details">
-              <div>
-                <h2><%= booking.title %></h2>
-                <h5> <%= booking.restaurant.name %> </h5>
-                <p  class="mb-0"> <%= booking.restaurant.address %> </p>
-                <p><%= booking.date %></p>
-                <p><%= booking.restaurant.food_type %> · <%= booking.restaurant.price %>£ </p>
-                <div class="rating">
-                  <p><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+<div class="restaurant-banner">
+  <div class="container">
+    <h2 class="banner-headline"><strong> Find your perfect table and join the party</strong></h2>
+    <br>
+    <div class="inline-form">
+      <% if params[:search]%>
+        <% search_value_city = params[:search][:city] %>
+        <% search_value_address = params[:search][:address] %>
+        <% search_value_food_type = params[:search][:food_type] %>
+      <% end %>
+      <%= simple_form_for :search, url: bookings_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+          <%= f.input :city, input_html: {value: search_value_city, placeholder: "London"}, label: false %>
+        <div class="search-elements">
+          <%= f.input :address, input_html: {value: search_value_address, placeholder: "Select area"}, label: false %>
         </div>
+        <%= f.input :food_type, input_html: {value: search_value_food_type, placeholder: "Select cuisine"}, label: false, class: "search-elements" %>
+        <%= f.submit "Search", class: "btn-flat search-elements" %>
       <% end %>
     </div>
-
-
-
-
-    <div class="map-card">
-      <div
-      id="map"
-      style="width: 600px;
-      height: 800px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      ></div>
-    </div>
-
+  </div>
 </div>
+<div class="container">
+  <p class="get-current-location border-bottom pt-2 pb-2"><strong>It looks like you are in London. Not correct? </strong><i class="fas fa-map-marker-alt"> <span class="get-current-location-link"><%= link_to "Get current location" %></span></i></p>
+  <h5 class="border-bottom pt-3 pb-1"><strong>Popular bookings in this area</strong></h5>
+
+  <div class="row">
+    <div class="col-7">
+      <div class="card-resto-home pr-2">
+        <% @bookings.each do |booking| %>
+          <%= link_to booking_path(booking) do %>
+            <div class="card-restaurant-index restaurant-info link-card">
+              <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
+              <div class="card-restaurant-index-infos">
+                    <h2 class="pt-4"> <%= booking.restaurant.name %> </h2>
+                    <p class="pt-2"> <%= booking.restaurant.short_address %>,  <%= booking.restaurant.city %>  </p>
+                    <% if booking.restaurant.price == 1 %>
+                      <p class="pt-2 pb-2"><%= booking.restaurant.food_type %> · $</p>
+                    <% elsif booking.restaurant.price == 2 %>
+                      <p class="pt-2 pb-2"><%= booking.restaurant.food_type %> · $$</p>
+                    <% else %>
+                      <p class="pt-2 pb-2"><%= booking.restaurant.food_type %> · $$$</p>
+                    <% end %>
+                    <p>
+                      <% blank_stars = 5 - booking.restaurant.user_rating %>
+                          <% booking.restaurant.user_rating.times do  %>
+                          <i class="fas fa-star filledstars"></i>
+                          <% end %>
+                          <% blank_stars.times do %>
+                          <i class="far fa-star blankstars"></i>
+                          <% end %>
+                      (<%= booking.restaurant.user_reviews %>)
+                    </p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-5">
+      <div class="map-card">
+        <div
+        id="map"
+        style="
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'shared/footer' %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
