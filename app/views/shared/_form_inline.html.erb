@@ -1,7 +1,7 @@
 <form class="form-inline" action='/bookings' method="get">
 
 <div class="form-group">
-    <div class="input-group pr-2 date" id="datetimepicker4" data-target-input="nearest">
+    <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
         <input placeholder="Select a date" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
         <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -10,7 +10,7 @@
     <script type="text/javascript">
             $(function () {
                 $('#datetimepicker4').datetimepicker({
-                    format: 'L'
+                    format: 'LL'
                 });
             });
         </script>
@@ -23,4 +23,3 @@
 
 </div>
 </form>
-
