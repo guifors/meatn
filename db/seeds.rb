@@ -58,6 +58,9 @@ user_photos = ['https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176970/ni
 user_filenames = ['nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg', 'ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg', 'ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg', 'luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg', 'sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg']
 
 
+user_emails = ['test@test.com','demo@demo.com', 'bob@bob.com', 'pat@pat.com', 'joe@joe.com']
+
+
 puts "creating some Users"
 
 
@@ -65,7 +68,7 @@ counter = 0
 
 5.times do
   user_file = URI.open("#{user_photos[counter]}")
-  user = User.create!(email: Faker::Internet.email, password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name)
+  user = User.create!(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name)
   user.photo.attach(io: user_file, filename: "#{user_filenames[counter]}", content_type: 'image/jpg')
   counter += 1
 end
