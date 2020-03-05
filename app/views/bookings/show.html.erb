@@ -16,7 +16,7 @@
   </div>
   <div>
         <% if user_signed_in? %>
-          <% if current_user.groups.present? && current_user.groups.find(@booking.id) %>
+          <% if current_user.groups.any? && current_user.groups.find_by(booking: @booking) %>
             <div class="">You're signed up!</div>
           <% elsif @booking.full? %>
             <div>Full</div>
@@ -116,4 +116,17 @@
           </li>
         <% end %>
       </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <%= simple_form_for [@booking, @comment] do |f| %>
+          <%= f.input :content %>
+          <%= f.submit "Send your comments" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
 

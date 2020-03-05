@@ -28,6 +28,7 @@ class BookingsController < ApplicationController
     set_restaurant
     authorize @booking
     @review = Review.new
+    @comment = Comment.new
   end
 
   def new
