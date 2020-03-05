@@ -14,9 +14,9 @@
       <li class="nav-item">
         <!-- Button trigger modal -->
 
-        <%= link_to "New booking", restaurants_path, class: "nav-link" %>
+        <%= link_to "New booking", restaurants_path, class: "nav-link", data: {toggle: "modal", target: "#exampleModalPopovers"} %>
         <!-- Modal -->
-        <%= render 'shared/modal' %>
+        <%= render 'shared/modal_fourth' %>
       </li>
 
       <li class="nav-item">
