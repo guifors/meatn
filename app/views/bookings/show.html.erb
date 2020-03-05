@@ -99,3 +99,16 @@
         <% end %>
       </div>
 
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4">
+        <%= simple_form_for [@booking, @comment] do |f| %>
+          <%= f.input :content %>
+          <%= f.submit "Send your comments" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
