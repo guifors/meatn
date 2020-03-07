@@ -28,6 +28,8 @@ class BookingsController < ApplicationController
 
   def show
     set_booking
+    @user = set_booking.user
+    @users = set_booking.users
     set_restaurant
     authorize @booking
     @review = Review.new
