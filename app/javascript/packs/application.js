@@ -8,7 +8,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 initMapbox();
 
 import { TriggerAttendeeMondal } from 'custom/attendee_modal.js';
-TriggerAttendeeMondal();
+// TriggerAttendeeMondal();
 
 import { openModal, closeModal } from '../custom/modal.js';
 import { initStarRating } from 'plugins/init_star_rating';
