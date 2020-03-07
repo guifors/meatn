@@ -11,8 +11,9 @@
         <div class="modal-body">
           <div class="first-user">
             <div class="attendee-details d-flex">
-
+              <% if @user.photo.attached? %>
               <%= cl_image_tag @user.photo.key, class: "ml-1 avatar-bordered-card-all-attendees", alt: "avatar-bordered-card-all-attendees" %>
+              <% end %>
               <div>
                 <p class="attendee-name"> <%= @user.name %> <%= @user.surname %> </p>
                 <p class="attendee-age-location"> <%= @user.age %> from <%= @user.location %> </p>
@@ -32,12 +33,15 @@
               </div>
             </div>
           </div>
-   <% end %>
+<% end %>
    <% if @users.present? %>
         <% @users.each do |user|  %>
           <div class="other-users">
             <div class="attendee-details d-flex">
+              <% if user.photo.attached? %>
               <%= cl_image_tag user.photo.key, class: "ml-1 avatar-bordered-card-all-attendees", alt: "avatar-bordered-card-all-attendees" %>
+              <% end %>
+
               <div>
                 <p class="attendee-name"> <%= user.name %> <%= user.surname %> </p>
                 <p class="attendee-age-location"> <%= user.age %> from <%= user.location %> </p>
