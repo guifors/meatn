@@ -13,9 +13,9 @@
         <%= simple_form_for :search, url: bookings_path, method: "GET", html: { class: 'form-inline' } do |f| %>
             <%= f.input :city, input_html: {value: search_value_city, placeholder: "London"}, label: false %>
             <% if params[:date].nil? %>
-              <%= f.input :date, input_html: {value: search_value_date, placeholder: "Select date"}, label: false %>
+              <%= f.input :date, input_html: {class: "datepicker", value: search_value_date, placeholder: "Select date"}, label: false %>
             <% else %>
-              <%= f.input :date, input_html: {value: params[:date], placeholder: search_value_date}, label: false %>
+              <%= f.input :date, input_html: {class: "datepicker",value: params[:date], placeholder: search_value_date}, label: false %>
             <% end %>
               <%= f.input :address, input_html: {value: search_value_address, placeholder: "Select area" }, label: false %>
           <%= f.input :food_type, input_html: {value: search_value_food_type, placeholder: "Select cuisine"}, label: false, class: "search-elements" %>
@@ -34,13 +34,16 @@
     <div class="col-7">
       <div class="card-resto-home pr-2">
         <% @bookings.each do |booking| %>
+          <% @user = booking.user %>
+          <% @users = booking.users %>
+
           <%= link_to booking_path(booking) do %>
             <div class="card-restaurant-index restaurant-info link-card">
               <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
               <div class="card-restaurant-index-infos d-block">
                 <div class="d-flex justify-content-between">
                     <h2 class="mt-4"> <%= booking.restaurant.name %> </h2>
-                    <p class="mt-4 booking-time"> <%= booking.date.strftime("%H:%M") %> </p>
+                    <p class="mt-4 booking-time"> <%= booking.date %> </p>
                 </div>
                     <% if booking.restaurant.price == 1 %>
                       <p class="pt-1 pb-1"><%= booking.restaurant.food_type %> · $</p>
@@ -62,21 +65,23 @@
                         (<%= booking.restaurant.user_reviews %>)
                       </p>
                       <div class="d-flex">
-                        <% if booking.user.photo.attached? %>
-                          <%= cl_image_tag booking.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
-                        <% else %>
-                          <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
-                        <% end %>
-                        <% booking.users.each do |user| %>
-                          <% if user.photo.attached? %>
-                            <%= cl_image_tag user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                        <%= link_to bookings_path, data: {toggle: "modal", target: "#attendeeModal"} do %>
+                          <% if booking.user.photo.attached? %>
+                              <%= cl_image_tag booking.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
                           <% else %>
-                            <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                              <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                          <% end %>
+                          <% booking.users.each do |user| %>
+                            <% if user.photo.attached? %>
+                              <%= cl_image_tag user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                            <% else %>
+                              <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                            <% end %>
                           <% end %>
                         <% end %>
+
                       </div>
                     </div>
-
               </div>
             </div>
           <% end %>
