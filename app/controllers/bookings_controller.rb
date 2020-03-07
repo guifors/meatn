@@ -1,8 +1,17 @@
 class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   def index
-    if params[:query].present?
-      @bookings = policy_scope(Booking).search_by_date(params[:query])
+
+    if params[:city].present? && params[:date].present?
+
+      @bookings = policy_scope(Booking).search_by_date(params[:date].to_date).joins(:restaurant).where("restaurants.city ILIKE ?", "%#{params[:city]}%")
+    elsif
+      @search = params["search"]
+      @food_type = @search["food_type"]
+      @address = @search["address"]
+      @date = @search["date"]
+
+      @bookings = policy_scope(Booking).search_by_date(@date.to_date).joins(:restaurant).where("restaurants.food_type ILIKE ?", "%#{@food_type}%").where("restaurants.address ILIKE ?", "%#{@address}%")
     else
       @bookings = policy_scope(Booking)
     end
@@ -13,7 +22,7 @@ class BookingsController < ApplicationController
         lng: booking.restaurant.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { booking: booking })
       }
-    end
+  end
 
   end
 
