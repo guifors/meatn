@@ -11,10 +11,7 @@
   display: flex;
 }
 
-.half-width {
-  width: 48%;
-  margin: 1%;
-}
+
 
 .cards-holder {
  list-style: none;
@@ -30,8 +27,44 @@
 
 .restaurant-details {
   padding: 8px;
+
 }
 
 .details {
   padding: 8px;
 }
+
+
+
+.booking-show-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -50px;
+  width: 45vw;
+  margin: -25px auto;
+}
+
+.banana {
+  text-align: left;
+  background: white;
+  align: center;
+  padding: 50px;
+  font-weight: normal;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.users-holder {
+  top: 0px;
+  align-self: flex-start;
+  text-align: left;
+  position: sticky;
+  padding: 20px 40px;
+  background: white;
+  font-weight: normal;
+  width: 30vw;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
