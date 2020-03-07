@@ -7,3 +7,12 @@ flatpickr(".datepicker", {
     dateFormat: "Y-m-d",
     minDate: new Date()
 })
+
+flatpickr(".timepicker", {
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+    altInput: true,
+    altFormat: "F j, Y H:i",
+    minTime: "16:00",
+    maxTime: "22:00"
+})
