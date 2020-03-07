@@ -34,6 +34,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @review = Review.new
     @comment = Comment.new
+    @pictures = fetch_pictures(set_restaurant)
 
   end
 
@@ -61,6 +62,16 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def fetch_pictures(restaurant)
+    @url = "https://developers.zomato.com/api/v2.1/search?apikey=#{ENV['ZOMATO_API_KEY']}&city_id=61"
+    @restaurants_serialized = open(@url).read
+    @fetched_restaurants = JSON.parse(@restaurants_serialized)
+    @fetched_restaurant = @fetched_restaurants["restaurants"].select { |rest| rest["restaurant"]["name"] == restaurant.name }
+
+    return @fetched_restaurant.first["restaurant"]["photos"]
+
+  end
 
   def bookings_params
     params.require(:booking).permit(:start_date, :end_date)

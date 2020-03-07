@@ -1,20 +1,95 @@
-<div class="head-bar">
-  <div>
-    <h3>
-      <%= @booking.title %>
-    </h3>
-  </div>
-  <div>
-     <h1><%= @restaurant.name %></h1>
-     <% blank_stars = 5 - @restaurant.user_rating %>
-          <% @restaurant.user_rating.times do  %>
-            <i class="fas fa-star filledstars"></i>
+
+<div class="booking-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @restaurant.image_url %>')">
+</div>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-7">
+      <div class="info">
+        <div class="pb-4 border-bottom">
+          <h3><strong><%= @booking.title %></strong></h3>
+        </div>
+        <h3><%= @booking.restaurant.name %></h3>
+        <p><%= @booking.restaurant.address  %></p>
+        <div class="d-flex">
+         <p><% blank_stars = 5 - @restaurant.user_rating %>
+                            <% @restaurant.user_rating.times do  %>
+                            <i class="fas fa-star filledstars"></i>
+                            <% end %>
+                            <% blank_stars.times do %>
+                            <i class="far fa-star blankstars"></i>
+                            <% end %>
+                        (<%= @restaurant.user_reviews %>) </p>
+
+          <% if @restaurant.price == 1 %>
+            <p> · $</p>
+          <% elsif @restaurant.price == 2 %>
+            <p> · $$</p>
+          <% else %>
+            <p> · $$$</p>
           <% end %>
-          <% blank_stars.times do %>
-            <i class="far fa-star blankstars"></i>
+        </div>
+        <div class="d-flex mb-4">
+          <p class="mb-0 highlights-text">Highlights:</p>
+          <% @booking.restaurant.highlights.gsub(/["]/, '').remove("[").remove("]").split(",").first(4).each do |highlight| %>
+            <div class="highlight-tag"> <%= highlight.strip %></div>
           <% end %>
-  </div>
-  <div>
+        </div>
+        <div class="restaurant-photos container">
+          <div class="row">
+            <% @pictures.first(6).each do |picture| %>
+              <div class="col-md-4 pr-1 pl-1 mb-3">
+                <div class="small-images-restaurant">
+                  <%= cl_image_tag picture["photo"]["thumb_url"], class: "small-images-restaurant" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <br>
+        <p><i class="fas fa-map-marker-alt"></i> <%= @restaurant.short_address %></p>
+        <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l(#{@restaurant.longitude},#{@restaurant.latitude})/#{@restaurant.longitude},#{@restaurant.latitude},15/500x300?access_token=pk.eyJ1IjoidG9taHVkc29uODkiLCJhIjoiY2s0MGN4NDJvMDBmZTNlc2Y3YzdheG02ciJ9.CbThae_pau01vd-Br--z3w" %>
+      </div>
+      <div class="details">
+          <%= simple_form_for [@booking, @comment] do |f| %>
+            <%= f.input :content %>
+            <%= f.submit "Send your comments" %>
+          <% end %>
+      </div>
+    </div>
+    <div class="col-md-5">
+
+      <div class="attendee-key-info">
+        <li class="attendee">
+          <div class="avatar">
+
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar" %>
+            <% else %>
+              <%= image_tag "default_user.png", class: "avatar" %>
+            <% end %>
+          </div>
+          <div><%= @booking.user.name %> <%= @booking.user.surname %> <br>
+            <strong>BIO:</strong> <%= @booking.user.bio %></div>
+        </li>
+        <% if @booking.users.exists? %>
+          <% @booking.users.each do |attendee| %>
+            <li class="attendee">
+              <div>
+                <% if attendee.photo.attached? %>
+                  <%= cl_image_tag attendee.photo.key, class: "avatar" %>
+                <% else %>
+                  <%= image_tag "default_user.png", class: "avatar" %>
+                <% end %>
+              </div>
+              <div>
+                <%= attendee.name %> <%= attendee.surname %> <br>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="booking-button-two">
         <% if user_signed_in? %>
           <% if current_user.groups.any? && current_user.groups.find_by(booking: @booking) %>
             <div class="">You're signed up!</div>
@@ -24,113 +99,7 @@
               <%= render 'group/form', group: Group.new, booking: @booking %>
           <% end %>
         <% end %>
-
-  </div>
-</div>
-
-<div class="booking-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @booking.restaurant.image_url %>')">
-</div>
-
-<div class="booking-show-container">
-  <div class="banana">
-    <div class="details">
-      <strong><%= @booking.restaurant.name %></strong>
-    </div>
-
-
-
-    <div class="details">
-      <div class="d-flex mb-4">
-        <p class="mb-0 highlights-text">Highlights:</p>
-        <% @restaurant.highlights.gsub(/["]/, '').remove("[").remove("]").split(",").first(4).each do |highlight| %>
-          <div class="highlight-tag"> <%= highlight.strip %></div>
-        <% end %>
       </div>
     </div>
-
-
-
-    <div class="details">
-      <i class="fas fa-map-marker-alt"></i> <%= @restaurant.address %>
-    </div>
-    <div>
-      <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l(#{@restaurant.longitude},#{@restaurant.latitude})/#{@restaurant.longitude},#{@restaurant.latitude},15/500x300?access_token=pk.eyJ1IjoidG9taHVkc29uODkiLCJhIjoiY2s0MGN4NDJvMDBmZTNlc2Y3YzdheG02ciJ9.CbThae_pau01vd-Br--z3w" %>
-    </div>
-
-    <div class="list-group">
-      <ul>
-        <% @booking.reviews.each do |review| %>
-          <li class="list-group-item">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if review.rating > count %>
-                  <i class="fas fa-star"></i>
-                <% else %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-            </small>
-            <p><%= review.content %></p>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-
-    <div class="details">
-      <%= simple_form_for [@booking, @comment] do |f| %>
-        <%= f.input :content %>
-        <%= f.submit "Send your comments" %>
-      <% end %>
-    </div>
-  </div>
-
-
-  <div class="users-holder">
-    <ul class="cards-holder">
-      <li class="attendee">
-        <div class="avatar">
-          <%#= cl_image_tag @booking.user.photo %>
-
-          <%= @booking.user.name %>
-          <% if current_user.photo.attached? %>
-            <%= cl_image_tag current_user.photo.key, class: "avatar" %>
-          <% else %>
-            <%= image_tag "default_user.png", class: "avatar" %>
-          <% end %>
-
-
-        </div>
-        <div><%= @booking.user.name %> <%= @booking.user.surname %> <br>
-          <strong>BIO:</strong> <%= @booking.user.bio %></div>
-      </li>
-      <% if @booking.groups.exists? %>
-        <% @booking.groups.each do |group| %>
-          <li class="attendee">
-            <div>
-              <% if current_user.photo.attached? %>
-                <%= cl_image_tag current_user.photo.key, class: "avatar" %>
-              <% else %>
-                <%= image_tag "default_user.png", class: "avatar" %>
-              <% end %>
-            </div>
-            <div>
-              <%= group.user.name %> <%= group.user.surname %> <br>
-              <strong>BIO:</strong> <%= group.user.bio %>
-            </div>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
   </div>
 </div>
-
-
-
-
-
-
-
-
