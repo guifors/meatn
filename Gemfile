@@ -12,8 +12,6 @@ gem 'redis'
 # Gemfile
 gem 'jquery-rails'
 gem 'bootstrap'
-gem 'momentjs-rails'
-gem 'bootstrap4-datetime-picker-rails'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
