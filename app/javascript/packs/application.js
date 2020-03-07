@@ -19,3 +19,6 @@ import 'plugins/date_picker.js';
 
 triggerSuccess();
 initStarRating();
+confirmBookingWithRestaraunt();
+
+import "../plugins/flatpickr"
