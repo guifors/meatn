@@ -27,8 +27,68 @@
 
   </div>
 </div>
-<div class="bookings-details-box">
-  <div class="half-width">
+
+<div class="booking-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @booking.restaurant.image_url %>')">
+</div>
+
+<div class="booking-show-container">
+  <div class="banana">
+    <div class="details">
+      <strong><%= @booking.restaurant.name %></strong>
+    </div>
+
+
+
+    <div class="details">
+      <div class="d-flex mb-4">
+        <p class="mb-0 highlights-text">Highlights:</p>
+        <% @restaurant.highlights.gsub(/["]/, '').remove("[").remove("]").split(",").first(4).each do |highlight| %>
+          <div class="highlight-tag"> <%= highlight.strip %></div>
+        <% end %>
+      </div>
+    </div>
+
+
+
+    <div class="details">
+      <i class="fas fa-map-marker-alt"></i> <%= @restaurant.address %>
+    </div>
+    <div>
+      <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l(#{@restaurant.longitude},#{@restaurant.latitude})/#{@restaurant.longitude},#{@restaurant.latitude},15/500x300?access_token=pk.eyJ1IjoidG9taHVkc29uODkiLCJhIjoiY2s0MGN4NDJvMDBmZTNlc2Y3YzdheG02ciJ9.CbThae_pau01vd-Br--z3w" %>
+    </div>
+
+    <div class="list-group">
+      <ul>
+        <% @booking.reviews.each do |review| %>
+          <li class="list-group-item">
+            <small>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+            </small>
+            <p><%= review.content %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+
+    <div class="details">
+      <%= simple_form_for [@booking, @comment] do |f| %>
+        <%= f.input :content %>
+        <%= f.submit "Send your comments" %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="users-holder">
     <ul class="cards-holder">
       <li class="attendee">
         <div class="avatar">
@@ -65,68 +125,12 @@
       <% end %>
     </ul>
   </div>
-  <div class="half-width">
-    <div class="restaurant-details">
-      <div class="details">
-        <strong>Restaurant Details</strong>
-      </div>
-      <div class="details">
-        placeholder for image
-      </div>
-      <div class="details">
-
-      </div>
-      <div class="details">
-        <%= @restaurant.address %>
-      </div>
-      <div class="details">
-        <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l(#{@restaurant.longitude},#{@restaurant.latitude})/#{@restaurant.longitude},#{@restaurant.latitude},15/500x300?access_token=pk.eyJ1IjoidG9taHVkc29uODkiLCJhIjoiY2s0MGN4NDJvMDBmZTNlc2Y3YzdheG02ciJ9.CbThae_pau01vd-Br--z3w" %></div>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-4">
-      <%= simple_form_for [@booking, @review] do |f| %>
-        <%= f.input :content %>
-        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
-        <%= f.submit "Send your review" %>
-      <% end %>
-    </div>
-  </div>
-</div>
 
-<div class="list-group">
-        <% @booking.reviews.each do |review| %>
-          <li class="list-group-item">
-            <small>
-              <% count = 0 %>
-              <% 5.times do %>
-                <% if review.rating > count %>
-                  <i class="fas fa-star"></i>
-                <% else %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                <% count += 1 %>
-              <% end %>
-            </small>
-            <p><%= review.content %></p>
-          </li>
-        <% end %>
-      </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-4">
-        <%= simple_form_for [@booking, @comment] do |f| %>
-          <%= f.input :content %>
-          <%= f.submit "Send your comments" %>
-      <% end %>
-    </div>
-  </div>
-</div>
+
+
 
 
 

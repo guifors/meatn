@@ -13,9 +13,9 @@
         <%= simple_form_for :search, url: bookings_path, method: "GET", html: { class: 'form-inline' } do |f| %>
             <%= f.input :city, input_html: {value: search_value_city, placeholder: "London"}, label: false %>
             <% if params[:date].nil? %>
-              <%= f.input :date, input_html: {value: search_value_date, placeholder: "Select date"}, label: false %>
+              <%= f.input :date, input_html: {class: "datepicker", value: search_value_date, placeholder: "Select date"}, label: false %>
             <% else %>
-              <%= f.input :date, input_html: {value: params[:date], placeholder: search_value_date}, label: false %>
+              <%= f.input :date, input_html: {class: "datepicker",value: params[:date], placeholder: search_value_date}, label: false %>
             <% end %>
               <%= f.input :address, input_html: {value: search_value_address, placeholder: "Select area" }, label: false %>
           <%= f.input :food_type, input_html: {value: search_value_food_type, placeholder: "Select cuisine"}, label: false, class: "search-elements" %>
@@ -43,7 +43,7 @@
               <div class="card-restaurant-index-infos d-block">
                 <div class="d-flex justify-content-between">
                     <h2 class="mt-4"> <%= booking.restaurant.name %> </h2>
-                    <p class="mt-4 booking-time"> <%= booking.date.strftime("%H:%M") %> </p>
+                    <p class="mt-4 booking-time"> <%= booking.date %> </p>
                 </div>
                     <% if booking.restaurant.price == 1 %>
                       <p class="pt-1 pb-1"><%= booking.restaurant.food_type %> · $</p>
