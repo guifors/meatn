@@ -8,9 +8,10 @@ import { initMapbox } from 'plugins/init_mapbox';
 import { openModal, closeModal } from '../custom/modal.js';
 import { initStarRating } from 'plugins/init_star_rating';
 import { triggerSuccess } from 'custom/booking_available.js';
-import { confirmBookingWithRestaraunt } from 'custom/confirm_booking.js';
+import 'custom/confirm_booking.js';
+import 'plugins/date_picker.js';
+
 
 triggerSuccess();
 initMapbox();
 initStarRating();
-confirmBookingWithRestaraunt();
