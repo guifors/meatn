@@ -14,13 +14,6 @@
                   <div class="card-trip-infos">
                     <div>
                       <h2><%= booking.restaurant.name %></h2>
-                      <% blank_stars = 5 - booking.restaurant.user_rating %>
-                        <% booking.restaurant.user_rating.times do  %>
-                        <i class="fas fa-star filledstars"></i>
-                        <% end %>
-                        <% blank_stars.times do %>
-                        <i class="far fa-star blankstars"></i>
-                        <% end %>
                       <p><%= booking.restaurant.food_type %>
                       <% if booking.restaurant.price == 1 %>
                          · $</p>
@@ -30,17 +23,27 @@
                         · $$$</p>
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
+                      <p>
+                        <% blank_stars = 5 - booking.restaurant.user_rating %>
+                          <% booking.restaurant.user_rating.times do  %>
+                          <i class="fas fa-star filledstars"></i>
+                          <% end %>
+                          <% blank_stars.times do %>
+                          <i class="far fa-star blankstars"></i>
+                          <% end %>
+                          (<%= booking.restaurant.user_reviews %>)
+                      </p>
                     </div>
                     <% if booking.user.photo.attached? %>
-                      <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                     <% else %>
-                      <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                      <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                     <% end %>
                     <% booking.users.each do |user| %>
                       <% if user.photo.attached? %>
-                        <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                       <% else %>
-                        <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                       <% end %>
                     <% end %>
                   </div>

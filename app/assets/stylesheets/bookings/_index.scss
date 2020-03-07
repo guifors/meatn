@@ -85,4 +85,19 @@
   justify-content: space-between;
 }
 
+.link-to-booking-page {
+  color: white;
+  text-align: center;
+  position: relative;
+  left: 235px;
+  font-size: 15px;
+  padding-top: 20px;
+
+  a {
+    color: $green;
+    text-decoration: none;
+  }
+}
+
+
 
