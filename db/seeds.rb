@@ -38,7 +38,7 @@ fetched_restaurants["restaurants"].first(100).each do |restaurant|
           )
 end
 
-puts "100 restaurants created"
+puts "20 restaurants created"
 
 
 # rest1 = Restaurant.create(name:"The Melody Restaurant at St Paul's Hotel",address:"153 Hammersmith Road",postcode:"W14 0Ql",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",price:1,phone_number:"020-7333-8888",image_url: "https://source.unsplash.com/collection/1353633/")
@@ -68,7 +68,7 @@ counter = 0
 
 5.times do
   user_file = URI.open("#{user_photos[counter]}")
-  user = User.create!(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name)
+  user = User.create!(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(18..99))
   user.photo.attach(io: user_file, filename: "#{user_filenames[counter]}", content_type: 'image/jpg')
   counter += 1
 end
@@ -87,20 +87,27 @@ Booking.create(
   title:"Cool Coders of London",
   date:Faker::Date.between(from: 5.days.ago, to: Date.today),
   restaurant_id: 1,
-  user_id: 1
+  user_id: 1,
+  description: "Are you a cool coder and hungry? Join Us!"
   )
 
-Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 2, user_id: 2)
+Booking.create(title:"Aussies of London",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 2, user_id: 2, description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Tall Trees Society",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 7, user_id: 2)
+Booking.create(title:"Tall Trees Society",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 7, user_id: 2, description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 3, user_id: 3)
+Booking.create(title:"Bookworms of the east",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 3, user_id: 3, description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Cat lovers",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 4, user_id: 3)
+Booking.create(title:"Cat lovers",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 4, user_id: 3, description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Cheese Aficionados",date:Faker::Date.between(from: 5.days.ago, to: Date.today), restaurant_id: 5, user_id: 1)
+Booking.create(title:"Cheese Aficionados",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 5, user_id: 1, description: Faker::TvShows::RuPaul.quote)
 
+Booking.create(title:"Made a Moko",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 8, user_id: 3, description: Faker::TvShows::RuPaul.quote)
 
+Booking.create(title:"Peterborough Poker Sharks",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 16, user_id: 1, description: Faker::TvShows::RuPaul.quote)
+
+Booking.create(title:"Hoxton Marathon Runners",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 12, user_id: 4, description: Faker::TvShows::RuPaul.quote)
+
+Booking.create(title:"Richmond Expats",date:Faker::Date.between(from: Date.today, to: 5.days.from_now), restaurant_id: 18, user_id: 1, description: Faker::TvShows::RuPaul.quote)
 # name = restaurant["restaurant"]["name"]
 # address = restaurant["restaurant"]["location"]["address"]
 # short_address = restaurant["restaurant"]["location"]["locality"]
@@ -117,7 +124,23 @@ Booking.create(title:"Cheese Aficionados",date:Faker::Date.between(from: 5.days.
 # photos = restaurant["restaurant"]["photos"] #["photo"]["thumb_url"]
 # highlights = restaurant["restaurant"]["highlights"]
 
+Group.create(booking_id:1 , user_id:1 )
 
+Group.create(booking_id:1 , user_id:4 )
+
+Group.create(booking_id:2 , user_id:3 )
+
+Group.create(booking_id:3 , user_id:4 )
+
+Group.create(booking_id:3 , user_id:5 )
+
+Group.create(booking_id:5 , user_id:5 )
+
+Group.create(booking_id:6 , user_id:4 )
+
+Group.create(booking_id:7 , user_id:2 )
+
+Group.create(booking_id:8 , user_id:3 )
 
 
 

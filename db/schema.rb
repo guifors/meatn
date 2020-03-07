@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_205327) do
+ActiveRecord::Schema.define(version: 2020_03_07_135126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_205327) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
     t.index ["restaurant_id"], name: "index_bookings_on_restaurant_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -63,17 +64,6 @@ ActiveRecord::Schema.define(version: 2020_03_03_205327) do
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_groups_on_booking_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.integer "recipient_id"
-    t.integer "actor_id"
-    t.datetime "read_at"
-    t.string "action"
-    t.integer "notifiable_id"
-    t.string "notifiable_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
