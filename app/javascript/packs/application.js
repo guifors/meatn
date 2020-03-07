@@ -18,3 +18,5 @@ import { confirmBookingWithRestaraunt } from 'custom/confirm_booking.js';
 triggerSuccess();
 initStarRating();
 confirmBookingWithRestaraunt();
+
+import "../plugins/flatpickr"
