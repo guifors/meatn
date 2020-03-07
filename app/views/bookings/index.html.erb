@@ -36,14 +36,15 @@
         <% @bookings.each do |booking| %>
           <% @user = booking.user %>
           <% @users = booking.users %>
-
+          <% unless booking.full? %>
           <%= link_to booking_path(booking) do %>
             <div class="card-restaurant-index restaurant-info link-card">
               <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
               <div class="card-restaurant-index-infos d-block">
+                <h2 class="mt-2"> <%= booking.title %></h2>
                 <div class="d-flex justify-content-between">
-                    <h2 class="mt-4"> <%= booking.restaurant.name %> </h2>
-                    <p class="mt-4 booking-time"> <%= booking.date %> </p>
+                    <h2 class="mt-1"> <%= booking.restaurant.name.truncate(22) %> </h2>
+                    <p class="mt-1 booking-time"> <%= booking.date.to_formatted_s(:short)  %> </p>
                 </div>
                     <% if booking.restaurant.price == 1 %>
                       <p class="pt-1 pb-1"><%= booking.restaurant.food_type %> · $</p>
@@ -52,7 +53,7 @@
                     <% else %>
                       <p class="pt-1 pb-1"><%= booking.restaurant.food_type %> · $$$</p>
                     <% end %>
-                    <p class="pb-3"> <%= booking.restaurant.short_address %>,  <%= booking.restaurant.city %>  </p>
+                    <p class="pb-1"> <%= booking.restaurant.short_address %>,  <%= booking.restaurant.city %>  </p>
                     <div class="d-flex justify-content-between">
                       <p>
                         <% blank_stars = 5 - booking.restaurant.user_rating %>
@@ -84,6 +85,7 @@
                     </div>
               </div>
             </div>
+          <% end %>
           <% end %>
         <% end %>
       </div>
