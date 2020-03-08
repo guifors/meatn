@@ -1,3 +1,5 @@
 <%= simple_form_for [booking, group] do |g| %>
-  <%= g.submit "Join this booking", class: "btn btn-flat d-flex search-button" %>
+  <% if booking.users.count < 3 %>
+    <%= g.submit "Join this booking", class: "btn btn-flat d-flex join-booking-button", data: {toggle: "modal", target: "#firstUsers"} %>
+  <% end %>
 <% end %>

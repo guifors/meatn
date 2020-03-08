@@ -32,6 +32,7 @@
 
 .details {
   padding: 8px;
+  color: $light-gray;
 }
 
 
@@ -73,3 +74,104 @@
   text-align: center;
 }
 
+.both-columns {
+  margin-top: -100px;
+}
+
+.booking-button-two {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.join-booking-button {
+  padding-right: 50px;
+  padding-left: 50px;
+  font-size: 20px;
+}
+
+.details-headline {
+  color: $light-gray;
+}
+
+.right-column {
+  position: sticky;
+}
+
+.attendee-key-info {
+  display: flex;
+}
+
+.avatar-expanded {
+  width: 50px;
+  height: 50px;
+}
+
+.attendee-short-details {
+  h5 {
+    font-size: 17px;
+    color: $gray;
+    padding-bottom: 0px;
+    padding-top: 0 px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    padding-left: 20px;
+    margin-left: 40px;
+  }
+
+  p {
+    font-size: 14px;
+    color: $light-gray;
+    padding-bottom: 0px;
+    padding-top: 0 px;
+    margin-bottom: 0px;
+    margin-top: 0 px;
+    padding-left: 20px;
+    margin-left: 40px;
+  }
+}
+
+.signed-up-booking-button {
+  border-radius: 5px;
+  border: 1px solid $green;
+  padding: 15px;
+  font-size: 20px;
+  color: $green;
+}
+
+.comment-space {
+  margin-left: 10px;
+  padding: 4px;
+  background-color: #F6F7F8;
+  flex-grow: 1;
+  border-radius: 3px;
+
+  p {
+    font-size: 14px;
+  }
+}
+
+.comment-owner {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+
+.check-my-bookings {
+  text-align: right;
+
+  a {
+  padding-top: 5px;
+  font-size: 14px;
+  color: $light_gray;
+  text-decoration: none;
+  }
+}
+
+.check-my-bookings:hover {
+
+  a {
+  color: $gray;
+
+  }
+}
