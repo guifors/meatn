@@ -86,6 +86,8 @@
             <div class="">You're signed up!</div>
           <% elsif @booking.full? %>
             <div>Full</div>
+            <% elsif current_user == @booking.user %>
+            You're the host
           <% else %>
               <%= render 'group/form', group: Group.new, booking: @booking %>
           <% end %>
