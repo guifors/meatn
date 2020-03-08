@@ -41,17 +41,17 @@
             <div class="card-restaurant-index restaurant-info link-card">
               <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
               <div class="card-restaurant-index-infos d-block">
-                <h2 class="mt-2"> <%= booking.title %></h2>
-                <div class="d-flex justify-content-between">
-                    <h2 class="mt-1"> <%= booking.restaurant.name.truncate(22) %> </h2>
-                    <p class="mt-1 booking-time"> <%= booking.date.to_formatted_s(:short)  %> </p>
+                <div class="d-flex justify-content-between mt-2 pt-2">
+                  <h2> <%= booking.title.truncate(20) %></h2>
+                  <p class="mt-1 booking-time"> <%= booking.date.to_formatted_s(:short)  %> </p>
                 </div>
+                    <h5 class="mt-1 mb-0"> <%= booking.restaurant.name.truncate(22) %> </h5>
                     <% if booking.restaurant.price == 1 %>
-                      <p class="pt-1 pb-1"><%= booking.restaurant.food_type %> · $</p>
+                      <p class="pb-1 mt-0"><%= booking.restaurant.food_type %> · $</p>
                     <% elsif booking.restaurant.price == 2 %>
-                      <p class="pt-1 pb-1"><%= booking.restaurant.food_type %> · $$</p>
+                      <p class="pb-1"><%= booking.restaurant.food_type %> · $$</p>
                     <% else %>
-                      <p class="pt-1 pb-1"><%= booking.restaurant.food_type %> · $$$</p>
+                      <p class="pb-1"><%= booking.restaurant.food_type %> · $$$</p>
                     <% end %>
                     <p class="pb-1"> <%= booking.restaurant.short_address %>,  <%= booking.restaurant.city %>  </p>
                     <div class="d-flex justify-content-between">
@@ -79,6 +79,7 @@
                               <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
                             <% end %>
                           <% end %>
+
                         <% end %>
 
                       </div>
