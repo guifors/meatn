@@ -1,0 +1,103 @@
+.dashboard {
+  display: flex;
+  background-color: white;
+  h2 {
+    color: $gray;
+    padding-bottom: 10px;
+  }
+}
+
+.dahsboard-details {
+  flex-grow: 1;
+  p {
+  font-size: 14px;
+  font-weight: bold;
+}
+}
+
+.current-user-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.profile-pic {
+  width: 200px !important;
+  height: 200px !important;
+}
+
+.current-user-social-media {
+  position: relative;
+  right: 80px;
+  i {
+    color: $gray;
+    font-size: 20px;
+  }
+  a {
+    padding-left: 0px;
+  }
+}
+
+
+.current-user-member-since {
+  position: relative;
+  right: 30px;
+}
+
+.all-bookings {
+  h2 {
+    color: $light-gray;
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+}
+
+.card-restaurant-index-user {
+  width: 100% !important;
+  a {
+    text-decoration: none;
+  }
+}
+
+.current-bookings {
+  color: $green !important;
+}
+
+.old-bookings {
+  color: $light-gray;
+}
+
+.old-bookings:hover {
+  color: $gray;
+}
+
+.booking-status-details {
+  padding-left: 60px;
+  padding-right: 40px;
+  margin: 35px 10px;
+}
+
+.booking-status-button-confirmed {
+  border-radius: 4px;
+  padding: 10px;
+  color: $green;
+  font-size: 17px;
+  border: 1px solid $green;
+}
+
+.booking-status-button-awaiting {
+
+  border-radius: 4px;
+  padding: 10px 20px;
+  background-color: #F2F2F2;
+  font-size: 17px;
+  color: $light-gray;
+}
+
+.booking-status-icons {
+  padding-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  color: $light-gray;
+  font-size: 25px;
+}
