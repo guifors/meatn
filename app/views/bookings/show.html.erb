@@ -8,7 +8,7 @@
       <div class="info">
         <div class="pb-4">
           <p class="border-bottom details-headline">Booking details</p>
-          <p class="pb-0 mb-0"><%= @booking.date %></p>
+          <p class="pb-0 mb-0"><%= @booking.date.to_formatted_s(:short) %></p>
           <h3 class="pb-0 mb-0 pt-2"><strong><%= @booking.title %></strong></h3>
           <p class="mt-0 pt-2"><%= @booking.description %> </p>
         </div>
