@@ -23,6 +23,7 @@
 .attendee-name {
   font-weight: bold;
   font-size: 17px;
+  margin-bottom: 2px !important;
 }
 
 .attendee-age-location {
@@ -38,6 +39,7 @@
 .footer-links-attendees {
    a {
     color: $green !important;
+    padding-left: 0px !important;
   }
 }
 

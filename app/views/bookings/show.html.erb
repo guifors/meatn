@@ -69,11 +69,7 @@
       <div class="attendees-key-info">
         <div class="attendee-key-info">
           <div class="avatar pt-2">
-            <% if @booking.user.photo.attached? %>
-              <%= cl_image_tag @booking.user.photo.key, class: "avatar-bordered-card-all-attendees" %>
-            <% else %>
-              <%= image_tag "default_user.png", class: "avatar-bordered-card-all-attendees" %>
-            <% end %>
+            <%= render "shared/modal_user_profile", attendee: @booking.user %>
           </div>
           <div class="attendee-short-details">
             <h5>
@@ -91,11 +87,7 @@
           <% @booking.users.each do |attendee| %>
             <div class="attendee-key-info">
               <div class="avatar pt-2">
-                <% if attendee.photo.attached? %>
-                  <%= cl_image_tag attendee.photo.key, class: "avatar-bordered-card-all-attendees" %>
-                <% else %>
-                  <%= image_tag "default_user.png", class: "avatar-bordered-card-all-attendees" %>
-                <% end %>
+                <%= render "shared/modal_user_profile", attendee: attendee %>
               </div>
              <div class="attendee-short-details">
                 <h5>
