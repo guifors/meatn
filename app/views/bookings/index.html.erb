@@ -46,7 +46,7 @@
         <% @bookings.each do |booking| %>
           <% @user = booking.user %>
           <% @users = booking.users %>
-          <% unless booking.full? %>
+          <% unless booking.full? || booking.date.past? %>
           <%= link_to booking_path(booking) do %>
             <div class="card-restaurant-index restaurant-info link-card">
               <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
