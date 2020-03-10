@@ -23,7 +23,9 @@
       </div>
       <div class="current-user-bio">
         <p>Bio</p>
-            <%= current_user.bio %>
+            <%= current_user.bio %> <br><br>
+        <p>Interests</p>
+        <%= current_user.interests %>
       </div>
     </div>
     <div class="dahsboard-picture">
@@ -161,17 +163,26 @@
                       </div>
                       </div>
                     </div>
-                    <div class="booking-status-details border-left">
-                      <% if booking.full? %>
-                        <div class="booking-button-confirmed">Confirmed with the restaurant</div>
-                      <% else %>
-                        <div class="booking-status-button-awaiting">Awaiting other users to join</div>
-                      <% end %>
-                      <div class="booking-status-icons">
-                        <i class="far fa-edit"></i>
-                        <i class="fas fa-times"></i>
+                    <% if  booking.date.past? %>
+
+                      <div class="booking-status-details border-left">
+                        <div class="booking-review">Leave a review</div>
                       </div>
-                    </div>
+
+                    <% else %>
+                      <div class="booking-status-details border-left">
+                        <% if booking.full? %>
+                          <div class="booking-button-confirmed">Confirmed with the restaurant</div>
+                        <% else %>
+                          <div class="booking-status-button-awaiting">Awaiting other users to join</div>
+                        <% end %>
+                        <div class="booking-status-icons">
+                          <i class="far fa-edit"></i>
+                          <i class="fas fa-times"></i>
+                        </div>
+                      </div>
+
+                    <% end %>
                   </div>
                 <% end %>
               </div>
