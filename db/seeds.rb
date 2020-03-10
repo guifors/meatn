@@ -50,11 +50,13 @@ puts "20 restaurants created"
 # rest4 = Restaurant.create(name:"BOMBAY CHOW",address:"220 King Street",postcode:"W6 0RA",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",phone_number:"020-7333-8888",price:"3",image_url: "https://source.unsplash.com/collection/1353633/")
 
 
-user_photos = ['https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176970/nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg',
-  'https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176969/ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg',
-'https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176969/ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg',
-'https://res.cloudinary.com/ddhmqwylk/image/upload/v1581176968/luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg',
-'https://res.cloudinary.com/ddhmqwylk/image/upload/v1581177724/sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg']
+user_photos = ['https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581176970/nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg',
+  'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581176969/ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg',
+'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581176969/ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg',
+'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581176968/luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg',
+'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581177724/sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg']
+
+
 user_filenames = ['nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg', 'ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg', 'ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg', 'luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg', 'sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg']
 
 
