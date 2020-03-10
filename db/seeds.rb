@@ -70,7 +70,7 @@ counter = 0
 
 5.times do
   user_file = URI.open("#{user_photos[counter]}")
-  user = User.create!(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(18..99))
+  user = User.create!(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34))
   user.photo.attach(io: user_file, filename: "#{user_filenames[counter]}", content_type: 'image/jpg')
   counter += 1
 end
