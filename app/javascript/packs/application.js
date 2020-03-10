@@ -10,6 +10,9 @@ import { TriggerAttendeeMondal } from '../custom/attendee_modal.js';
 import { openModal, closeModal } from '../custom/modal.js';
 import { initStarRating } from '../plugins/init_star_rating';
 
+// import { triggerSuccess } from '../custom/booking_available.js';
+// triggerSuccess();
+
 import '../custom/confirm_booking.js';
 import "../plugins/flatpickr.js";
 import '../custom/booking_available.js';

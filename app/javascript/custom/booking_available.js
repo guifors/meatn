@@ -1,4 +1,4 @@
-const dateElement = document.getElementById('booking_date_5i');
+const dateElement = document.querySelector('#timepicker-booking-show');
 
 if (dateElement) {
   const triggerSuccess = () => {
@@ -13,3 +13,6 @@ if (dateElement) {
     });
   };
 };
+
+
+// export { triggerSuccess };
