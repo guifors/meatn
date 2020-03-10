@@ -124,7 +124,7 @@ Booking.create(title:"Richmond Expats",date:Faker::Date.between(from: Date.today
 # photos = restaurant["restaurant"]["photos"] #["photo"]["thumb_url"]
 # highlights = restaurant["restaurant"]["highlights"]
 
-Group.create(booking_id:1 , user_id:1 )
+Group.create(booking_id:1 , user_id:2 )
 
 Group.create(booking_id:1 , user_id:4 )
 
