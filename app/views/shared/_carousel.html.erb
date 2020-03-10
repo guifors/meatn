@@ -23,6 +23,8 @@
                         · $$$</p>
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
+                </div>
+                <div class="d-flex justify-content-between">
                       <p>
                         <% blank_stars = 5 - booking.restaurant.user_rating %>
                           <% booking.restaurant.user_rating.times do  %>
@@ -33,19 +35,21 @@
                           <% end %>
                           (<%= booking.restaurant.user_reviews %>)
                       </p>
-                    </div>
-                    <% if booking.user.photo.attached? %>
-                      <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                    <% else %>
-                      <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                    <% end %>
-                    <% booking.users.each do |user| %>
-                      <% if user.photo.attached? %>
-                        <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <% else %>
-                        <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <% end %>
-                    <% end %>
+                    <div class="all-cards-avatar">
+                        <% if booking.user.photo.attached? %>
+                          <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% else %>
+                          <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% end %>
+                        <% booking.users.each do |user| %>
+                          <% if user.photo.attached? %>
+                            <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <% else %>
+                            <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <% end %>
+                        <% end %>
+                     </div>
+                </div>
                   </div>
                 </div>
               </div>
@@ -54,6 +58,7 @@
         </div>
         <div class="carousel-item">
           <div class="row" >
+
             <% @bookings.first(6).drop(3).each do |booking| %>
               <div class="col-sm">
                 <div class="card-trip">
@@ -61,13 +66,6 @@
                   <div class="card-trip-infos">
                     <div>
                       <h2><%= booking.restaurant.name %></h2>
-                      <% blank_stars = 5 - booking.restaurant.user_rating %>
-                        <% booking.restaurant.user_rating.times do  %>
-                        <i class="fas fa-star filledstars"></i>
-                        <% end %>
-                        <% blank_stars.times do %>
-                        <i class="far fa-star blankstars"></i>
-                        <% end %>
                       <p><%= booking.restaurant.food_type %>
                       <% if booking.restaurant.price == 1 %>
                          · $</p>
@@ -77,23 +75,46 @@
                         · $$$</p>
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
-                    </div>
-                    <% if booking.user.photo.attached? %>
-                      <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                    <% else %>
-                      <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                    <% end %>
-                    <% booking.users.each do |user| %>
-                      <% if user.photo.attached? %>
-                        <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                    <% else %>
-                      <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <% end %>
-                    <% end %>
+                </div>
+                <div class="d-flex justify-content-between">
+                      <p>
+                        <% blank_stars = 5 - booking.restaurant.user_rating %>
+                          <% booking.restaurant.user_rating.times do  %>
+                          <i class="fas fa-star filledstars"></i>
+                          <% end %>
+                          <% blank_stars.times do %>
+                          <i class="far fa-star blankstars"></i>
+                          <% end %>
+                          (<%= booking.restaurant.user_reviews %>)
+                      </p>
+                    <div class="all-cards-avatar">
+                        <% if booking.user.photo.attached? %>
+                          <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% else %>
+                          <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% end %>
+                        <% booking.users.each do |user| %>
+                          <% if user.photo.attached? %>
+                            <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <% else %>
+                            <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <% end %>
+                        <% end %>
+                     </div>
+                </div>
                   </div>
                 </div>
               </div>
             <% end %>
+
+
+
+
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -116,18 +137,31 @@
   <div class="explore-events-text">
     <h5>Other tables coming soon</h5>
   </div>
-    <div id="carouselExampleControls" class="carousel slide">
+    <div id="carouselExampleControls22" class="carousel slide">
       <div class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row">
+
               <% @bookings.first(9).drop(6).each do |booking| %>
-                <div class="col-sm">
-                  <div class="card-trip">
-                    <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
-                    <div class="card-trip-infos">
-                      <div>
-                        <h2><%= booking.restaurant.name %></h2>
+              <div class="col-sm">
+                <div class="card-trip">
+                  <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
+                  <div class="card-trip-infos">
+                    <div>
+                      <h2><%= booking.restaurant.name %></h2>
+                      <p><%= booking.restaurant.food_type %>
+                      <% if booking.restaurant.price == 1 %>
+                         · $</p>
+                      <% elsif booking.restaurant.price == 2 %>
+                        · $$</p>
+                      <% else %>
+                        · $$$</p>
+                      <% end %>
+                        <p><%= booking.restaurant.short_address %></p>
+                </div>
+                <div class="d-flex justify-content-between">
+                      <p>
                         <% blank_stars = 5 - booking.restaurant.user_rating %>
                           <% booking.restaurant.user_rating.times do  %>
                           <i class="fas fa-star filledstars"></i>
@@ -135,41 +169,54 @@
                           <% blank_stars.times do %>
                           <i class="far fa-star blankstars"></i>
                           <% end %>
-                        <p><%= booking.restaurant.food_type %>
-                        <% if booking.restaurant.price == 1 %>
-                           · $</p>
-                        <% elsif booking.restaurant.price == 2 %>
-                          · $$</p>
+                          (<%= booking.restaurant.user_reviews %>)
+                      </p>
+                    <div class="all-cards-avatar">
+                        <% if booking.user.photo.attached? %>
+                          <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                         <% else %>
-                          · $$$</p>
+                          <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                         <% end %>
-                          <p><%= booking.restaurant.short_address %></p>
-                      </div>
-                      <% if booking.user.photo.attached? %>
-                        <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <% end %>
-                      <% booking.users.each do |user| %>
-                        <% if user.photo.attached? %>
-                          <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                        <% else %>
-                          <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% booking.users.each do |user| %>
+                          <% if user.photo.attached? %>
+                            <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <% else %>
+                            <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <% end %>
                         <% end %>
-                      <% end %>
-                    </div>
+                     </div>
+                </div>
                   </div>
                 </div>
-              <% end %>
+              </div>
+            <% end %>
+
+
+
             </div>
           </div>
           <div class="carousel-item">
             <div class="row" >
-              <% @bookings.first(12).drop(9).each do |booking| %>
-                <div class="col-sm">
-                  <div class="card-trip">
-                    <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
-                    <div class="card-trip-infos">
-                      <div>
-                        <h2><%= booking.restaurant.name %></h2>
+
+              <% @bookings.first(9).drop(6).each do |booking| %>
+              <div class="col-sm">
+                <div class="card-trip">
+                  <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
+                  <div class="card-trip-infos">
+                    <div>
+                      <h2><%= booking.restaurant.name %></h2>
+                      <p><%= booking.restaurant.food_type %>
+                      <% if booking.restaurant.price == 1 %>
+                         · $</p>
+                      <% elsif booking.restaurant.price == 2 %>
+                        · $$</p>
+                      <% else %>
+                        · $$$</p>
+                      <% end %>
+                        <p><%= booking.restaurant.short_address %></p>
+                </div>
+                <div class="d-flex justify-content-between">
+                      <p>
                         <% blank_stars = 5 - booking.restaurant.user_rating %>
                           <% booking.restaurant.user_rating.times do  %>
                           <i class="fas fa-star filledstars"></i>
@@ -177,38 +224,37 @@
                           <% blank_stars.times do %>
                           <i class="far fa-star blankstars"></i>
                           <% end %>
-                        <p><%= booking.restaurant.food_type %>
-                        <% if booking.restaurant.price == 1 %>
-                           · $</p>
-                        <% elsif booking.restaurant.price == 2 %>
-                          · $$</p>
+                          (<%= booking.restaurant.user_reviews %>)
+                      </p>
+                    <div class="all-cards-avatar">
+                        <% if booking.user.photo.attached? %>
+                          <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                         <% else %>
-                          · $$$</p>
+                          <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                         <% end %>
-                          <p><%= booking.restaurant.short_address %></p>
-                      </div>
-                      <% if booking.user.photo.attached? %>
-                        <%= cl_image_tag booking.user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                      <% end %>
-                      <% booking.users.each do |user| %>
-                        <% if user.photo.attached? %>
-                          <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                         <% else %>
-                          <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                        <% booking.users.each do |user| %>
+                          <% if user.photo.attached? %>
+                            <%= cl_image_tag user.photo.key, class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <% else %>
+                            <%= image_tag "default_user.png", class: "card-trip-user avatar-bordered-card avatar-image", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                          <% end %>
                         <% end %>
-                      <% end %>
-                    </div>
+                     </div>
+                </div>
                   </div>
                 </div>
-              <% end %>
+              </div>
+            <% end %>
+
+
             </div>
           </div>
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
         </a>

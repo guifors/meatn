@@ -25,11 +25,13 @@
 
 .card-trip .card-trip-infos {
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: flex-end;
   position: relative;
 }
+
+
 
 .card-trip-infos .card-one{
   position: absolute;
@@ -123,5 +125,10 @@
   background-color: $green;
   padding: 5px;
   border-radius: 5px;
+}
+
+.all-cards-avatar {
+  position: relative;
+  bottom: 15px;
 }
 
