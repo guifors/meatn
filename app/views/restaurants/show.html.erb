@@ -32,12 +32,14 @@
     </div>
     <div class="restaurant-photos container">
       <div class="row">
-        <% @pictures.first(6).each do |picture| %>
-          <div class="col-md-4 pr-1 pl-1 mb-3">
-            <div class="small-images-restaurant">
-              <%= cl_image_tag picture["photo"]["thumb_url"], class: "small-images-restaurant" %>
+        <% if @pictures.nil? == false %>
+          <% @pictures.first(6).each do |picture| %>
+            <div class="col-md-4 pr-1 pl-1 mb-3">
+              <div class="small-images-restaurant">
+                <%= cl_image_tag picture["photo"]["thumb_url"], class: "small-images-restaurant" %>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -53,10 +55,13 @@
     <div class="booking-details border-bottom pb-4">
         <%= simple_form_for [@restaurant, Booking.new] do |b| %>
           <div class="form-group">
-              <%= b.input :title, label: false, input_html: {class: "timepicker"} %>
+                <div class="timepicker-booking-show">
+                  <%= b.input :title, label: false, input_html: {class: "timepicker"} %>
 
+                </div>
               <div id="booking-success"></div>
-            <%= b.input :title, as: :text, input_html: { :style=> 'width: 100%;', :rows => 4, :placeholder=> "Add a message to the other attendees!"}, label: false, class: "input-message location-text" %>
+            <%= b.input :title, as: :text, input_html: { :style=> 'width: 100%;', :rows => 2, :placeholder=> "Add a short booking title"}, label: false, class: "input-message location-text" %>
+            <%= b.input :description, as: :text, input_html: { :style=> 'width: 100%;', :rows => 4, :placeholder=> "Add a message to the other users. Make it stand out!"}, label: false, class: "input-message location-text" %>
             <%= b.submit "Create new booking", class: "btn btn-flat d-flex search-button" %>
           </div>
         <% end %>

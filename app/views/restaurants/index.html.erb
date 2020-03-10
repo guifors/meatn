@@ -20,7 +20,7 @@
   </div>
 </div>
 <div class="container">
-  <p class="get-current-location border-bottom pt-2 pb-2"><strong>It looks like you are in London. Not correct? </strong><i class="fas fa-map-marker-alt"> <span class="get-current-location-link"><%= link_to "Get current location" %></span></i></p>
+  <p class="get-current-location border-bottom pt-4 pb-2"><strong>It looks like you are in London. Not correct? </strong><i class="fas fa-map-marker-alt"> <span class="get-current-location-link"><%= link_to "Get current location" %></span></i></p>
   <h5 class="border-bottom pt-3 pb-1"><strong>Popular restaurants in this area</strong></h5>
 
   <div class="row">
@@ -43,10 +43,10 @@
                     <p>
                       <% blank_stars = 5 - restaurant.user_rating %>
                           <% restaurant.user_rating.times do  %>
-                          <i class="fas fa-star filledstars"></i>
+                          <i class="fas fa-star filledstars" style="color: #1EDD88"></i>
                           <% end %>
                           <% blank_stars.times do %>
-                          <i class="far fa-star blankstars"></i>
+                          <i class="far fa-star blankstars" style="color: #1EDD88"></i>
                           <% end %>
                       (<%= restaurant.user_reviews %>)
                     </p>
