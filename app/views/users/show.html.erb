@@ -8,8 +8,12 @@
           <%= current_user.location %>
         </div>
         <div class="current-user-member-since">
-          <p>Member sice</p>
-          <%= current_user.created_at %>
+          <p>Member since</p>
+          <%= current_user.created_at.to_formatted_s(:short) %>
+        </div>
+        <div class="current-user-member-since">
+          <i class='far fa-edit'></i>
+            <%= link_to "Edit my profile", edit_user_registration_path %>
         </div>
         <div class="current-user-social-media">
           <p class="mb-0">Networks</p>
