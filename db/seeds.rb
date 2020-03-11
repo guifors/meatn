@@ -13,14 +13,15 @@ Booking.destroy_all
 User.destroy_all
 Restaurant.destroy_all
 
-url = "https://developers.zomato.com/api/v2.1/search?apikey=#{ENV['ZOMATO_API_KEY']}&city_id=61"
+count = 0
+url = "https://developers.zomato.com/api/v2.1/search?apikey=#{ENV['ZOMATO_API_KEY']}&city_id=61&start=#{count}"
 
 restaurants_serialized = open(url).read
 fetched_restaurants = JSON.parse(restaurants_serialized)
 
-puts fetched_restaurants
-puts fetched_restaurants.class
-fetched_restaurants["restaurants"].first(100).each do |restaurant|
+4.times do
+
+  fetched_restaurants["restaurants"].first(100).each do |restaurant|
   rest = Restaurant.create(
             name: restaurant["restaurant"]["name"],
             address: restaurant["restaurant"]["location"]["address"],
@@ -36,9 +37,11 @@ fetched_restaurants["restaurants"].first(100).each do |restaurant|
             image_url: restaurant["restaurant"]["featured_image"],
             highlights: restaurant["restaurant"]["highlights"]
           )
+  count += 20
+  end
 end
 
-puts "20 restaurants created"
+puts "Restaurants created"
 
 
 # rest1 = Restaurant.create(name:"The Melody Restaurant at St Paul's Hotel",address:"153 Hammersmith Road",postcode:"W14 0Ql",city:"London",state:"Middlesex",area:"Hammersmith",country:"UK",price:1,phone_number:"020-7333-8888",image_url: "https://source.unsplash.com/collection/1353633/")
@@ -70,7 +73,7 @@ counter = 0
 
 5.times do
   user_file = URI.open("#{user_photos[counter]}")
-  user = User.create!(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34))
+  user = User.create!(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34), location: Faker::Nation.capital_city)
   user.photo.attach(io: user_file, filename: "#{user_filenames[counter]}", content_type: 'image/jpg')
   counter += 1
 end
