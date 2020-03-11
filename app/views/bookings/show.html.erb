@@ -61,6 +61,7 @@
           <% elsif current_user == @booking.user %>
             <div class="signed-up-booking-button">You're the host</div>
           <% else %>
+              <%= render "shared/modal"%>
               <%= render 'group/form', group: Group.new, booking: @booking %>
           <% end %>
         <% end %>
