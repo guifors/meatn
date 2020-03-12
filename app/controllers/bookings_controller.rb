@@ -11,7 +11,9 @@ class BookingsController < ApplicationController
       @address = @search["address"]
       @date = @search["date"]
 
-      @bookings = policy_scope(Booking).search_by_date(@date.to_date).joins(:restaurant).where("restaurants.food_type ILIKE ?", "%#{@food_type}%").where("restaurants.address ILIKE ?", "%#{@address}%")
+
+
+      @bookings = policy_scope(Booking).search_by_date(@date.to_date).joins(:restaurant).where("restaurants.address ILIKE ?", "%#{@address}%").where("restaurants.food_type ILIKE ?", "%#{@food_type}%")
     else
       @bookings = policy_scope(Booking)
     end
