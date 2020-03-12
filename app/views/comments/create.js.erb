@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newBookingForm = document.getElementById('new_booking');
+  newBookingForm.innerHTML = innerHTML;
+}
+
+function addBooking(bookingHTML) {
+  const bookings = document.getElementById('bookings');
+  bookings.insertAdjacentHTML('beforeend', bookingHTML);
+}
+
+<% if @comment.errors.any? %>
+  refreshForm('<%= j render "comments/form", booking: @booking, comment: @comment %>');
+<% else %>
+  addComment('<%= j render "bookings/show", comment: @comment %>');
+  refreshForm('<%= j render "comments/form", booking: @booking, comment: Comment.new %>');
+<% end %>
