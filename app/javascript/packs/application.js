@@ -20,4 +20,6 @@ import '../custom/booking_available.js';
 
 initMapbox();
 initStarRating();
-
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
