@@ -15,7 +15,8 @@ $(document).on('turbolinks:load', function() {
 
   $('#datetimepicker3').datetimepicker({
     format: 'LT',
-    stepping: 15,
+    stepping: 30,
+    minDate: Date(),
     icons: {
       up: 'fas fa-arrow-up',
       down: 'fas fa-arrow-down',
