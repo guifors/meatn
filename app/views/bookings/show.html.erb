@@ -51,7 +51,7 @@
         <% if user_signed_in? %>
           <% if current_user.groups.any? && current_user.groups.find_by(booking: @booking) %>
             <div>
-              <div class="signed-up-booking-button">You are attending this event!</div>
+              <div class="signed-up-booking-button"><i class="fas fa-check-circle"></i> You are attending this event!</div>
               <div class="check-my-bookings">
                 <%= link_to "Check my bookings", user_path(current_user) %>
               </div>
