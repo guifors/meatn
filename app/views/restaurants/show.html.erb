@@ -54,9 +54,10 @@
     <p class="location-text"><strong>Select date and time:</strong></p>
     <div class="booking-details border-bottom pb-4">
         <%= simple_form_for [@restaurant, Booking.new] do |b| %>
+          <%= b.error_notification %>
           <div class="form-group">
                 <div class="timepicker-booking-show">
-                  <%= b.input :title, label: false, input_html: {class: "timepicker"} %>
+                  <%= b.input :date, as: :string, label: false, input_html: {class: "timepicker"} %>
 
                 </div>
               <div id="booking-success"></div>

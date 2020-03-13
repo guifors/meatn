@@ -47,10 +47,11 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.restaurant = Restaurant.find(params[:restaurant_id])
     authorize @booking
-    if @booking.save!
+    if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new
+      flash[:alert] = "information missing"
+      redirect_to restaurant_path(params[:restaurant_id])
     end
   end
 
@@ -74,7 +75,7 @@ class BookingsController < ApplicationController
   end
 
   def bookings_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:date,:title,:description)
   end
 
   def set_booking

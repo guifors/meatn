@@ -23,6 +23,7 @@
             <% else %>
               <div class="simple-form-input">
                 <%= f.input :date, input_html: {class: "datepicker", value: search_value_date, placeholder: search_value_date }, label: false %>
+
               </div>
             <% end %>
               <div class="simple-form-input">
@@ -83,11 +84,13 @@
                               <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
                           <% end %>
                           <% booking.users.each do |user| %>
-                            <% if user.photo.attached? %>
-                              <%= cl_image_tag user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
-                            <% else %>
-                              <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
-                            <% end %>
+
+                              <% if user.photo.attached? %>
+                                <%= cl_image_tag user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                              <% else %>
+                                <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                              <% end %>
+
                           <% end %>
 
                         <% end %>
@@ -114,4 +117,6 @@
       </div>
     </div>
   </div>
+
 </div>
+

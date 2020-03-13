@@ -1,0 +1,5 @@
+meta_product_name: "mEatn"
+meta_title: "mEatn - Meet as strangers, eat as friends"
+meta_description: "Meet great people over your favourite dish"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
