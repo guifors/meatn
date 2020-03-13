@@ -7,7 +7,7 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="row">
-            <% @bookings.first(3).each do |booking| %>
+            <% @bookings.first(5).drop(2).each do |booking| %>
               <div class="col-sm">
                 <div class="card-trip">
                   <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
@@ -59,7 +59,7 @@
         <div class="carousel-item">
           <div class="row" >
 
-            <% @bookings.first(6).drop(3).each do |booking| %>
+            <% @bookings.first(8).drop(5).each do |booking| %>
               <div class="col-sm">
                 <div class="card-trip">
                   <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
@@ -106,15 +106,6 @@
                 </div>
               </div>
             <% end %>
-
-
-
-
-
-
-
-
-
           </div>
         </div>
       </div>
@@ -143,7 +134,7 @@
           <div class="carousel-item active">
             <div class="row">
 
-              <% @bookings.first(9).drop(6).each do |booking| %>
+              <% @bookings.first(11).drop(8).each do |booking| %>
               <div class="col-sm">
                 <div class="card-trip">
                   <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
@@ -190,15 +181,12 @@
                 </div>
               </div>
             <% end %>
-
-
-
             </div>
           </div>
           <div class="carousel-item">
             <div class="row" >
 
-              <% @bookings.first(9).drop(6).each do |booking| %>
+              <% @bookings.first(14).drop(11).each do |booking| %>
               <div class="col-sm">
                 <div class="card-trip">
                   <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
@@ -245,8 +233,6 @@
                 </div>
               </div>
             <% end %>
-
-
             </div>
           </div>
         </div>
