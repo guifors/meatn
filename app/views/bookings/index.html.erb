@@ -12,17 +12,17 @@
       <div>
         <%= simple_form_for :search, url: bookings_path, method: "GET", html: { class: 'form-inline' } do |f| %>
             <%= f.input :city, input_html: {value: search_value_city, placeholder: "London"}, label: false %>
-            <% if params[:date] == "" %>
+            <% if params[:date] == "" && search_value_date.nil? %>
               <div class="simple-form-input">
-                <%= f.input :date, input_html: {class: "datepicker", value: search_value_date, placeholder: "Date" }, label: false %>
+                <%= f.input :date, input_html: {class: "datepicker", placeholder: "Date" }, label: false %>
               </div>
-            <% elsif search_value_date.nil? %>
+            <% elsif params[:date].present? %>
               <div class="simple-form-input">
-                <%= f.input :date, input_html: {class: "datepicker", placeholder: params[:date]}, label: false %>
+                <%= f.input :date, input_html: {class: "datepicker", value: params[:date], placeholder: params[:date]}, label: false %>
               </div>
             <% else %>
               <div class="simple-form-input">
-                <%= f.input :date, input_html: {class: "datepicker", value: params[:date], placeholder: search_value_date }, label: false %>
+                <%= f.input :date, input_html: {class: "datepicker", value: search_value_date, placeholder: search_value_date }, label: false %>
               </div>
             <% end %>
               <div class="simple-form-input">

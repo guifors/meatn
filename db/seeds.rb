@@ -122,9 +122,38 @@ user_filenames = ['nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg', 'ben-parker-No
 ]
 
 
-user_emails = ['test@test.com','demo@demo.com', 'bob@bob.com', 'pat@pat.com', 'joe@joe.com', 'lucas@lucas.com', 'masha@masha.com', 'svetlana@svetlana.com', 'daniil@daniil.com', 'esther@esther.com' 'sincerely@sincerely.com', 'tyler@tyler.com', 'toa@toa.com', 'yogendra@yogendra.com', 'jian@jian.com', 'angelika@angelika.com',
-'joanna@joanna.com', 'petr@petr.com', 'clem@clem.com', 'dan@dan.com', 'jason@jason.com', 'emile@emile.com',
-'stefan@stefan.com', 'ronise@ronise.com', 'ethan@ethan.com', 'dan2@dan2.com', 'luis@luis.com', 'kelly@kelly.com', 'sergio@sergio.com', 'additional@additional.com']
+user_emails = [
+  'test@test.com',
+  'demo@demo.com',
+  'bob@bob.com',
+  'pat@pat.com',
+  'joe@joe.com',
+  'lucas@lucas.com',
+  'masha@masha.com',
+  'svetlana@svetlana.com',
+  'daniil@daniil.com',
+  'esther@esther.com',
+  'sincere@sincere.com',
+  'tyler@tyler.com',
+  'toa@toa.com',
+  'yogendra@yogendra.com',
+  'jian@jian.com',
+  'angelika@angelika.com',
+'joanna@joanna.com',
+'petr@petr.com',
+'clem@clem.com',
+'dan@dan.com',
+'jason@jason.com',
+'emile@emile.com',
+'stefan@stefan.com',
+'ronise@ronise.com',
+'ethan@ethan.com',
+'dantwo@dantwo.com',
+'luis@luis.com',
+'kelly@kelly.com',
+'sergio@sergio.com',
+'additional@additional.com',
+'additionalbis@additionalbis.com' ]
 
 
 puts "creating some Users"
@@ -133,15 +162,15 @@ puts "creating some Users"
 
 user_one_file = URI.open("#{user_photos[0]}")
   user_one = User.create!(email: "#{user_emails[0]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34), location: Faker::Nation.capital_city)
-  user_one.photo.attach(io: user_file, filename: "#{user_filenames[0]}", content_type: 'image/jpg')
+  user_one.photo.attach(io: user_one_file, filename: "#{user_filenames[0]}", content_type: 'image/jpg')
 
 user_two_file = URI.open("#{user_photos[1]}")
   user_two = User.create!(email: "#{user_emails[1]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34), location: Faker::Nation.capital_city)
-  user_two.photo.attach(io: user_file, filename: "#{user_filenames[1]}", content_type: 'image/jpg')
+  user_two.photo.attach(io: user_two_file, filename: "#{user_filenames[1]}", content_type: 'image/jpg')
 
 counter = 2
 
-11.times do
+27.times do
   user_file = URI.open("#{user_photos[counter]}")
   user = User.create!(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34), location: Faker::Nation.capital_city)
   user.photo.attach(io: user_file, filename: "#{user_filenames[counter]}", content_type: 'image/jpg')
@@ -157,22 +186,20 @@ end
 puts "creating some bookings"
 
 
-# Booking demo (today)
-Booking.create(
-  title: "Arrived in London!",
-  date:Faker::Time.between_dates(from: DateTime.now , DateTime.now, period: :evening).beginning_of_hour,
-  restaurant_id: 1,
-  user_id: 3,
-  description: "Hey guys! Just arrived in London, look forward to meeting other fun people while enjoying what seems to be an amazing place for dinner!"
-  )
-
-
 # Other bookings past
 
 Booking.create(title:"Aussies of London", date:Faker::Time.between_dates(from: DateTime.now - 4, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant_id: 2, user_id: 1, description: Faker::TvShows::RuPaul.quote)
 
 Booking.create(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now - 5, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant_id: 3, user_id: 1, description: Faker::TvShows::RuPaul.quote)
 
+# Booking demo (today)
+Booking.create(
+  title: "Arrived in London!",
+  date:Faker::Time.between_dates(from: DateTime.now , to: DateTime.now, period: :evening).beginning_of_hour,
+  restaurant_id: 1,
+  user_id: 3,
+  description: "Hey guys! Just arrived in London, look forward to meeting other fun people while enjoying what seems to be an amazing place for dinner!"
+  )
 
 # Other bookings today
 
@@ -189,6 +216,16 @@ Booking.create(title:"Cat lovers", date:Faker::Time.between_dates(from: DateTime
 Booking.create(title:"Cheese Aficionados", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 9, user_id: 8, description: Faker::TvShows::RuPaul.quote)
 
 Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 9, description: Faker::TvShows::RuPaul.quote)
+
+Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 22, description: Faker::TvShows::RuPaul.quote)
+
+Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 23, description: Faker::TvShows::RuPaul.quote)
+
+Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 24, description: Faker::TvShows::RuPaul.quote)
+
+Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 25, description: Faker::TvShows::RuPaul.quote)
+
+
 
 # Other bookings tomorrow
 
@@ -237,25 +274,74 @@ Booking.create(title: "Dog Walkers", date: Faker::Time.between_dates(from: DateT
 # highlights = restaurant["restaurant"]["highlights"]
 
 
+# Groups today and past
 
 Group.create(booking_id:1 , user_id:10 )
 Group.create(booking_id:1 , user_id:11 )
+Group.create(booking_id:1 , user_id:28 )
 
-Group.create(booking_id:4 , user_id:12 )
+Group.create(booking_id:2 , user_id:25 )
+Group.create(booking_id:2 , user_id:26 )
+Group.create(booking_id:2 , user_id:27 )
 
-Group.create(booking_id:5 , user_id:13 )
+# demo booking
+Group.create(booking_id:3, user_id:15)
 
-Group.create(booking_id:6 , user_id:14 )
-Group.create(booking_id:6 , user_id:15 )
+# bookings today
 
-Group.create(booking_id:7 , user_id:16 )
-Group.create(booking_id:7 , user_id:17 )
+Group.create(booking_id:4 , user_id:16 )
 
-Group.create(booking_id:8 , user_id:18 )
-Group.create(booking_id:8 , user_id:19 )
-Group.create(booking_id:8 , user_id:20)
+Group.create(booking_id:5 , user_id:17 )
 
-Group.create(booking_id:9 , user_id:21 )
+Group.create(booking_id:6 , user_id:18 )
+Group.create(booking_id:6 , user_id:19 )
+
+Group.create(booking_id:7 , user_id:20 )
+Group.create(booking_id:7 , user_id:21 )
+
+Group.create(booking_id:8 , user_id:22 )
+Group.create(booking_id:8 , user_id:23 )
+
+Group.create(booking_id:9 , user_id:24 )
+Group.create(booking_id:9 , user_id:25 )
+
+Group.create(booking_id:10 , user_id:26)
+Group.create(booking_id:10 , user_id:27)
+
+Group.create(booking_id:11 , user_id:28)
+
+Group.create(booking_id:12 , user_id:29)
+
+Group.create(booking_id:13 , user_id:15)
+
+Group.create(booking_id:14 , user_id:14)
+
+
+# Groups tomorrow and future
+
+Group.create(booking_id:15 , user_id:27 )
+Group.create(booking_id:15 , user_id:28 )
+
+Group.create(booking_id:16 , user_id:25 )
+Group.create(booking_id:16, user_id:26 )
+
+Group.create(booking_id:17, user_id:18 )
+Group.create(booking_id:17, user_id:19 )
+
+Group.create(booking_id:20 , user_id:15 )
+
+Group.create(booking_id:21 , user_id:16 )
+Group.create(booking_id:21 , user_id:17 )
+
+Group.create(booking_id:23 , user_id:21 )
+Group.create(booking_id:23 , user_id:22 )
+
+Group.create(booking_id:24 , user_id:23)
+Group.create(booking_id:24 , user_id:24)
+
+Group.create(booking_id:25 , user_id:25)
+
+Group.create(booking_id:26 , user_id:26)
 
 
 
