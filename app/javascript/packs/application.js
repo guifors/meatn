@@ -15,7 +15,7 @@ import { initStarRating } from '../plugins/init_star_rating';
 
 import { confirmBookingWithRestaurant } from '../custom/confirm_booking.js';
 import "../plugins/flatpickr.js";
-import '../custom/booking_available.js';
+import { triggerSuccess } from '../custom/booking_available.js';
 
 
 initMapbox();
@@ -24,5 +24,6 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-
+// triggerSuccess();
 confirmBookingWithRestaurant();
+
