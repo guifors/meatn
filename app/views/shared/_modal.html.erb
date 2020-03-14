@@ -1,20 +1,52 @@
 <!-- Button trigger modal -->
-<div id="firstUsers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="firstUsersLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="firstUsersLabel"><strong>You´ve joined this booking!</strong></h4>
-      </div>
-      <div class="modal-body">
-        <p style="text-align: left;" class="pb-0"> <strong>What´s next?</strong></p>
-        <p class="pt-0"> As soon as 4 users join, you will get notified and the booking will get confirmed with the restaurant.
-        </p>
-        <p>Stay tuned!</p>
-      </div>
-      <div class="modal-footer d-flex justify-content-around">
-        <button type="button" class="btn btn-flat" data-dismiss="modal">Check my booking</button>
+
+<% if booking.users.count > 1 %>
+  <div id="firstUsers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="firstUsersLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body-js">
+          <div class="modal-header">
+            <h4 class="modal-title" id="firstUsersLabel"><strong>You´ve joined this booking!</strong></h4>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+          </div>
+        </div>
+        <div class="modal-footer modal-footer-js d-flex justify-content-around">
+          <%= simple_form_for [booking, group] do |g| %>
+            <% if booking.users.count < 3 %>
+            <%= g.submit "Got it!", class: "btn btn-flat d-flex join-booking-button", data: {toggle: "modal", target: "#firstUsers"} %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+<% else %>
+  <div id="firstUsers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="firstUsersLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="firstUsersLabel"><strong>You´ve joined this booking!</strong></h4>
+        </div>
+        <div class="modal-body" style="text-align: left;">
+          <% if booking.users.nil? %>
+            <p>Congrats! You just joined this table with 1 additional user. </p>
+          <% else %>
+            <p>Congrats! You just joined this table with <%= booking.users.count + 1%> other users. </p>
+          <% end %>
+          <p class="pb-0"> <strong>What's next?</strong></p>
+          <p class="pt-0"> As soon as a total of 4 users join, you will get notified and the booking will get confirmed with the restaurant.
+          </p>
+          <p>Stay tuned!</p>
+        </div>
+        <div class="modal-footer d-flex justify-content-around">
+          <%= simple_form_for [booking, group] do |g| %>
+            <% if booking.users.count < 3 %>
+            <%= g.submit "Got it!", class: "btn btn-flat d-flex join-booking-button" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
