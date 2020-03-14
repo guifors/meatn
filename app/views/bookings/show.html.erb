@@ -5,7 +5,7 @@
   <div class="row both-columns">
 
     <div class="col-md-7">
-      <div class="info">
+      <div class="info info-three">
         <div class="pb-4">
           <p class="border-bottom details-headline">Booking details</p>
           <p class="pb-0 mb-0"><%= @booking.date.to_formatted_s(:short) %></p>
@@ -46,91 +46,97 @@
         <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-l(#{@restaurant.longitude},#{@restaurant.latitude})/#{@restaurant.longitude},#{@restaurant.latitude},15/500x300?access_token=pk.eyJ1IjoidG9taHVkc29uODkiLCJhIjoiY2s0MGN4NDJvMDBmZTNlc2Y3YzdheG02ciJ9.CbThae_pau01vd-Br--z3w" %>
       </div>
     </div>
-    <div class="col-md-5 info right-column">
-      <div class="booking-button-two">
+    <div class="col-md-5 pl-0 pr-0">
+      <div class="info">
+        <% if user_signed_in? && @booking.full? ==false  %>
+          <div class="booking-button-two">
+            <% if current_user.groups.any? && current_user.groups.find_by(booking: @booking) %>
+              <div>
+                <div class="signed-up-booking-button"><i class="fas fa-clock"></i></i> You joined -waiting for others to join</div>
+              </div>
+            <% elsif @booking.full? %>
+              <div class="confirmed-booking-button"><i class="fas fa-check-circle"></i> Booking is confirmed with the restaurant!</div>
+            <% elsif current_user == @booking.user %>
+              <div class="signed-up-booking-button"><i class="fas fa-user-alt"></i> You're the host -waiting for others to join</div>
+            <% else %>
+                <button type="button" class="btn btn-flat join-booking-button" data-toggle="modal" data-target="#firstUsers">Join this booking
+                </button>
+                <%= render "shared/modal", group: Group.new, booking: @booking %>
+            <% end %>
+          </div>
+        <% end %>
+      <div class="info-two">
         <% if user_signed_in? %>
-          <% if current_user.groups.any? && current_user.groups.find_by(booking: @booking) %>
-            <div>
-              <div class="signed-up-booking-button"><i class="fas fa-check-circle"></i> You are attending this event!</div>
-              <div class="check-my-bookings">
-                <%= link_to "Check my bookings", user_path(current_user) %>
-              </div>
-            </div>
-          <% elsif @booking.full? %>
-            <div>Full</div>
-          <% elsif current_user == @booking.user %>
-            <div class="signed-up-booking-button"><i class="fas fa-user-alt"></i>You are the host</div>
-          <% else %>
-              <button type="button" class="btn btn-flat join-booking-button" data-toggle="modal" data-target="#firstUsers">Join this booking
-              </button>
-              <%= render "shared/modal", group: Group.new, booking: @booking %>
-          <% end %>
-        <% end %>
-      </div>
-      <p class="border-bottom details-headline pt-4">Attendee list</p>
-      <div class="attendees-key-info">
-        <div class="attendee-key-info">
-          <div class="avatar pt-2">
-            <%= render "shared/modal_user_profile", attendee: @booking.user %>
+          <div class="check-my-bookings">
+          <%= link_to "Check my bookings", user_path(current_user) %>
           </div>
-          <div class="attendee-short-details">
-            <h5>
-              <%= @booking.user.name %> <%= @booking.user.surname %>
-            </h5>
-            <p>
-              <%= @booking.user.age %> years old
-            </p>
-            <p>
-              From <%= @booking.user.location %>
-            </p>
-          </div>
-        </div>
-        <% if @booking.users.exists? %>
-          <% @booking.users.each do |attendee| %>
-            <div class="attendee-key-info">
-              <div class="avatar pt-2">
-                <%= render "shared/modal_user_profile", attendee: attendee %>
-              </div>
-             <div class="attendee-short-details">
-                <h5>
-                  <%= attendee.name %> <%= attendee.surname %>
-                </h5>
-                <p>
-                  <%= attendee.age %> years old
-                </p>
-                <p>
-                  From <%= attendee.location %>
-                </p>
-              </div>
-            </div>
-          <% end %>
         <% end %>
-      </div>
-      <p class="border-bottom details-headline pt-5">Comments</p>
-
-      <% if @booking.comments != nil %>
-        <div id="comments">
-          <% @booking.comments.each do |comment| %>
-           <%= render "comments/comment", comment: comment %>
+        <p class="border-bottom details-headline pt-4">Attendee list</p>
+        <div class="attendees-key-info">
+          <div class="attendee-key-info">
+            <div class="avatar pt-2">
+              <%= render "shared/modal_user_profile", attendee: @booking.user %>
+            </div>
+            <div class="attendee-short-details">
+              <h5>
+                <%= @booking.user.name %> <%= @booking.user.surname %>
+              </h5>
+              <p>
+                <%= @booking.user.age %> years old
+              </p>
+              <p>
+                From <%= @booking.user.location %>
+              </p>
+            </div>
+          </div>
+          <% if @booking.users.exists? %>
+            <% @booking.users.each do |attendee| %>
+              <div class="attendee-key-info">
+                <div class="avatar pt-2">
+                  <%= render "shared/modal_user_profile", attendee: attendee %>
+                </div>
+               <div class="attendee-short-details">
+                  <h5>
+                    <%= attendee.name %> <%= attendee.surname %>
+                  </h5>
+                  <p>
+                    <%= attendee.age %> years old
+                  </p>
+                  <p>
+                    From <%= attendee.location %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
-      <% end %>
-      <div class="scrollable">
-        <% if @booking.comments != nil %>
-          <% @booking.comments.each do |comment| %>
-          <div class="comment d-flex pt-3">
-            <%= cl_image_tag comment.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
-            <div class="comment-space">
-              <p class="comment-owner"><%= comment.user.name %> <%= comment.user.surname %> says:</p>
-              <p><%= comment.content %></p>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
       </div>
+        <p class="border-bottom details-headline pt-5">Comments</p>
+        <div class="scrollable">
+          <% if @booking.comments != nil %>
+            <% @booking.comments.each do |comment| %>
+            <div class="comment d-flex pt-3">
+              <%= cl_image_tag comment.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+              <div class="comment-space">
+                <p class="comment-owner"><%= comment.user.name %> <%= comment.user.surname %> says:</p>
+                <p><%= comment.content %></p>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
 
-      <div class="details mt-4">
-        <%= render "comments/form", comment: @comment, booking: @booking %>
+        </div>
+        <div class="details mt-4">
+          <%= simple_form_for [@booking, @comment] do |f| %>
+            <%= f.input :content, label: false, placeholder: "Add your comment" %>
+            <div class="d-flex flex-row-reverse">
+              <%= f.submit "Add", class: "btn btn-light" %>
+<%= comment.content %></p>
+
+            </div>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>
