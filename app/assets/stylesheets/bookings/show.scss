@@ -79,12 +79,14 @@
 }
 
 .booking-button-two {
+  position: sticky;
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
 .join-booking-button {
+  position: sticky;
   padding-right: 50px;
   padding-left: 50px;
   font-size: 20px;
@@ -96,6 +98,11 @@
 
 .right-column {
   position: sticky;
+}
+
+.scrollable {
+  height: 500px;
+  overflow: scroll;
 }
 
 .attendee-key-info {
