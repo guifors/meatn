@@ -5,18 +5,14 @@
       <div class="current-user-details">
         <div class="current-user-location">
           <p>Location</p>
-          <%= current_user.location %>
+          <p class="text-user-profile"><%= current_user.location %></p>
         </div>
         <div class="current-user-member-since">
           <p>Member since</p>
-          <%= current_user.created_at.to_formatted_s(:short) %>
-        </div>
-        <div class="current-user-member-since">
-          <i class='far fa-edit'></i>
-            <%= link_to "Edit my profile", edit_user_registration_path %>
+          <p class="text-user-profile"><%= current_user.created_at.to_formatted_s(:short) %></p>
         </div>
         <div class="current-user-social-media">
-          <p class="mb-0">Networks</p>
+          <p class="mb-2">Networks</p>
           <div class="footer-links">
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-facebook"></i></a>
@@ -25,11 +21,18 @@
           </div>
         </div>
       </div>
-      <div class="current-user-bio">
-        <p>Bio</p>
-            <%= current_user.bio %> <br><br>
+      <div class="current-user-bio mt-3">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p>Bio</p>
+            <p class="text-user-profile"><%= current_user.bio %></p>
+          </div>
+          <div class="edit-my-profile">
+            <i class="fas fa-edit"><%= link_to "Edit my profile", user_registration_path(current_user) %></i>
+          </div>
+        </div>
         <p>Interests</p>
-        <%= current_user.interests %>
+        <p class="text-user-profile"><%= current_user.interests %></p>
       </div>
     </div>
     <div class="dahsboard-picture">

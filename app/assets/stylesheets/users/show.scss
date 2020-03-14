@@ -38,6 +38,11 @@
   }
 }
 
+.text-user-profile {
+  color: #9C9C9C;
+  font-size: 15px !important;
+  font-weight: lighter !important;
+}
 
 .current-user-member-since {
   position: relative;
@@ -100,4 +105,14 @@
   justify-content: space-around;
   color: $light-gray;
   font-size: 25px;
+}
+
+.edit-my-profile {
+  position: relative;
+  top: 60px;
+  left: 170px;
+  a {
+    text-decoration: none;
+    color: $gray;
+  }
 }
