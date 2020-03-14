@@ -75,14 +75,18 @@
 }
 
 .both-columns {
-  margin-top: -100px;
+  margin-top: -77px;
 }
 
 .booking-button-two {
-  position: sticky;
   display: flex;
+  padding-top: 23px;
+  padding-bottom: 24px;
   justify-content: center;
   text-align: center;
+  background-color: #EBEBEB;
+  border-radius: 2px;
+  color: white;
 }
 
 .join-booking-button {
@@ -94,10 +98,6 @@
 
 .details-headline {
   color: $light-gray;
-}
-
-.right-column {
-  position: sticky;
 }
 
 .scrollable {
@@ -139,12 +139,23 @@
 }
 
 .signed-up-booking-button {
-  border-radius: 5px;
-  border: 1px solid $green;
-  padding: 15px;
+  font-size: 20px;
+  color: $light-gray;
+
+  i {
+    color: white;
+  }
+}
+
+.confirmed-booking-button {
   font-size: 20px;
   color: $green;
+
+  i {
+    color: white;
+  }
 }
+
 
 .comment-space {
   margin-left: 10px;
@@ -170,7 +181,7 @@
   a {
   padding-top: 5px;
   font-size: 14px;
-  color: $light_gray;
+  color: $green;
   text-decoration: none;
   }
 }
@@ -178,7 +189,7 @@
 .check-my-bookings:hover {
 
   a {
-  color: $gray;
+  color: green;
 
   }
 }
