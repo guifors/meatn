@@ -1,7 +1,7 @@
-const dateElement = document.querySelector('#timepicker-booking-show');
+const dateElement = document.querySelector('.timepicker-js');
 
-if (dateElement) {
   const triggerSuccess = () => {
+if (dateElement) {
     dateElement.addEventListener("change", event => {
       const bookingSuccess = document.getElementById('booking-success');
       bookingSuccess.innerHTML = "";
@@ -14,5 +14,6 @@ if (dateElement) {
   };
 };
 
+export { triggerSuccess };
 
 // export { triggerSuccess };
