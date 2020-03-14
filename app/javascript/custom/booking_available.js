@@ -1,8 +1,8 @@
-const dateElement = document.querySelector('#timepicker-booking-show');
+const dateElement = document.querySelector('.flatpickr-calendar');
 
-if (dateElement) {
+
   const triggerSuccess = () => {
-    dateElement.addEventListener("change", event => {
+    dateElement.addEventListener("mouseleave", event => {
       const bookingSuccess = document.getElementById('booking-success');
       bookingSuccess.innerHTML = "";
       bookingSuccess.insertAdjacentHTML("beforeend", `<p class="checking-booking"><i class="fas fa-hourglass-start"> </i>Checking availability...</p>`);
@@ -12,7 +12,7 @@ if (dateElement) {
       }, 3000);
     });
   };
-};
 
 
-// export { triggerSuccess };
+
+export { triggerSuccess };

@@ -54,11 +54,13 @@
     <p class="location-text"><strong>Select date and time:</strong></p>
     <div class="booking-details border-bottom pb-4">
         <%= simple_form_for [@restaurant, Booking.new] do |b| %>
+          <%= b.error_notification %>
           <div class="form-group">
-                <div class="timepicker-booking-show">
-                  <%= b.input :title, label: false, input_html: {class: "timepicker"} %>
+              <div class="timepicker-booking-show timepicker-js">
+                <%= b.input :date, as: :string, label: false, input_html: {class: "timepicker location-text"}, placeholder: "Date" %>
 
-                </div>
+              </div>
+              <p class="location-text pt-2"><strong>Add booking info:</strong></p>
               <div id="booking-success"></div>
             <%= b.input :title, as: :text, input_html: { :style=> 'width: 100%;', :rows => 2, :placeholder=> "Add a short booking title"}, label: false, class: "input-message location-text" %>
             <%= b.input :description, as: :text, input_html: { :style=> 'width: 100%;', :rows => 4, :placeholder=> "Add a message to the other users. Make it stand out!"}, label: false, class: "input-message location-text" %>
@@ -71,4 +73,3 @@
 </div>
 <br>
 <br>
-<%= render 'shared/footer' %>

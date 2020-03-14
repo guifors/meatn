@@ -8,7 +8,7 @@
       <div class="info">
         <div class="pb-4">
           <p class="border-bottom details-headline">Booking details</p>
-          <p class="pb-0 mb-0"><%= @booking.date %></p>
+          <p class="pb-0 mb-0"><%= @booking.date.to_formatted_s(:short) %></p>
           <h3 class="pb-0 mb-0 pt-2"><strong><%= @booking.title %></strong></h3>
           <p class="mt-0 pt-2"><%= @booking.description %> </p>
         </div>
@@ -51,7 +51,7 @@
         <% if user_signed_in? %>
           <% if current_user.groups.any? && current_user.groups.find_by(booking: @booking) %>
             <div>
-              <div class="signed-up-booking-button">You are attending this event!</div>
+              <div class="signed-up-booking-button"><i class="fas fa-check-circle"></i> You are attending this event!</div>
               <div class="check-my-bookings">
                 <%= link_to "Check my bookings", user_path(current_user) %>
               </div>
@@ -59,9 +59,11 @@
           <% elsif @booking.full? %>
             <div>Full</div>
           <% elsif current_user == @booking.user %>
-            <div class="signed-up-booking-button">You're the host</div>
+            <div class="signed-up-booking-button"><i class="fas fa-user-alt"></i>You are the host</div>
           <% else %>
-              <%= render 'group/form', group: Group.new, booking: @booking %>
+              <button type="button" class="btn btn-flat join-booking-button" data-toggle="modal" data-target="#firstUsers">Join this booking
+              </button>
+              <%= render "shared/modal", group: Group.new, booking: @booking %>
           <% end %>
         <% end %>
       </div>
@@ -69,11 +71,7 @@
       <div class="attendees-key-info">
         <div class="attendee-key-info">
           <div class="avatar pt-2">
-            <% if @booking.user.photo.attached? %>
-              <%= cl_image_tag @booking.user.photo.key, class: "avatar-bordered-card-all-attendees" %>
-            <% else %>
-              <%= image_tag "default_user.png", class: "avatar-bordered-card-all-attendees" %>
-            <% end %>
+            <%= render "shared/modal_user_profile", attendee: @booking.user %>
           </div>
           <div class="attendee-short-details">
             <h5>
@@ -91,11 +89,7 @@
           <% @booking.users.each do |attendee| %>
             <div class="attendee-key-info">
               <div class="avatar pt-2">
-                <% if attendee.photo.attached? %>
-                  <%= cl_image_tag attendee.photo.key, class: "avatar-bordered-card-all-attendees" %>
-                <% else %>
-                  <%= image_tag "default_user.png", class: "avatar-bordered-card-all-attendees" %>
-                <% end %>
+                <%= render "shared/modal_user_profile", attendee: attendee %>
               </div>
              <div class="attendee-short-details">
                 <h5>
@@ -113,6 +107,7 @@
         <% end %>
       </div>
       <p class="border-bottom details-headline pt-5">Comments</p>
+
       <% if @booking.comments != nil %>
         <div id="comments">
           <% @booking.comments.each do |comment| %>
@@ -120,12 +115,24 @@
           <% end %>
         </div>
       <% end %>
+      <div class="scrollable">
+        <% if @booking.comments != nil %>
+          <% @booking.comments.each do |comment| %>
+          <div class="comment d-flex pt-3">
+            <%= cl_image_tag comment.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+            <div class="comment-space">
+              <p class="comment-owner"><%= comment.user.name %> <%= comment.user.surname %> says:</p>
+              <p><%= comment.content %></p>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+
       <div class="details mt-4">
         <%= render "comments/form", comment: @comment, booking: @booking %>
       </div>
     </div>
   </div>
 </div>
-<br>
-<br>
-<%= render 'shared/footer' %>
+

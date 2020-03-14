@@ -1,0 +1,42 @@
+<% if attendee.photo.attached? %>
+  <%= cl_image_tag attendee.photo.key, class: "avatar-bordered-card-all-attendees", data: {toggle: "modal", target: "#exampleModalLong_#{attendee.id}"} %>
+<% else %>
+  <%= image_tag "default_user.png", class: "avatar-bordered-card-all-attendees", data: {toggle: "modal", target: "#exampleModalLong_#{attendee.id}"} %>
+<% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong_<%= attendee.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+
+      <div class="first-user">
+          <div class="attendee-details d-flex">
+            <% if attendee.photo.attached? %>
+            <%= cl_image_tag attendee.photo.key, class: "ml-1 avatar-bordered-card-all-attendees", alt: "avatar-bordered-card-all-attendees" %>
+            <% end %>
+            <div>
+              <p class="attendee-name"> <%= attendee.name %> <%= attendee.surname %> </p>
+              <p class="attendee-age-location"> <%= attendee.age %>, from <%= attendee.location %> </p>
+            </div>
+          </div>
+          <div class="attendee-other-info pl-2">
+            <p class="title pt-4">Bio</p>
+            <p> <%= attendee.bio %></p>
+            <p class="title">Interests</p>
+            <p> <%= attendee.interests %></p>
+            <p class="title">Social media</p>
+            <div class="footer-links footer-links-attendees">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

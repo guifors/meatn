@@ -8,8 +8,12 @@
           <%= current_user.location %>
         </div>
         <div class="current-user-member-since">
-          <p>Member sice</p>
-          <%= current_user.created_at %>
+          <p>Member since</p>
+          <%= current_user.created_at.to_formatted_s(:short) %>
+        </div>
+        <div class="current-user-member-since">
+          <i class='far fa-edit'></i>
+            <%= link_to "Edit my profile", edit_user_registration_path %>
         </div>
         <div class="current-user-social-media">
           <p class="mb-0">Networks</p>
@@ -23,7 +27,9 @@
       </div>
       <div class="current-user-bio">
         <p>Bio</p>
-            <%= current_user.bio %>
+            <%= current_user.bio %> <br><br>
+        <p>Interests</p>
+        <%= current_user.interests %>
       </div>
     </div>
     <div class="dahsboard-picture">
@@ -41,6 +47,8 @@
       </div>
     </nav>
     <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
+      <!-- Bookings where user is host -->
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <% if current_user.bookings.exists? %>
           <% current_user.bookings.each do |booking| %>
@@ -109,6 +117,73 @@
             <% end %>
           <% end %>
         <% end %>
+        <% if current_user.groups.exists? %>
+          <% current_user.groups.each do |group| %>
+            <% if group.booking.date.past? == false %>
+              <div>
+                <%= link_to booking_path(group.booking) do %>
+                  <div class="card-restaurant-index card-restaurant-index-user restaurant-info link-card">
+                    <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= group.booking.restaurant.image_url %>')" />
+                    <div class="card-restaurant-index-infos d-block">
+                      <div class="d-flex justify-content-between mt-2 pt-2">
+                        <h2> <%= group.booking.title.truncate(20) %></h2>
+                        <p class="mt-1 booking-time"> <%= group.booking.date.to_formatted_s(:short)  %> </p>
+                      </div>
+                      <h5 class="mt-1 mb-0"> <%= group.booking.restaurant.name.truncate(22) %> </h5>
+                      <% if group.booking.restaurant.price == 1 %>
+                        <p class="pb-1 mt-0"><%= group.booking.restaurant.food_type %> · $</p>
+                      <% elsif group.booking.restaurant.price == 2 %>
+                        <p class="pb-1"><%= group.booking.restaurant.food_type %> · $$</p>
+                      <% else %>
+                        <p class="pb-1"><%= group.booking.restaurant.food_type %> · $$$</p>
+                      <% end %>
+                      <p class="pb-1"> <%= group.booking.restaurant.short_address %>,  <%= group.booking.restaurant.city %>  </p>
+                      <div class="d-flex justify-content-between">
+                      <p>
+                        <% blank_stars = 5 - group.booking.restaurant.user_rating %>
+                            <% group.booking.restaurant.user_rating.times do  %>
+                            <i class="fas fa-star filledstars"></i>
+                            <% end %>
+                            <% blank_stars.times do %>
+                            <i class="far fa-star blankstars"></i>
+                            <% end %>
+                        (<%= group.booking.restaurant.user_reviews %>)
+                      </p>
+                      <div class="d-flex">
+                        <%= link_to bookings_path, data: {toggle: "modal", target: "#attendeeModal"} do %>
+                          <% if group.booking.user.photo.attached? %>
+                              <%= cl_image_tag group.booking.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                          <% else %>
+                              <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                          <% end %>
+                          <% group.booking.users.each do |user| %>
+                            <% if user.photo.attached? %>
+                              <%= cl_image_tag user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                            <% else %>
+                              <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="booking-status-details border-left">
+                      <% if group.booking.full? %>
+                        <div class="booking-button-confirmed">Confirmed with the restaurant</div>
+                      <% else %>
+                        <div class="booking-status-button-awaiting">Awaiting other users to join</div>
+                      <% end %>
+                      <div class="booking-status-icons">
+                        <i class="far fa-edit"></i>
+                        <i class="fas fa-times"></i>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
       <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <% if current_user.bookings.exists? %>
@@ -161,17 +236,99 @@
                       </div>
                       </div>
                     </div>
-                    <div class="booking-status-details border-left">
-                      <% if booking.full? %>
-                        <div class="booking-button-confirmed">Confirmed with the restaurant</div>
+                    <% if  booking.date.past? %>
+
+                      <div class="booking-status-details border-left">
+                        <button class="booking-review">Leave a review</button>
+                      </div>
+
+                    <% else %>
+                      <div class="booking-status-details border-left">
+                        <% if booking.full? %>
+                          <div class="booking-button-confirmed">Confirmed with the restaurant</div>
+                        <% else %>
+                          <div class="booking-status-button-awaiting">Awaiting other users to join</div>
+                        <% end %>
+                        <div class="booking-status-icons">
+                          <i class="far fa-edit"></i>
+                          <i class="fas fa-times"></i>
+                        </div>
+                      </div>
+
+                    <% end %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+         <% if current_user.groups.exists? %>
+          <% current_user.groups.each do |group| %>
+            <% if group.booking.date.past? %>
+              <div>
+                <%= link_to booking_path(group.booking) do %>
+                  <div class="card-restaurant-index card-restaurant-index-user restaurant-info link-card">
+                    <img style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= group.booking.restaurant.image_url %>')" />
+                    <div class="card-restaurant-index-infos d-block">
+                      <div class="d-flex justify-content-between mt-2 pt-2">
+                        <h2> <%= group.booking.title.truncate(20) %></h2>
+                        <p class="mt-1 booking-time"> <%= group.booking.date.to_formatted_s(:short)  %> </p>
+                      </div>
+                      <h5 class="mt-1 mb-0"> <%= group.booking.restaurant.name.truncate(22) %> </h5>
+                      <% if group.booking.restaurant.price == 1 %>
+                        <p class="pb-1 mt-0"><%= group.booking.restaurant.food_type %> · $</p>
+                      <% elsif group.booking.restaurant.price == 2 %>
+                        <p class="pb-1"><%= group.booking.restaurant.food_type %> · $$</p>
                       <% else %>
-                        <div class="booking-status-button-awaiting">Awaiting other users to join</div>
+                        <p class="pb-1"><%= group.booking.restaurant.food_type %> · $$$</p>
                       <% end %>
-                      <div class="booking-status-icons">
-                        <i class="far fa-edit"></i>
-                        <i class="fas fa-times"></i>
+                      <p class="pb-1"> <%= group.booking.restaurant.short_address %>,  <%= group.booking.restaurant.city %>  </p>
+                      <div class="d-flex justify-content-between">
+                      <p>
+                        <% blank_stars = 5 - group.booking.restaurant.user_rating %>
+                            <% group.booking.restaurant.user_rating.times do  %>
+                            <i class="fas fa-star filledstars"></i>
+                            <% end %>
+                            <% blank_stars.times do %>
+                            <i class="far fa-star blankstars"></i>
+                            <% end %>
+                        (<%= group.booking.restaurant.user_reviews %>)
+                      </p>
+                      <div class="d-flex">
+                        <%= link_to bookings_path, data: {toggle: "modal", target: "#attendeeModal"} do %>
+                          <% if group.booking.user.photo.attached? %>
+                              <%= cl_image_tag group.booking.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                          <% else %>
+                              <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                          <% end %>
+                          <% group.booking.users.each do |user| %>
+                            <% if user.photo.attached? %>
+                              <%= cl_image_tag user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                            <% else %>
+                              <%= cl_image_tag "default_user.png", class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+                            <% end %>
+                          <% end %>
+                        <% end %>
+                      </div>
                       </div>
                     </div>
+                    <% if  group.booking.date.past? %>
+                      <div class="booking-status-details border-left">
+                        <div class="booking-review">Leave a review</div>
+                      </div>
+                    <% else %>
+                      <div class="booking-status-details border-left">
+                        <% if group.booking.full? %>
+                          <div class="booking-button-confirmed">Confirmed with the restaurant</div>
+                        <% else %>
+                          <div class="booking-status-button-awaiting">Awaiting other users to join</div>
+                        <% end %>
+                        <div class="booking-status-icons">
+                          <i class="far fa-edit"></i>
+                          <i class="fas fa-times"></i>
+                        </div>
+                      </div>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
