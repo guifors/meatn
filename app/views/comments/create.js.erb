@@ -1,16 +1,17 @@
 function refreshForm(innerHTML) {
-  const newBookingForm = document.getElementById('new_booking');
-  newBookingForm.innerHTML = innerHTML;
+  const newCommentForm = document.getElementById('new_comment');
+  newCommentForm.innerHTML = innerHTML;
 }
 
-function addBooking(bookingHTML) {
-  const bookings = document.getElementById('bookings');
-  bookings.insertAdjacentHTML('beforeend', bookingHTML);
+function addComment(commentHTML) {
+  const comments = document.getElementById('comments');
+  comments.insertAdjacentHTML('beforeend', commentHTML);
 }
 
 <% if @comment.errors.any? %>
   refreshForm('<%= j render "comments/form", booking: @booking, comment: @comment %>');
 <% else %>
-  addComment('<%= j render "bookings/show", comment: @comment %>');
+
+  addComment('<%= j render "comments/comment", comment: @comment %>');
   refreshForm('<%= j render "comments/form", booking: @booking, comment: Comment.new %>');
 <% end %>

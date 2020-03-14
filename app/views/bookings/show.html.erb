@@ -114,23 +114,14 @@
       </div>
       <p class="border-bottom details-headline pt-5">Comments</p>
       <% if @booking.comments != nil %>
-        <% @booking.comments.each do |comment| %>
-        <div class="comment d-flex pt-3">
-          <%= cl_image_tag comment.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
-          <div class="comment-space">
-            <p class="comment-owner"><%= comment.user.name %> <%= comment.user.surname %> says:</p>
-            <p><%= comment.content %></p>
-          </div>
+        <div id="comments">
+          <% @booking.comments.each do |comment| %>
+           <%= render "comments/comment", comment: comment %>
+          <% end %>
         </div>
-        <% end %>
       <% end %>
       <div class="details mt-4">
-        <%= simple_form_for( [@booking, @comment], remote: true) do |f| %>
-          <%= f.input :content, label: false, placeholder: "Add your comment" %>
-          <div class="d-flex flex-row-reverse">
-            <%= f.submit "Add", class: "btn btn-light" %>
-          </div>
-        <% end %>
+        <%= render "comments/form", comment: @comment, booking: @booking %>
       </div>
     </div>
   </div>

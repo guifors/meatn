@@ -1,0 +1,7 @@
+<div class="comment d-flex pt-3">
+  <%= cl_image_tag comment.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
+  <div class="comment-space">
+    <p class="comment-owner"><%= comment.user.name %> <%= comment.user.surname %> says:</p>
+    <p><%= comment.content %></p>
+  </div>
+</div>
