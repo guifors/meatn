@@ -69,6 +69,11 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
+.scrollable {
+  height: 500px;
+  overflow: scroll;
+}
+
 .search-button {
   margin-top: 10px;
   text-align: center;
