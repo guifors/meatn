@@ -113,13 +113,15 @@
         <% end %>
       </div>
       <p class="border-bottom details-headline pt-5">Comments</p>
-      <% if @booking.comments != nil %>
-        <div id="comments">
-          <% @booking.comments.each do |comment| %>
-           <%= render "comments/comment", comment: comment %>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="scrollable">
+        <% if @booking.comments != nil %>
+          <div id="comments">
+            <% @booking.comments.each do |comment| %>
+             <%= render "comments/comment", comment: comment %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
       <div class="details mt-4">
         <%= render "comments/form", comment: @comment, booking: @booking %>
       </div>

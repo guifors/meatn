@@ -14,4 +14,6 @@ function addComment(commentHTML) {
 
   addComment('<%= j render "comments/comment", comment: @comment %>');
   refreshForm('<%= j render "comments/form", booking: @booking, comment: Comment.new %>');
+  scrollDiv = document.querySelector('.scrollable');
+  scrollDiv.scroll({ top: scrollDiv.scrollHeight })
 <% end %>
