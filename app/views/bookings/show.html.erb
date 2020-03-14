@@ -59,10 +59,11 @@
           <% elsif @booking.full? %>
             <div>Full</div>
           <% elsif current_user == @booking.user %>
-            <div class="signed-up-booking-button">You're the host</div>
+            <div class="signed-up-booking-button"><i class="fas fa-user-alt"></i>You are the host</div>
           <% else %>
-              <%= render "shared/modal"%>
-              <%= render 'group/form', group: Group.new, booking: @booking %>
+              <button type="button" class="btn btn-flat join-booking-button" data-toggle="modal" data-target="#firstUsers">Join this booking
+              </button>
+              <%= render "shared/modal", group: Group.new, booking: @booking %>
           <% end %>
         <% end %>
       </div>
