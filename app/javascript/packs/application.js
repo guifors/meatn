@@ -24,6 +24,6 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 
-
+// triggerSuccess();
 confirmBookingWithRestaurant();
-triggerSuccess();
+
