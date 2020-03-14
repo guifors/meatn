@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render :new }
+        format.html { render 'bookings/show' }
         format.js  # <-- idem
       end
     end
