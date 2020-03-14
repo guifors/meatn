@@ -4,16 +4,16 @@ class BookingsController < ApplicationController
 
     if params[:city].present? && params[:date].present?
 
-      @bookings = policy_scope(Booking).search_by_date(params[:date].to_date).joins(:restaurant).where("restaurants.city ILIKE ?", "%#{params[:city]}%")
+      @bookings = policy_scope(Booking).order(:title).search_by_date(params[:date].to_date).joins(:restaurant).where("restaurants.city ILIKE ?", "%#{params[:city]}%")
     elsif
       @search = params["search"]
       @food_type = @search["food_type"]
       @address = @search["address"]
       @date = @search["date"]
 
-      @bookings = policy_scope(Booking).search_by_date(@date.to_date).joins(:restaurant).where("restaurants.food_type ILIKE ?", "%#{@food_type}%").where("restaurants.address ILIKE ?", "%#{@address}%")
+      @bookings = policy_scope(Booking).order(:title).search_by_date(@date.to_date).joins(:restaurant).where("restaurants.food_type ILIKE ?", "%#{@food_type}%").where("restaurants.address ILIKE ?", "%#{@address}%")
     else
-      @bookings = policy_scope(Booking)
+      @bookings = policy_scope(Booking).order(:title)
     end
     authorize @bookings
     @markers = @bookings.map do |booking|
@@ -47,10 +47,11 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.restaurant = Restaurant.find(params[:restaurant_id])
     authorize @booking
-    if @booking.save!
+    if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new
+      flash[:alert] = "information missing"
+      redirect_to restaurant_path(params[:restaurant_id])
     end
   end
 
@@ -74,7 +75,7 @@ class BookingsController < ApplicationController
   end
 
   def bookings_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:date,:title,:description)
   end
 
   def set_booking

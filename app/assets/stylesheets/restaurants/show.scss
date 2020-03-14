@@ -28,12 +28,23 @@
   text-align: left;
   background: white;
   align: center;
-  padding: 50px;
   position: relative;
   // font-size: 24px;
   font-weight: normal;
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.info-two {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 0px;
+  padding-bottom: 30px;
+}
+
+.info-three {
+  padding: 50px;
+
 }
 
 

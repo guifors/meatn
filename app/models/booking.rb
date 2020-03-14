@@ -8,6 +8,8 @@ class Booking < ApplicationRecord
   has_many :reviews
 
   validates :date, presence: true
+  validates :title, presence: true
+  validates :description, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_date,
