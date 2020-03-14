@@ -6,10 +6,15 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.booking = @booking
     if @comment.save
-      redirect_to booking_path(@booking)
+      respond_to do |format|
+        format.html { redirect_to booking_path(@booking) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      flash[:alert] = "Something went wrong."
-      render :new
+      respond_to do |format|
+        format.html { render 'bookings/show' }
+        format.js  # <-- idem
+      end
     end
   end
 
