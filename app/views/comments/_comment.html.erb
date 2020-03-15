@@ -1,7 +1,10 @@
 <div class="comment d-flex pt-3">
   <%= cl_image_tag comment.user.photo.key, class: "ml-1 avatar-bordered-card", alt: "avatar-bordered-card" %>
   <div class="comment-space">
-    <p class="comment-owner"><%= comment.user.name %> <%= comment.user.surname %> says:</p>
+    <div class="d-flex justify-content-between pb-2">
+      <p class="comment-owner"><strong><%= comment.user.name %> <%= comment.user.surname %> </strong> says:</p>
+      <p class="comment-date"><%= comment.created_at.to_formatted_s(:short) %> </p>
+    </div>
     <p><%= comment.content %></p>
   </div>
 </div>

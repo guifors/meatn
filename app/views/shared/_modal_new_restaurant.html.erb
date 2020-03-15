@@ -1,0 +1,22 @@
+<% if booking.users.nil? %>
+  <div id="firstUsers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="firstUsersLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body-js">
+          <div class="modal-header">
+            <h4 class="modal-title" id="firstUsersLabel"><strong>You´ve joined this booking!</strong></h4>
+          </div>
+          <div class="modal-body" style="text-align: left;">
+          </div>
+        </div>
+        <div class="modal-footer modal-footer-js d-flex justify-content-around">
+          <%= simple_form_for [booking, group] do |g| %>
+            <% if booking.users.count < 3 %>
+            <%= g.submit "Got it!", class: "btn btn-flat d-flex join-booking-button", data: {toggle: "modal", target: "#firstUsers"} %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

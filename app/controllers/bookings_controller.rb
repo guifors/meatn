@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @review = Review.new
     @comment = Comment.new
-    # @pictures = fetch_pictures(set_restaurant)
+    @pictures = fetch_pictures(set_booking.restaurant) if @pictures =! nil
 
   end
 
