@@ -36,10 +36,7 @@
 }
 
 .info-two {
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 0px;
-  padding-bottom: 30px;
+  padding: 50px;
 }
 
 .info-three {
@@ -49,7 +46,7 @@
 
 
 .booking-banner {
-  height: 300px;
+  height: 350px;
   background-size: cover;
   background-position: center;
 }
@@ -66,6 +63,7 @@
 .location-text {
   text-align: left;
   font-size: 14px;
+  margin-bottom: 2px !important;
 }
 
 .time-text {
@@ -91,8 +89,8 @@
 }
 
 .small-images-restaurant {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 120px;
 }
 
 .info i {
