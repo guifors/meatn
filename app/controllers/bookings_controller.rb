@@ -65,13 +65,16 @@ class BookingsController < ApplicationController
   private
 
   def fetch_pictures(restaurant)
-    @url = "https://developers.zomato.com/api/v2.1/search?apikey=#{ENV['ZOMATO_API_KEY']}&city_id=61"
-    @restaurants_serialized = open(@url).read
-    @fetched_restaurants = JSON.parse(@restaurants_serialized)
-    @fetched_restaurant = @fetched_restaurants["restaurants"].select { |rest| rest["restaurant"]["name"] == restaurant.name }
+    begin
+      @url = "https://developers.zomato.com/api/v2.1/search?apikey=#{ENV['ZOMATO_API_KEY']}&city_id=61"
+      @restaurants_serialized = open(@url).read
+      @fetched_restaurants = JSON.parse(@restaurants_serialized)
+      @fetched_restaurant = @fetched_restaurants["restaurants"].select { |rest| rest["restaurant"]["name"] == restaurant.name }
 
-    return @fetched_restaurant.first["restaurant"]["photos"]
-
+      return @fetched_restaurant.first["restaurant"]["photos"]
+    rescue
+      return nil
+    end
   end
 
   def bookings_params

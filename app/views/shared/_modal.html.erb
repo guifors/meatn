@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-<% elsif booking.users.count > 0 %>
+<% else%>
   <div id="firstUsers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="firstUsersLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -30,7 +30,8 @@
         </div>
         <div class="modal-body" style="text-align: left;">
           <% if booking.users.nil? %>
-            <p>Congrats! You just joined this table with 1 additional user. </p>
+            <p>Congrats!</p>
+            <p> <strong> You just joined</strong> this table with 1 additional user. </p>
           <% else %>
             <p>Congrats! You just joined this table with <%= booking.users.count + 1%> other users. </p>
           <% end %>
