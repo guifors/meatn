@@ -71,7 +71,6 @@
 
 .scrollable {
   // height: 500px;
-  overflow: scroll;
 }
 
 .search-button {
@@ -96,10 +95,11 @@
 }
 
 .join-booking-button {
-  position: sticky;
-  padding-right: 50px;
-  padding-left: 50px;
-  font-size: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .details-headline {
@@ -107,12 +107,16 @@
 }
 
 .attendee-key-info {
-  display: flex;
+  display: flex !important;
 }
 
 .avatar-expanded {
   width: 50px;
   height: 50px;
+}
+
+.attendee-short-details {
+  margin-top: 20px;
 }
 
 .attendee-short-details {
@@ -122,7 +126,6 @@
     padding-bottom: 0px;
     padding-top: 0 px;
     margin-bottom: 0px;
-    margin-top: 20px;
     padding-left: 20px;
     margin-left: 40px;
   }
@@ -196,7 +199,7 @@
   border-radius: 4px;
   padding: 9px;
   position: relative;
-  top: 130px;
+  top: 215px;
 
   a {
   padding-top: 5px;
@@ -213,6 +216,37 @@
 
   }
 }
+
+
+.check-my-bookings-up {
+  background-color: white;
+  color: $light-gray;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  padding: 9px;
+  position: relative;
+  top: 150px;
+
+  a {
+  padding-top: 5px;
+  font-size: 16px;
+  color: $light-gray;
+  text-decoration: none;
+  }
+}
+
+.check-my-bookings-up:hover {
+
+  a {
+  color: $gray;
+
+  }
+}
+
+
+
 
 .btn-add {
   margin-left: 10px;

@@ -21,6 +21,7 @@
     text-align: center;
     margin-top: 0px;
     font-weight: lighter;
+    font-size: 20px;
   }
 }
 
@@ -43,6 +44,11 @@
 
 .hiw-item {
   text-align: center;
+  padding: 5px 20px;
+
+  p {
+    font-size: 17px;
+  }
 }
 // Specific CSS for your home-page
 
