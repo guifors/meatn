@@ -16,7 +16,7 @@
   p {
     padding-left: 10px;
     position: relative;
-    top: 10px;
+    top: 20px;
   }
 }
 
@@ -34,10 +34,19 @@
   font-size: 14px;
   font-weight: bold;
   color: $gray;
+  margin-bottom: 2px;
+}
+
+.title-text {
+  font-size: 13px;
+  text-align: justify;
+  font-weight: lighter;
+  color: $gray;
 }
 
 .footer-links-attendees {
    a {
+    font-size: 18px;
     color: $green !important;
     padding-left: 0px !important;
   }

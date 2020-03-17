@@ -1,0 +1,61 @@
+<!-- Modal -->
+<div class="modal fade" id="allAttendees_<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="allAttendeesTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      <div class="first-user">
+          <div class="attendee-details d-flex">
+            <% if booking.user.photo.attached? %>
+            <%= cl_image_tag booking.user.photo.key, class: "ml-1 avatar-bordered-card-all-attendees", alt: "avatar-bordered-card-all-attendees" %>
+            <% end %>
+            <div>
+              <p class="attendee-name"> <%= booking.user.name %> <%= booking.user.surname %> </p>
+              <p class="attendee-age-location"> <%= booking.user.age %>, from <%= booking.user.location %> </p>
+            </div>
+          </div>
+          <div class="attendee-other-info pl-2">
+            <p class="title pt-1">Bio</p>
+            <p class="title-text pt-1"> <%= booking.user.bio %></p>
+            <p class="title">Interests</p>
+            <p class="title-text pt-1"> <%= booking.user.interests %></p>
+            <p class="title">Social media</p>
+            <div class="footer-links footer-links-attendees border-bottom pb-3 mb-3">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="other-users">
+          <% if booking.users.present? %>
+            <% booking.users.each do |attendee| %>
+              <div class="attendee-details d-flex">
+                <% if attendee.photo.attached? %>
+                  <%= cl_image_tag attendee.photo.key, class: "ml-1 avatar-bordered-card-all-attendees", alt: "avatar-bordered-card-all-attendees" %>
+                <% end %>
+                <div>
+                  <p class="attendee-name"> <%= attendee.name %> <%= attendee.surname %> </p>
+                  <p class="attendee-age-location"> <%= attendee.age %>, from <%= attendee.location %> </p>
+                </div>
+              </div>
+              <div class="attendee-other-info pl-2">
+                <p class="title pt-1">Bio</p>
+                <p class="title-text pt-1"> <%= attendee.bio %></p>
+                <p class="title">Interests</p>
+                <p class="title-text pt-1"> <%= attendee.interests %></p>
+                <p class="title">Social media</p>
+                <div class="footer-links footer-links-attendees border-bottom pb-3 mb-3">
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

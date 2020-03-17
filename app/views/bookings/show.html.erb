@@ -1,20 +1,19 @@
 
 <div class="booking-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= @restaurant.image_url %>')">
-  <% if current_user.groups.find_by(booking: @booking) %>
+  <% if @booking.full? %>
+    <div class="booking-button-two">
+      <div class="signed-up-booking-button">Booking is confirmed with the restaurant <i class="fas fa-info-circle"></i>. Have fun!</div>
+    </div>
+    <div class="container d-flex flex-row-reverse pr-0">
+      <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings-up" %>
+    </div>
+  <% elsif current_user.groups.find_by(booking: @booking) %>
     <div class="booking-button-two">
       <div class="signed-up-booking-button">You are attending this booking -waiting for others to join  <i class="fas fa-info-circle"></i></div>
     </div>
     <div class="container d-flex flex-row-reverse pr-0">
       <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings-up" %>
     </div>
-  <% elsif @booking.full? %>
-    <div class="booking-button-two">
-      <div class="confirmed-booking-button">Booking is confirmed with the restaurant. Have fun!<i class="fas fa-info-circle"></i></div>
-    </div>
-    <div class="container d-flex flex-row-reverse pr-0">
-      <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings-up" %>
-    </div>
-    <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings-up" %>
   <% elsif current_user == @booking.user %>
     <div class="booking-button-two">
       <div class="signed-up-booking-button">You're the host -waiting for others to join <i class="fas fa-info-circle"></i></div>
@@ -23,8 +22,7 @@
       <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings-up" %>
     </div>
     <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings-up" %>
-  <% end %>
-  <% if current_user.bookings.present? %>
+  <% elsif current_user.bookings.present? %>
     <div class="container d-flex flex-row-reverse pr-0">
       <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings" %>
     </div>
@@ -132,7 +130,7 @@
         <% unless current_user.groups.find_by(booking: @booking) || @booking.full? || current_user == @booking.user %>
           <div class="border-bottom mt-4"></div>
           <div class="d-flex justify-content-around">
-            <button type="button" class="btn btn-flat join-booking-button" data-toggle="modal" data-target="#firstUsers">Join this booking
+            <button type="button" class="btn btn-flat join-booking-button" data-toggle="modal" data-target="#firstUsers" data-backdrop="static" data-keyboard="false">Join this booking
             </button>
           </div>
         <% end %>

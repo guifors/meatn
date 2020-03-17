@@ -6,15 +6,20 @@
       <div class="modal-content">
         <div class="modal-body-js">
           <div class="modal-header">
-            <h4 class="modal-title" id="firstUsersLabel"><strong>You´ve joined this booking!</strong></h4>
+            <h4 class="modal-title" id="firstUsersLabel"><strong>You are joining this table!</strong></h4>
           </div>
-          <div class="modal-body" style="text-align: left;">
+          <div class="modal-body" style="text-align: justify;">
+              <p>Congrats! <strong>You are joining</strong> this table with 3 other users. </p>
+              <p class="pb-0"> <strong>What's next?</strong></p>
+              <p class="pt-0"> Since there is a total of 4 users attending, we have confirmed the booking with the restaurant.
+              </p>
+              <p> <strong>Have fun!</strong></p>
           </div>
         </div>
         <div class="modal-footer modal-footer-js d-flex justify-content-around">
           <%= simple_form_for [booking, group] do |g| %>
             <% if booking.users.count < 3 %>
-            <%= g.submit "Got it!", class: "btn btn-flat d-flex join-booking-button", data: {toggle: "modal", target: "#firstUsers"} %>
+            <%= g.submit "Got it!", class: "btn btn-flat d-flex join-booking-button button-js", data: {toggle: "modal", target: "#firstUsers"} %>
             <% end %>
           <% end %>
         </div>
@@ -26,19 +31,19 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="firstUsersLabel"><strong>You´ve joined this booking!</strong></h4>
+          <h4 class="modal-title" id="firstUsersLabel"><strong>You are joining this table!</strong></h4>
         </div>
-        <div class="modal-body" style="text-align: left;">
+        <div class="modal-body" style="text-align: justify;">
           <% if booking.users.nil? %>
             <p>Congrats!</p>
-            <p> <strong> You just joined</strong> this table with 1 additional user. </p>
+            <p> <strong> You are joining</strong> this table with 1 additional user. </p>
           <% else %>
-            <p>Congrats! You just joined this table with <%= booking.users.count + 1%> other users. </p>
+            <p>Congrats! <strong>You are joining</strong> this table with <%= booking.users.count + 1%> other users. </p>
           <% end %>
           <p class="pb-0"> <strong>What's next?</strong></p>
           <p class="pt-0"> As soon as a total of 4 users join, you will get notified and the booking will get confirmed with the restaurant.
           </p>
-          <p>Stay tuned!</p>
+          <p> <strong>Stay tuned!</strong></p>
         </div>
         <div class="modal-footer d-flex justify-content-around">
           <%= simple_form_for [booking, group] do |g| %>
