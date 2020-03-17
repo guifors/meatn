@@ -16,6 +16,7 @@ require 'open-uri'
 # Make THE booking you will use for the demo
 
 
+Group.destroy_all
 Booking.destroy_all
 User.destroy_all
 Restaurant.destroy_all
