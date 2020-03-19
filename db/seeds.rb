@@ -15,7 +15,6 @@ require 'open-uri'
 # Make sure you dont generate bookings with 4 Users
 # Make THE booking you will use for the demo
 
-
 Booking.destroy_all
 User.destroy_all
 Restaurant.destroy_all
@@ -192,72 +191,72 @@ puts "creating some bookings"
 
 # Other bookings past
 
-Booking.create(title:"Aussies of London", date:Faker::Time.between_dates(from: DateTime.now - 4, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant_id: 2, user_id: 1, description: Faker::TvShows::RuPaul.quote)
+b_1 = Booking.create!(title:"Aussies of London", date:Faker::Time.between_dates(from: DateTime.now - 4, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[1], user: User.all[0], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now - 5, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant_id: 3, user_id: 1, description: Faker::TvShows::RuPaul.quote)
+b_2 = Booking.create!(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now - 5, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[2], user: User.all[0], description: Faker::TvShows::RuPaul.quote)
 
 # Booking demo (today)
-Booking.create(
+b_3 = Booking.create!(
   title: "Arrived in London!",
   date:Faker::Time.between_dates(from: DateTime.now , to: DateTime.now, period: :evening).beginning_of_hour,
-  restaurant_id: 1,
-  user_id: 3,
+  restaurant: Restaurant.all[0],
+  user: User.all[2],
   description: "Hey guys! Just arrived in London, look forward to meeting other fun people while enjoying what seems to be an amazing place for dinner!"
   )
 
 # Other bookings today
 
-Booking.create(title:"Movie lovers", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant_id: 4, user_id: 3, description: Faker::TvShows::RuPaul.quote)
+ b_4 = Booking.create!(title:"Movie lovers", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[3], user: User.all[2], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Expats club", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant_id: 5, user_id: 4, description: Faker::TvShows::RuPaul.quote)
+b_5 = Booking.create!(title:"Expats club", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[4], user: User.all[3], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant_id: 6, user_id: 5, description: Faker::TvShows::RuPaul.quote)
+b_6 = Booking.create!(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[5], user: User.all[4], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Bookworms of the east", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 7, user_id: 6, description: Faker::TvShows::RuPaul.quote)
+b_7 = Booking.create!(title:"Bookworms of the east", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[6], user: User.all[5], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Cat lovers", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 8, user_id: 7, description: Faker::TvShows::RuPaul.quote)
+b_8 = Booking.create!(title:"Cat lovers", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[7], user: User.all[6], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Cheese Aficionados", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 9, user_id: 8, description: Faker::TvShows::RuPaul.quote)
+b_9 = Booking.create!(title:"Cheese Aficionados", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[8], user: User.all[7], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 9, description: Faker::TvShows::RuPaul.quote)
+b_10 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[9], user: User.all[8], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 22, description: Faker::TvShows::RuPaul.quote)
+b_11 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[10], user: User.all[21], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 23, description: Faker::TvShows::RuPaul.quote)
+b_12 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[11], user: User.all[22], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 24, description: Faker::TvShows::RuPaul.quote)
+b_13 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[12], user: User.all[23], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant_id: 10, user_id: 25, description: Faker::TvShows::RuPaul.quote)
+b_14 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[13], user: User.all[24], description: Faker::TvShows::RuPaul.quote)
 
 
 
 # Other bookings tomorrow
 
-Booking.create(title:"Peterborough Poker Sharks", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant_id: 11, user_id: 3, description: Faker::TvShows::RuPaul.quote)
+b_15 = Booking.create!(title:"Peterborough Poker Sharks", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant: Restaurant.all[14], user: User.all[2], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Hoxton Marathon Runners", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant_id: 12, user_id: 4, description: Faker::TvShows::RuPaul.quote)
+b_16 = Booking.create!(title:"Hoxton Marathon Runners", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant: Restaurant.all[15], user: User.all[3], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Richmond Expats", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant_id: 13, user_id: 5, description: Faker::TvShows::RuPaul.quote)
+b_17 = Booking.create!(title:"Richmond Expats", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant: Restaurant.all[16], user: User.all[4], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"London Bowlers", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant_id: 14, user_id: 6, description: Faker::TvShows::RuPaul.quote)
+b_18 = Booking.create!(title:"London Bowlers", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant: Restaurant.all[17], user: User.all[5], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Motor Bikers", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant_id: 15, user_id: 7, description: Faker::TvShows::RuPaul.quote)
+b_19 = Booking.create!(title:"Motor Bikers", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant: Restaurant.all[18], user: User.all[6], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Stay at home Dads", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant_id: 16, user_id: 8, description: Faker::TvShows::RuPaul.quote)
+b_20 = Booking.create!(title:"Stay at home Dads", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :evening).beginning_of_hour, restaurant: Restaurant.all[19], user: User.all[7], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Scotish Teachers", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :afternoon).beginning_of_hour, restaurant_id: 17, user_id: 9, description: Faker::TvShows::RuPaul.quote)
+b_21 = Booking.create!(title:"Scotish Teachers", date:Faker::Time.between_dates(from: DateTime.now + 1, to: DateTime.now + 1, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[20], user: User.all[8], description: Faker::TvShows::RuPaul.quote)
 
 # Other bookings day after tomorrow
 
-Booking.create(title:"Tube Travelers", date:Faker::Time.between_dates(from: DateTime.now + 2, to: DateTime.now + 2, period: :afternoon).beginning_of_hour, restaurant_id: 18, user_id: 3, description: Faker::TvShows::RuPaul.quote)
+b_22 = Booking.create!(title:"Tube Travelers", date:Faker::Time.between_dates(from: DateTime.now + 2, to: DateTime.now + 2, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[21], user: User.all[2], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Star Wars Fans", date:Faker::Time.between_dates(from: DateTime.now + 2, to: DateTime.now + 2, period: :afternoon).beginning_of_hour, restaurant_id: 19, user_id: 4, description: Faker::TvShows::RuPaul.quote)
+b_23 = Booking.create!(title:"Star Wars Fans", date:Faker::Time.between_dates(from: DateTime.now + 2, to: DateTime.now + 2, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[22], user: User.all[3], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title:"Fin Tech Friends", date:Faker::Time.between_dates(from: DateTime.now + 2, to: DateTime.now + 2, period: :afternoon).beginning_of_hour, restaurant_id: 20, user_id: 5, description: Faker::TvShows::RuPaul.quote)
+b_24 = Booking.create!(title:"Fin Tech Friends", date:Faker::Time.between_dates(from: DateTime.now + 2, to: DateTime.now + 2, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[23], user: User.all[4], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title: "London Ledgends", date: Faker::Time.between_dates(from: DateTime.now + 2, to: Date.today + 2, period: :afternoon).beginning_of_hour, restaurant_id: 21, user_id: 6, description: Faker::TvShows::RuPaul.quote)
+b_25 = Booking.create!(title: "London Ledgends", date: Faker::Time.between_dates(from: DateTime.now + 2, to: Date.today + 2, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[24], user: User.all[5], description: Faker::TvShows::RuPaul.quote)
 
-Booking.create(title: "Dog Walkers", date: Faker::Time.between_dates(from: DateTime.now + 2, to: Date.today + 2, period: :afternoon).beginning_of_hour, restaurant_id: 22, user_id: 7, description: Faker::TvShows::RuPaul.quote)
+b_26 = Booking.create!(title: "Dog Walkers", date: Faker::Time.between_dates(from: DateTime.now + 2, to: Date.today + 2, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[25], user: User.all[6], description: Faker::TvShows::RuPaul.quote)
 
 
 
@@ -280,113 +279,75 @@ Booking.create(title: "Dog Walkers", date: Faker::Time.between_dates(from: DateT
 
 # Groups today and past
 
-Group.create(booking_id:1 , user_id:10 )
-Group.create(booking_id:1 , user_id:11 )
-Group.create(booking_id:1 , user_id:28 )
+Group.create!(booking: b_1, user: User.all[9])
+Group.create!(booking: b_1, user: User.all[10])
+Group.create!(booking: b_1, user: User.all[27])
 
-Group.create(booking_id:2 , user_id:25 )
-Group.create(booking_id:2 , user_id:26 )
-Group.create(booking_id:2 , user_id:27 )
+Group.create!(booking: b_2, user: User.all[24])
+Group.create!(booking: b_2, user: User.all[25])
+Group.create!(booking: b_1, user: User.all[26])
 
 # demo booking
-Group.create(booking_id:3, user_id:15)
+Group.create!(booking: b_3, user: User.all[14])
 
 # bookings today
 
-Group.create(booking_id:4 , user_id:16 )
+Group.create!(booking: b_4, user: User.all[15])
 
-Group.create(booking_id:5 , user_id:17 )
+Group.create!(booking: b_5, user: User.all[16])
 
-Group.create(booking_id:6 , user_id:18 )
-Group.create(booking_id:6 , user_id:19 )
+Group.create!(booking: b_6, user: User.all[17])
+Group.create!(booking: b_6, user: User.all[18])
 
-Group.create(booking_id:7 , user_id:20 )
-Group.create(booking_id:7 , user_id:21 )
+Group.create!(booking: b_6, user: User.all[19])
+Group.create!(booking: b_7, user: User.all[20])
 
-Group.create(booking_id:8 , user_id:22 )
-Group.create(booking_id:8 , user_id:23 )
+Group.create!(booking: b_8, user: User.all[21])
+Group.create!(booking: b_8, user: User.all[22])
 
-Group.create(booking_id:9 , user_id:24 )
-Group.create(booking_id:9 , user_id:25 )
+Group.create!(booking: b_9, user: User.all[23])
+Group.create!(booking: b_9, user: User.all[24])
 
-Group.create(booking_id:10 , user_id:26)
-Group.create(booking_id:10 , user_id:27)
+Group.create!(booking: b_10, user: User.all[25])
+Group.create!(booking: b_10, user: User.all[26])
 
-Group.create(booking_id:11 , user_id:28)
+Group.create!(booking: b_11, user: User.all[27])
 
-Group.create(booking_id:12 , user_id:29)
+Group.create!(booking: b_12, user: User.all[28])
 
-Group.create(booking_id:13 , user_id:15)
+Group.create!(booking: b_13, user: User.all[14])
 
-Group.create(booking_id:14 , user_id:14)
+Group.create!(booking: b_14, user: User.all[15])
 
 
 # Groups tomorrow and future
 
-Group.create(booking_id:15 , user_id:27 )
-Group.create(booking_id:15 , user_id:28 )
+Group.create!(booking: b_15, user: User.all[26])
+Group.create!(booking: b_15, user: User.all[27])
 
-Group.create(booking_id:16 , user_id:25 )
-Group.create(booking_id:16, user_id:26 )
+Group.create!(booking: b_16, user: User.all[24])
+Group.create!(booking: b_16, user: User.all[25])
 
-Group.create(booking_id:17, user_id:18 )
-Group.create(booking_id:17, user_id:19 )
+Group.create!(booking: b_17, user: User.all[17])
+Group.create!(booking: b_17, user: User.all[18])
 
-Group.create(booking_id:20 , user_id:15 )
+Group.create!(booking: b_20, user: User.all[14])
 
-Group.create(booking_id:21 , user_id:16 )
-Group.create(booking_id:21 , user_id:17 )
+Group.create!(booking: b_21, user: User.all[15])
+Group.create!(booking: b_21, user: User.all[16])
 
-Group.create(booking_id:23 , user_id:21 )
-Group.create(booking_id:23 , user_id:22 )
+Group.create!(booking: b_23, user: User.all[20])
+Group.create!(booking: b_23, user: User.all[21])
 
-Group.create(booking_id:24 , user_id:23)
-Group.create(booking_id:24 , user_id:24)
+Group.create!(booking: b_24, user: User.all[22])
+Group.create!(booking: b_24, user: User.all[23])
 
-Group.create(booking_id:25 , user_id:25)
+Group.create!(booking: b_25, user: User.all[24])
 
-Group.create(booking_id:26 , user_id:26)
-
-
+Group.create!(booking: b_26, user: User.all[25])
 
 
-# Group.create(booking_id:3 , user_id:1 )
 
-# Group.create(booking_id:8 , user_id:3 )
-
-# Group.create(booking_id:15 , user_id:4 )
-
-# Group.create(booking_id:17 , user_id:5 )
-
-# Group.create(booking_id:5 , user_id:5 )
-
-# Group.create(booking_id:6 , user_id:4 )
-
-# Group.create(booking_id:7 , user_id:2 )
-
-# Group.create(booking_id:8 , user_id:3 )
-
-# Group.create(booking_id:9 , user_id:3 )
-
-# Group.create(booking_id:10 , user_id:4 )
-
-# Group.create(booking_id:11 , user_id:5 )
-
-# Group.create(booking_id:12 , user_id:3 )
-
-# Group.create(booking_id:13 , user_id:3 )
-
-# Group.create(booking_id:14 , user_id:5 )
-
-# Group.create(booking_id:15 , user_id:5 )
-
-# Group.create(booking_id:16 , user_id:4 )
-
-# Group.create(booking_id:17 , user_id:4 )
-
-# Group.create(booking_id:18 , user_id:3 )
-
-# Group.create(booking_id:18 , user_id:5 )
 
 
 
