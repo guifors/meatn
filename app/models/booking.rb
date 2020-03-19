@@ -1,9 +1,9 @@
 class Booking < ApplicationRecord
   belongs_to :restaurant
   belongs_to :user
-  has_many :groups
+  has_many :groups, dependent: :destroy
   has_many :users, through: :groups
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   has_many :reviews
 
