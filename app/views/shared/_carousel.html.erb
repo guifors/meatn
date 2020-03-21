@@ -13,7 +13,8 @@
                   <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
                   <div class="card-trip-infos">
                     <div>
-                      <h2><%= booking.restaurant.name %></h2>
+                      <h5><%= booking.title %></h5>
+                      <p><strong><%= booking.restaurant.name %></strong></p>
                       <p><%= booking.restaurant.food_type %>
                       <% if booking.restaurant.price == 1 %>
                          · $</p>
@@ -24,7 +25,7 @@
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
                 </div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between mt-2">
                       <p>
                         <% blank_stars = 5 - booking.restaurant.user_rating %>
                           <% booking.restaurant.user_rating.times do  %>
@@ -65,7 +66,8 @@
                   <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
                   <div class="card-trip-infos">
                     <div>
-                      <h2><%= booking.restaurant.name %></h2>
+                      <h5><%= booking.title %></h5>
+                      <p><strong><%= booking.restaurant.name %></strong></p>
                       <p><%= booking.restaurant.food_type %>
                       <% if booking.restaurant.price == 1 %>
                          · $</p>
@@ -76,7 +78,7 @@
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
                 </div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between mt-2">
                       <p>
                         <% blank_stars = 5 - booking.restaurant.user_rating %>
                           <% booking.restaurant.user_rating.times do  %>
@@ -140,7 +142,8 @@
                   <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
                   <div class="card-trip-infos">
                     <div>
-                      <h2><%= booking.restaurant.name %></h2>
+                      <h5><%= booking.title %></h5>
+                      <p><strong><%= booking.restaurant.name %></strong></p>
                       <p><%= booking.restaurant.food_type %>
                       <% if booking.restaurant.price == 1 %>
                          · $</p>
@@ -151,7 +154,7 @@
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
                 </div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between mt-2">
                       <p>
                         <% blank_stars = 5 - booking.restaurant.user_rating %>
                           <% booking.restaurant.user_rating.times do  %>
@@ -192,7 +195,8 @@
                   <img class="carousel-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= booking.restaurant.image_url %>')" />
                   <div class="card-trip-infos">
                     <div>
-                      <h2><%= booking.restaurant.name %></h2>
+                      <h5><%= booking.title %></h5>
+                      <p><strong><%= booking.restaurant.name %></strong></p>
                       <p><%= booking.restaurant.food_type %>
                       <% if booking.restaurant.price == 1 %>
                          · $</p>
@@ -203,7 +207,7 @@
                       <% end %>
                         <p><%= booking.restaurant.short_address %></p>
                 </div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between mt-2">
                       <p>
                         <% blank_stars = 5 - booking.restaurant.user_rating %>
                           <% booking.restaurant.user_rating.times do  %>
