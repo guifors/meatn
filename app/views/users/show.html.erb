@@ -35,7 +35,8 @@
     <div class="dahsboard-picture">
       <%= cl_image_tag current_user.photo.key, class: "avatar-bordered-card-all-attendees profile-pic" %>
     <div class="edit-my-profile">
-      <i class="fas fa-edit"><%= link_to "Edit my profile", edit_user_registration_path %></i>
+      <i class="fas fa-edit"></i>
+      <%= link_to "Edit my profile", edit_user_registration_path %>
     </div>
     </div>
   </div>
