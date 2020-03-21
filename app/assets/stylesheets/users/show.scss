@@ -39,6 +39,7 @@
 }
 
 .text-user-profile {
+  padding-right: 50px;
   color: #9C9C9C;
   font-size: 15px !important;
   font-weight: lighter !important;
@@ -108,10 +109,8 @@
 }
 
 .edit-my-profile {
-  position: relative;
+  text-align: center;
   font-size: 14px;
-  top: 60px;
-  left: 150px;
   a {
     text-decoration: none;
     color: $gray;

@@ -27,9 +27,6 @@
             <p>Bio</p>
             <p class="text-user-profile"><%= current_user.bio %></p>
           </div>
-          <div class="edit-my-profile">
-            <i class="fas fa-edit"><%= link_to "Edit my profile", edit_user_registration_path %></i>
-          </div>
         </div>
         <p>Interests</p>
         <p class="text-user-profile"><%= current_user.interests %></p>
@@ -37,6 +34,9 @@
     </div>
     <div class="dahsboard-picture">
       <%= cl_image_tag current_user.photo.key, class: "avatar-bordered-card-all-attendees profile-pic" %>
+    <div class="edit-my-profile">
+      <i class="fas fa-edit"><%= link_to "Edit my profile", edit_user_registration_path %></i>
+    </div>
     </div>
   </div>
   <div class="all-bookings">
