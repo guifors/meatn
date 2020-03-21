@@ -60,11 +60,13 @@ puts "Restaurants created"
 
 
 user_photos = [
+  'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1584777991/GF_dwhnug.jpg',
+  'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1584778056/Screenshot_2020-03-21_at_08.07.14_dg6avk.png',
   'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581176970/nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg',
+'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581177724/sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg',
   'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581176969/ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg',
 'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581176969/ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg',
 'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581176968/luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg',
-'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1600,h_1600,c_crop,g_face,r_max/w_400/v1581177724/sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg',
 'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1583862918/caleb-lucas-6rRuAqtWt60-unsplash_m1thvm.jpg',
 'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1583862923/masha-rostovskaya-yVNsYeGsZfs-unsplash_pzwpnf.jpg',
 'https://res.cloudinary.com/ddhmqwylk/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1583862860/svetlana-pochatun-ADO--iIOczk-unsplash_yltdp3.jpg',
@@ -93,7 +95,14 @@ user_photos = [
 ]
 
 
-user_filenames = ['nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg', 'ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg', 'ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg', 'luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg', 'sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg',
+user_filenames = [
+  'GF_dwhnug.jpg',
+  'Screenshot_2020-03-21_at_08.07.14_dg6avk.png',
+  'nicolas-horn-MTZTGvDsHFY-unsplash_xpfqge.jpg',
+  'sarah-brown-tTdC88_6a_I-unsplash_wkvvpl.jpg',
+  'ben-parker-NohB3FJSY90-unsplash_bgq5zz.jpg',
+  'ben-parker-OhKElOkQ3RE-unsplash_cbbhi5.jpg',
+  'luis-villasmil-6qf1uljGpU4-unsplash_xvyzar.jpg',
   'caleb-lucas-6rRuAqtWt60-unsplash_m1thvm.jpg',
   'masha-rostovskaya-yVNsYeGsZfs-unsplash_pzwpnf.jpg',
   'svetlana-pochatun-ADO--iIOczk-unsplash_yltdp3.jpg',
@@ -152,26 +161,40 @@ user_emails = [
 'kelly@kelly.com',
 'sergio@sergio.com',
 'additional@additional.com',
-'additionalbis@additionalbis.com' ]
+'additionalbis@additionalbis.com',
+'additionalbisbis@additionalbisbis.com',
+'additionalbisbis@additionalbisbis.com' ]
 
 
 puts "creating some Users"
 
-
+# Users for demo
 
 user_one_file = URI.open("#{user_photos[0]}")
-  user_one = User.new(email: "#{user_emails[0]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34), location: Faker::Nation.capital_city)
+  user_one = User.new(email: "#{user_emails[0]}", password: '123456', name: "Guillermo", surname: "Forteza", bio: "Currently working as part of the Corporate Innovation unit of a large multinational in the mobility industry. Big fan of brunch and trying out the many cafes in Richmond. Just moved to London from Spain", interests: "Innovation, Sport Cars and good coffee", age: "33", location: "Valencia")
   user_one.photo.attach(io: user_one_file, filename: "#{user_filenames[0]}", content_type: 'image/jpg')
   user_one.save!
 
 user_two_file = URI.open("#{user_photos[1]}")
-  user_two = User.new(email: "#{user_emails[1]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34), location: Faker::Nation.capital_city)
+  user_two = User.new(email: "#{user_emails[1]}", password: '123456', name: "Tom", surname: "Hudson", bio: "I’m an innovation and digital strategy consultant for a tech company. The highlight of my week is on the weekend when I’m going for a long bike ride. Just moved to London and keen to know some good cycle routes.", interests: "Tech for good, cycling and foraging for mushrooms.", age: "30", location: "Bristol")
   user_two.photo.attach(io: user_two_file, filename: "#{user_filenames[1]}", content_type: 'image/jpg')
   user_two.save!
 
-counter = 2
+  user_two_file = URI.open("#{user_photos[2]}")
+  user_two = User.new(email: "#{user_emails[2]}", password: '123456', name: "Marco", surname: "Rigamonti", bio: "Hi I’m Italian and I’ve been living in Manchester for the last 3 years. I’ve just moved down to London to join a tech-ed company, I use to work in the hospitality sector but decided to change careers a few years ago. I now work as a developer and love it!", interests: "Football, 80’s Rap and Italian food", age: "28", location: "Rome")
+  user_two.photo.attach(io: user_two_file, filename: "#{user_filenames[1]}", content_type: 'image/jpg')
+  user_two.save!
 
-27.times do
+  user_two_file = URI.open("#{user_photos[3]}")
+  user_two = User.new(email: "#{user_emails[3]}", password: '123456', name: "Julia", surname: "Roberts", bio: "Hi! I work in the movies industry in marketing and communication. I’ve recently moved to London from LA - bring back the sunshine! Currently honing my tech skills in order to explore new career paths.", interests: "Indie Films, Travel and brunchIndie Films, Travel and brunch", age: "32", location: "Los Angeles")
+  user_two.photo.attach(io: user_two_file, filename: "#{user_filenames[1]}", content_type: 'image/jpg')
+  user_two.save!
+
+# Other users
+
+counter = 4
+
+25.times do
   user_file = URI.open("#{user_photos[counter]}")
   user = User.new(email: "#{user_emails[counter]}", password: '123456', name: Faker::Name.first_name, surname: Faker::Name.last_name, bio: Faker::Movies::HitchhikersGuideToTheGalaxy.marvin_quote, interests: Faker::TvShows::StrangerThings.quote, age: rand(23..34), location: Faker::Nation.capital_city)
   user.photo.attach(io: user_file, filename: "#{user_filenames[counter]}", content_type: 'image/jpg')
@@ -201,30 +224,30 @@ b_3 = Booking.create!(
   date:Faker::Time.between_dates(from: DateTime.now , to: DateTime.now, period: :evening).beginning_of_hour,
   restaurant: Restaurant.all[0],
   user: User.all[2],
-  description: "Hey guys! Just arrived in London, look forward to meeting other fun people while enjoying what seems to be an amazing place for dinner!"
+  description: "Hey guys! Recently arrived in London, look forward to meeting other fun people while enjoying what seems to be an amazing place for dinner!"
   )
 
 # Other bookings today
 
- b_4 = Booking.create!(title:"Movie lovers", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[3], user: User.all[2], description: Faker::TvShows::RuPaul.quote)
+ b_4 = Booking.create!(title:"Movie lovers", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[3], user: User.all[4], description: Faker::TvShows::RuPaul.quote)
 
-b_5 = Booking.create!(title:"Expats club", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[4], user: User.all[3], description: Faker::TvShows::RuPaul.quote)
+b_5 = Booking.create!(title:"Expats club", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[4], user: User.all[5], description: Faker::TvShows::RuPaul.quote)
 
-b_6 = Booking.create!(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[5], user: User.all[4], description: Faker::TvShows::RuPaul.quote)
+b_6 = Booking.create!(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all[5], user: User.all[6], description: Faker::TvShows::RuPaul.quote)
 
-b_7 = Booking.create!(title:"Bookworms of the east", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[6], user: User.all[5], description: Faker::TvShows::RuPaul.quote)
+b_7 = Booking.create!(title:"Bookworms of the east", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[6], user: User.all[7], description: Faker::TvShows::RuPaul.quote)
 
 b_8 = Booking.create!(title:"Cat lovers", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[7], user: User.all[6], description: Faker::TvShows::RuPaul.quote)
 
-b_9 = Booking.create!(title:"Cheese Aficionados", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[8], user: User.all[7], description: Faker::TvShows::RuPaul.quote)
+b_9 = Booking.create!(title:"Cheese Aficionados", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[8], user: User.all[8], description: Faker::TvShows::RuPaul.quote)
 
-b_10 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[9], user: User.all[8], description: Faker::TvShows::RuPaul.quote)
+b_10 = Booking.create!(title:"Runners", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[9], user: User.all[9], description: Faker::TvShows::RuPaul.quote)
 
-b_11 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[10], user: User.all[21], description: Faker::TvShows::RuPaul.quote)
+b_11 = Booking.create!(title:"Globe trotters", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[10], user: User.all[21], description: Faker::TvShows::RuPaul.quote)
 
-b_12 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[11], user: User.all[22], description: Faker::TvShows::RuPaul.quote)
+b_12 = Booking.create!(title:"Russians in London", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[11], user: User.all[22], description: Faker::TvShows::RuPaul.quote)
 
-b_13 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[12], user: User.all[23], description: Faker::TvShows::RuPaul.quote)
+b_13 = Booking.create!(title:"Foodies", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[12], user: User.all[23], description: Faker::TvShows::RuPaul.quote)
 
 b_14 = Booking.create!(title:"Made a Moko", date:Faker::Time.between_dates(from: DateTime.now, to: DateTime.now, period: :evening).beginning_of_hour, restaurant: Restaurant.all[13], user: User.all[24], description: Faker::TvShows::RuPaul.quote)
 
@@ -285,10 +308,10 @@ Group.create!(booking: b_1, user: User.all[27])
 
 Group.create!(booking: b_2, user: User.all[24])
 Group.create!(booking: b_2, user: User.all[25])
-Group.create!(booking: b_1, user: User.all[26])
+Group.create!(booking: b_2, user: User.all[26])
 
 # demo booking
-Group.create!(booking: b_3, user: User.all[14])
+Group.create!(booking: b_3, user: User.all[3])
 
 # bookings today
 
