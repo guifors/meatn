@@ -186,7 +186,7 @@ user_two_file = URI.open("#{user_photos[1]}")
   user_two.save!
 
   user_two_file = URI.open("#{user_photos[3]}")
-  user_two = User.new(email: "#{user_emails[3]}", password: '123456', name: "Julia", surname: "Roberts", bio: "Hi! I work in the movies industry in marketing and communication. I’ve recently moved to London from LA - bring back the sunshine! Currently honing my tech skills in order to explore new career paths.", interests: "Indie Films, Travel and brunchIndie Films, Travel and brunch", age: "32", location: "Los Angeles")
+  user_two = User.new(email: "#{user_emails[3]}", password: '123456', name: "Julia", surname: "Roberts", bio: "Hi! I work in the movies industry in marketing and communication. I’ve recently moved to London from LA - bring back the sunshine! Currently honing my tech skills in order to explore new career paths.", interests: "Indie Films, Travel and brunch", age: "32", location: "Los Angeles")
   user_two.photo.attach(io: user_two_file, filename: "#{user_filenames[1]}", content_type: 'image/jpg')
   user_two.save!
 
@@ -328,19 +328,15 @@ Group.create!(booking: b_7, user: User.all.order("id ASC")[20])
 Group.create!(booking: b_8, user: User.all.order("id ASC")[21])
 Group.create!(booking: b_8, user: User.all.order("id ASC")[22])
 
-Group.create!(booking: b_9, user: User.all.order("id ASC")[23])
 Group.create!(booking: b_9, user: User.all.order("id ASC")[24])
 
 Group.create!(booking: b_10, user: User.all.order("id ASC")[25])
 Group.create!(booking: b_10, user: User.all.order("id ASC")[26])
 
-Group.create!(booking: b_11, user: User.all.order("id ASC")[27])
-
 Group.create!(booking: b_12, user: User.all.order("id ASC")[28])
 
 Group.create!(booking: b_13, user: User.all.order("id ASC")[14])
 
-Group.create!(booking: b_14, user: User.all.order("id ASC")[15])
 
 
 # Groups tomorrow and future
