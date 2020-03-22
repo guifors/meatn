@@ -21,7 +21,6 @@
     <div class="container d-flex flex-row-reverse pr-0">
       <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings-up" %>
     </div>
-    <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings-up" %>
   <% elsif current_user.bookings.present? %>
     <div class="container d-flex flex-row-reverse pr-0">
       <%= link_to "My bookings", user_path(current_user), class: "btn btn-light check-my-bookings" %>

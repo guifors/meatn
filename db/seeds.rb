@@ -171,7 +171,7 @@ puts "creating some Users"
 # Users for demo
 
 user_one_file = URI.open("#{user_photos[0]}")
-  user_one = User.new(email: "#{user_emails[0]}", password: '123456', name: "Guillermo", surname: "Forteza", bio: "Currently working as part of the Corporate Innovation unit of a large multinational in the mobility industry. Big fan of brunch and trying out the many cafes in Richmond. Just moved to London from Spain", interests: "Innovation, Sport Cars and good coffee", age: "33", location: "Valencia")
+  user_one = User.new(email: "#{user_emails[0]}", password: '123456', name: "Guillermo", surname: "Forteza", bio: "Currently working as part of the Corporate Innovation unit of a large multinational in the mobility industry. Big fan of brunch and trying out the many cafes in Richmond. Just moved to London from Spain", interests: "Innovation, Sport Cars, Coding and good coffee", age: "33", location: "Valencia")
   user_one.photo.attach(io: user_one_file, filename: "#{user_filenames[0]}", content_type: 'image/jpg')
   user_one.save!
 
@@ -216,7 +216,7 @@ puts "creating some bookings"
 
 b_1 = Booking.create!(title:"Aussies of London", date:Faker::Time.between_dates(from: DateTime.now - 4, to: DateTime.now - 1, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all.order("id ASC")[1], user: User.all.order("id ASC")[0], description: Faker::TvShows::RuPaul.quote)
 
-b_2 = Booking.create!(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now - 5, to: DateTime.now - 1, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all.order("id ASC")[2], user: User.all.order("id ASC")[0], description: Faker::TvShows::RuPaul.quote)
+b_2 = Booking.create!(title:"Tall Trees Society", date:Faker::Time.between_dates(from: DateTime.now - 8, to: DateTime.now - 5, period: :afternoon).beginning_of_hour, restaurant: Restaurant.all.order("id ASC")[2], user: User.all.order("id ASC")[0], description: Faker::TvShows::RuPaul.quote)
 
 # Booking demo (today)
 b_3 = Booking.create!(
