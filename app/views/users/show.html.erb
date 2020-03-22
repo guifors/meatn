@@ -9,7 +9,7 @@
         </div>
         <div class="current-user-member-since">
           <p>Member since</p>
-          <p class="text-user-profile"><%= current_user.created_at.to_formatted_s(:short) %></p>
+          <p class="text-user-profile"><%= current_user.created_at.to_date.strftime("%B %d, %Y") %></p>
         </div>
         <div class="current-user-social-media">
           <p class="mb-2">Networks</p>
