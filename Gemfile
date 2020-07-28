@@ -25,7 +25,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'cloudinary', '~> 1.12.0'
 gem 'acts-as-taggable-on', '~> 6.0'
-gem 'json', '~> 1.8', '>= 1.8.3'
+gem 'json', '~> 2.3'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
